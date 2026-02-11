@@ -1,5184 +1,3195 @@
 # Trabajo-extra-Programacion
 Archivo con ejercicios resueltos del libro de Joyanes
+# TRABAJO DE PUNTOS EXTRAS
+
+**Resolver: libro de Joyanes **
+
+* Arreglos: Unidomensionales y bidimensionales *
+-------------
+## *EJERCICIOS PROPUESTOS*
+
+**EJERCICIO 7.1**
+
+```python
+I = 1
+J = 2
+A = [0] * 11  # índice 1 a 10
+
+A[I] = J
+A[J] = I
+A[J+1] = I + J
+I = A[I] + A[J]
+A[3] = 5
+J = A[I] - A[J]
+
+print("I =", I)
+print("J =", J)
+```
+
+```
+    Proceso Ejercicio7_1
+    Definir I, J Como Entero
+    Dimension A[10]
+
+    I <- 1
+    J <- 2
+
+    A[I] <- J
+    A[J] <- I
+    A[J+1] <- I + J
+    I <- A[I] + A[J]
+    A[3] <- 5
+    J <- A[I] - A[J]
+
+    Escribir "I = ", I
+    Escribir "J = ", J
+    FinProceso
+```
+
+**EJERCICIO 7.2**
+
+Contar elementos positivos de un vector
+
+```python
+n = int(input("Ingrese cantidad de elementos: "))
+vector = []
+contador = 0
+
+for i in range(n):
+    num = float(input("Ingrese número: "))
+    vector.append(num)
+    if num > 0:
+        contador += 1
+
+print("Cantidad de positivos:", contador)
+```
+
+```
+    Proceso Ejercicio7_2
+      Definir n, i, contador Como Entero
+      Definir num Como Real
+      Dimension vector[100]
+
+      contador <- 0
+      Escribir "Ingrese cantidad de elementos:"
+      Leer n
+
+      Para i <- 1 Hasta n Hacer
+          Escribir "Ingrese número:"
+          Leer num
+          vector[i] <- num
+
+         Si num > 0 Entonces
+              contador <- contador + 1
+          FinSi
+    FinPara
+
+    Escribir "Cantidad de positivos:", contador
+  FinProceso
+```
+
+**EJERCICIO 7.3**
+
+Matriz identidad 4x4
+```python
+n = 4
+matriz = []
+
+for i in range(n):
+    fila = []
+    for j in range(n):
+        if i == j:
+            fila.append(1)
+        else:
+            fila.append(0)
+    matriz.append(fila)
+
+for fila in matriz:
+    print(fila)
+```
+
+```
+    Proceso Ejercicio7_3
+      Definir i, j Como Entero
+      Dimension matriz[4,4]
+
+      Para i <- 1 Hasta 4 Hacer
+        Para j <- 1 Hasta 4 Hacer
+            Si i = j Entonces
+                matriz[i,j] <- 1
+            SiNo
+                matriz[i,j] <- 0
+            FinSi
+        FinPara
+      FinPara
+
+      Para i <- 1 Hasta 4 Hacer
+        Para j <- 1 Hasta 4 Hacer
+            Escribir matriz[i,j], " " Sin Saltar
+        FinPara
+        Escribir ""
+      FinPara
+    FinProceso
+```
+
+**EJERCICIO 7.4**
+
+Suma de filas y columnas (matriz 3x3)
+```python
+matriz = []
+for i in range(3):
+    fila = []
+    for j in range(3):
+        num = float(input(f"Ingrese elemento [{i}][{j}]: "))
+        fila.append(num)
+    matriz.append(fila)
+
+suma_filas = [0]*3
+suma_columnas = [0]*3
+
+for i in range(3):
+    for j in range(3):
+        suma_filas[i] += matriz[i][j]
+        suma_columnas[j] += matriz[i][j]
+
+print("Suma de filas:", suma_filas)
+print("Suma de columnas:", suma_columnas)
+```
+
+```
+    Proceso Ejercicio7_4
+      Definir i, j Como Entero
+      Dimension matriz[3,3]
+      Dimension sumaFilas[3]
+      Dimension sumaColumnas[3]
+
+      Para i <- 1 Hasta 3 Hacer
+        sumaFilas[i] <- 0
+        sumaColumnas[i] <- 0
+      FinPara
+
+      Para i <- 1 Hasta 3 Hacer
+        Para j <- 1 Hasta 3 Hacer
+            Escribir "Ingrese elemento:", i, j
+            Leer matriz[i,j]
+            sumaFilas[i] <- sumaFilas[i] + matriz[i,j]
+            sumaColumnas[j] <- sumaColumnas[j] + matriz[i,j]
+          FinPara
+      FinPara
+
+      Escribir "Suma filas:"
+      Para i <- 1 Hasta 3 Hacer
+        Escribir sumaFilas[i]
+      FinPara
+
+      Escribir "Suma columnas:"
+      Para i <- 1 Hasta 3 Hacer
+        Escribir sumaColumnas[i]
+      FinPara
+    FinProceso
+```
+
+**EJERCICIO 7.5**
+
+Suma total y media de un vector
+```python
+n = int(input("Cantidad de elementos: "))
+vector = []
+suma = 0
+
+for i in range(n):
+    num = float(input("Ingrese número: "))
+    vector.append(num)
+    suma += num
+
+media = suma / n
+
+print("Suma total:", suma)
+print("Media:", media)
+```
+
+```
+    Proceso Ejercicio7_5
+      Definir n, i Como Entero
+      Definir suma, num, media Como Real
+      Dimension vector[100]
+
+      suma <- 0
+      Escribir "Cantidad de elementos:"
+      Leer n
+
+      Para i <- 1 Hasta n Hacer
+        Escribir "Ingrese número:"
+        Leer num
+        vector[i] <- num
+        suma <- suma + num
+      FinPara
+
+      media <- suma / n
+
+      Escribir "Suma total:", suma
+      Escribir "Media:", media
+    FinProceso
+```
+
+**EJERCICIO 7.6**
+
+Calcular número de negativos, ceros y positivos de un vector de 60 elementos.
+```python
+positivos = 0
+negativos = 0
+ceros = 0
+
+for i in range(60):
+    num = float(input(f"Ingrese número {i+1}: "))
+    
+    if num > 0:
+        positivos += 1
+    elif num < 0:
+        negativos += 1
+    else:
+        ceros += 1
+
+print("Positivos:", positivos)
+print("Negativos:", negativos)
+print("Ceros:", ceros)
+```
+
+```
+    Proceso Ejercicio7_6
+      Definir i, positivos, negativos, ceros Como Entero
+      Definir num Como Real
+
+      positivos <- 0
+      negativos <- 0
+      ceros <- 0
+
+      Para i <- 1 Hasta 60 Hacer
+        Escribir "Ingrese número:"
+        Leer num
+        
+        Si num > 0 Entonces
+            positivos <- positivos + 1
+        SiNo
+            Si num < 0 Entonces
+                negativos <- negativos + 1
+            SiNo
+                ceros <- ceros + 1
+            FinSi
+        FinSi
+      FinPara
+
+      Escribir "Positivos:", positivos
+      Escribir "Negativos:", negativos
+      Escribir "Ceros:", ceros
+    FinProceso
+```
+**EJERCICIO 7.7**
+
+Suma de la diagonal principal de una matriz 4x4
+```python
+matriz = []
+suma = 0
+
+for i in range(4):
+    fila = []
+    for j in range(4):
+        num = float(input(f"Ingrese elemento [{i}][{j}]: "))
+        fila.append(num)
+    matriz.append(fila)
+
+for i in range(4):
+    suma += matriz[i][i]
+
+print("Suma diagonal principal:", suma)
+```
+
+```
+    Proceso Ejercicio7_7
+      Definir i, j Como Entero
+      Definir suma Como Real
+      Dimension matriz[4,4]
+
+      suma <- 0
+
+      Para i <- 1 Hasta 4 Hacer
+        Para j <- 1 Hasta 4 Hacer
+            Escribir "Ingrese elemento:", i, j
+            Leer matriz[i,j]
+        FinPara
+      FinPara
+
+      Para i <- 1 Hasta 4 Hacer
+        suma <- suma + matriz[i,i]
+      FinPara
+
+      Escribir "Suma diagonal principal:", suma
+    FinProceso
+```
+**EJERCICIO 7.8**
+
+Dividir todos los elementos del vector T entre T[K]
+```python
+T = []
+for i in range(50):
+    num = float(input(f"Ingrese número {i+1}: "))
+    T.append(num)
+
+K = int(input("Ingrese posición K (1-50): ")) - 1
+
+if T[K] != 0:
+    nueva_tabla = []
+    for i in range(50):
+        nueva_tabla.append(T[i] / T[K])
+    
+    print("Nueva tabla:")
+    print(nueva_tabla)
+else:
+    print("No se puede dividir por cero.")
+```
+
+```
+    Proceso Ejercicio7_8
+      Definir i, K Como Entero
+      Dimension T[50]
+      Dimension nueva[50]
+
+      Para i <- 1 Hasta 50 Hacer
+        Escribir "Ingrese número:"
+        Leer T[i]
+      FinPara
+
+      Escribir "Ingrese posición K (1-50):"
+      Leer K
+
+      Si T[K] <> 0 Entonces
+        Para i <- 1 Hasta 50 Hacer
+            nueva[i] <- T[i] / T[K]
+        FinPara
+        
+        Escribir "Nueva tabla:"
+        Para i <- 1 Hasta 50 Hacer
+            Escribir nueva[i]
+        FinPara
+      SiNo
+        Escribir "No se puede dividir por cero"
+      FinSi
+    FinProceso
+```
+**EJERCICIO 7.9
+
+Insertar valor X en posición k de un vector
+```python
+N = int(input("Cantidad de elementos actuales: "))
+vector = []
+
+for i in range(N):
+    num = float(input("Ingrese número: "))
+    vector.append(num)
+
+X = float(input("Valor a insertar: "))
+k = int(input("Posición donde insertar (1 a N+1): ")) - 1
+
+vector.insert(k, X)
+
+print("Vector actualizado:")
+print(vector)
+```
+
+```
+    Proceso Ejercicio7_9
+      Definir N, i, k Como Entero
+      Definir X Como Real
+      Dimension vector[100]
+
+      Escribir "Cantidad de elementos:"
+      Leer N
+
+      Para i <- 1 Hasta N Hacer
+        Escribir "Ingrese número:"
+        Leer vector[i]
+      FinPara
+
+      Escribir "Valor a insertar:"
+      Leer X
+
+      Escribir "Posición donde insertar:"
+      Leer k
+
+      Para i <- N Hasta k Con Paso -1 Hacer
+        vector[i+1] <- vector[i]
+      FinPara
+
+      vector[k] <- X
+      N <- N + 1
+
+      Escribir "Vector actualizado:"
+      Para i <- 1 Hasta N Hacer
+        Escribir vector[i]
+      FinPara
+    FinProceso
+```
+
+**EJERCICIO 7.10**
+
+Sistema de reservas avión (300 plazas)
+
+```python
+# Ejercicio 7.10
+
+plazas = [0] * 301  # 1 a 300
+
+while True:
+    print("\n1. Reservar")
+    print("2. Cancelar")
+    print("3. Salir")
+    opcion = int(input("Opción: "))
+    
+    if opcion == 1:
+        asiento = int(input("Número de asiento (1-300): "))
+        
+        if plazas[asiento] == 0:
+            plazas[asiento] = 1
+            print("Reserva realizada.")
+        else:
+            print("Asiento ocupado.")
+    
+    elif opcion == 2:
+        asiento = int(input("Número de asiento a cancelar: "))
+        plazas[asiento] = 0
+        print("Reserva cancelada.")
+    
+    elif opcion == 3:
+        print("Cerrando sistema...")
+        break
+
+```
+
+```
+    Proceso Ejercicio7_10
+      Definir plazas Como Entero
+      Definir opcion, asiento Como Entero
+      Dimension plazas[300]
+    
+      Para asiento <- 1 Hasta 300 Hacer
+        plazas[asiento] <- 0
+      FinPara
+    
+      Repetir
+        Escribir "1. Reservar"
+        Escribir "2. Cancelar"
+        Escribir "3. Salir"
+        Leer opcion
+        
+        Si opcion = 1 Entonces
+            Escribir "Número de asiento (1-300):"
+            Leer asiento
+            
+            Si plazas[asiento] = 0 Entonces
+                plazas[asiento] <- 1
+                Escribir "Reserva realizada"
+            SiNo
+                Escribir "Asiento ocupado"
+            FinSi
+        FinSi
+        
+        Si opcion = 2 Entonces
+            Escribir "Número de asiento a cancelar:"
+            Leer asiento
+            plazas[asiento] <- 0
+            Escribir "Reserva cancelada"
+        FinSi
+        
+      Hasta Que opcion = 3
+    
+      Escribir "Sistema cerrado"
+    FinProceso
+```
+**EJERCICIO 7.11**
+
+Calcular la media de cada alumno (8 asignaturas con coeficientes) y luego:
+
+Media general de la clase
+
+Media por asignatura
+
+Porcentaje de faltas
+```python
+# 7.11 - Medias de alumnos
+
+num_alumnos = int(input("Ingrese número de alumnos: "))
+num_asignaturas = 8
+
+notas = []
+coeficientes = []
+
+print("Ingrese los coeficientes de las 8 asignaturas:")
+for i in range(num_asignaturas):
+    coef = float(input(f"Coeficiente asignatura {i+1}: "))
+    coeficientes.append(coef)
+
+for i in range(num_alumnos):
+    print(f"\nAlumno {i+1}")
+    notas_alumno = []
+    for j in range(num_asignaturas):
+        nota = float(input(f"Nota asignatura {j+1}: "))
+        notas_alumno.append(nota)
+    notas.append(notas_alumno)
+
+# Media por alumno
+medias_alumnos = []
+for i in range(num_alumnos):
+    suma = 0
+    suma_coef = 0
+    for j in range(num_asignaturas):
+        suma += notas[i][j] * coeficientes[j]
+        suma_coef += coeficientes[j]
+    media = suma / suma_coef
+    medias_alumnos.append(media)
+    print(f"Media alumno {i+1}: {media}")
+
+# Media general
+media_general = sum(medias_alumnos) / num_alumnos
+print("Media general de la clase:", media_general)
+```
+
+```
+    Proceso MediasClase
+      Definir num_alumnos, num_asignaturas Como Entero
+      num_asignaturas <- 8
+    
+      Escribir "Ingrese número de alumnos:"
+      Leer num_alumnos
+    
+      Dimension coeficientes[8]
+      Dimension notas[num_alumnos,8]
+    
+      Para i <- 1 Hasta 8
+        Escribir "Coeficiente asignatura ", i
+        Leer coeficientes[i]
+      FinPara
+    
+      Para i <- 1 Hasta num_alumnos
+        Para j <- 1 Hasta 8
+            Escribir "Nota alumno ", i, " asignatura ", j
+            Leer notas[i,j]
+        FinPara
+      FinPara
+    
+      Para i <- 1 Hasta num_alumnos
+        suma <- 0
+        suma_coef <- 0
+        Para j <- 1 Hasta 8
+            suma <- suma + notas[i,j] * coeficientes[j]
+            suma_coef <- suma_coef + coeficientes[j]
+        FinPara
+        media <- suma / suma_coef
+        Escribir "Media alumno ", i, ": ", media
+      FinPara
+    FinProceso
+```
+**EJERCICIO 7.12**
+
+Cuadrado de los 100 primeros números
+```python
+cuadrados = []
+
+for i in range(1, 101):
+    cuadrados.append(i**2)
+
+print(cuadrados)
+```
+
+```
+    Proceso Cuadrados
+      Dimension tabla[100]
+    
+      Para i <- 1 Hasta 100
+        tabla[i] <- i * i
+      FinPara
+    
+      Para i <- 1 Hasta 100
+        Escribir tabla[i]
+      FinPara
+    FinProceso
+```
+**EJERCICIO 7.13**
+
+Dadas N temperaturas, calcular:
+
+La media
+
+Cuántas son mayores o iguales a la media
+```python
+# Ejercicio 7.13
+
+N = int(input("Cantidad de temperaturas: "))
+temperaturas = []
+suma = 0
+
+for i in range(N):
+    temp = float(input(f"Temperatura {i+1}: "))
+    temperaturas.append(temp)
+    suma += temp
+
+media = suma / N
+contador = 0
+
+for temp in temperaturas:
+    if temp >= media:
+        contador += 1
+
+print("Media:", media)
+print("Temperaturas mayores o iguales a la media:", contador)
+```
+
+```
+    Proceso Ejercicio7_13
+      Definir N, i, contador Como Entero
+      Definir temp, suma, media Como Real
+      Dimension temperaturas[100]
+    
+      suma <- 0
+      contador <- 0
+    
+      Escribir "Cantidad de temperaturas:"
+      Leer N
+    
+      Para i <- 1 Hasta N
+        Escribir "Temperatura:"
+        Leer temp
+        temperaturas[i] <- temp
+        suma <- suma + temp
+      FinPara
+    
+      media <- suma / N
+    
+      Para i <- 1 Hasta N
+        Si temperaturas[i] >= media Entonces
+            contador <- contador + 1
+        FinSi
+      FinPara
+    
+      Escribir "Media:", media
+      Escribir "Mayores o iguales a la media:", contador
+    FinProceso
+```
+
+**EJERCICIO 7.14**
+
+Calcular suma y media de un vector de 100 elementos
+```python
+
+suma = 0
+
+for i in range(100):
+    num = float(input(f"Número {i+1}: "))
+    suma += num
+
+media = suma / 100
+
+print("Suma:", suma)
+print("Media:", media)
+```
+
+```
+    Proceso Ejercicio7_14
+      Definir i Como Entero
+      Definir num, suma, media Como Real
+    
+      suma <- 0
+    
+      Para i <- 1 Hasta 100
+        Escribir "Número:"
+        Leer num
+        suma <- suma + num
+      FinPara
+    
+      media <- suma / 100
+    
+      Escribir "Suma:", suma
+      Escribir "Media:", media
+    FinProceso
+```
+**EJERCICIO 7.15**
+
+Calcular el mayor valor de una lista de N elementos
+
+```python
+N = int(input("Cantidad de elementos: "))
+mayor = float(input("Ingrese número 1: "))
+
+for i in range(2, N+1):
+    num = float(input(f"Ingrese número {i}: "))
+    if num > mayor:
+        mayor = num
+
+print("El mayor valor es:", mayor)
+```
+
+```
+    Proceso Ejercicio7_15
+      Definir N, i Como Entero
+      Definir num, mayor Como Real
+    
+      Escribir "Cantidad de elementos:"
+      Leer N
+    
+      Escribir "Ingrese número 1:"
+      Leer mayor
+    
+      Para i <- 2 Hasta N
+        Escribir "Ingrese número:"
+        Leer num
+        Si num > mayor Entonces
+            mayor <- num
+        FinSi
+      FinPara
+    
+      Escribir "El mayor valor es:", mayor
+    FinProceso
+```
+**EJERCICIO 7.16**
+
+Calcular:
+
+Suma de números pares
+
+Suma de números impares
+```python
+
+N = int(input("Cantidad de elementos: "))
+suma_pares = 0
+suma_impares = 0
+
+for i in range(N):
+    num = int(input("Ingrese número entero: "))
+    
+    if num % 2 == 0:
+        suma_pares += num
+    else:
+        suma_impares += num
+
+print("Suma pares:", suma_pares)
+print("Suma impares:", suma_impares)
+```
+
+```
+    Proceso Ejercicio7_16
+      Definir N, i, num Como Entero
+      Definir suma_pares, suma_impares Como Entero
+    
+      suma_pares <- 0
+      suma_impares <- 0
+    
+      Escribir "Cantidad de elementos:"
+      Leer N
+    
+      Para i <- 1 Hasta N
+        Escribir "Ingrese número entero:"
+        Leer num
+        
+        Si num MOD 2 = 0 Entonces
+            suma_pares <- suma_pares + num
+        SiNo
+            suma_impares <- suma_impares + num
+        FinSi
+      FinPara
+    
+      Escribir "Suma pares:", suma_pares
+      Escribir "Suma impares:", suma_impares
+    FinProceso
+```
+
+**EJERCICIO 7.17**
+
+Invertir los elementos de un vector
+```python
+
+N = int(input("Cantidad de elementos: "))
+vector = []
+
+for i in range(N):
+    num = float(input("Ingrese número: "))
+    vector.append(num)
+
+vector_invertido = vector[::-1]
+
+print("Vector invertido:")
+print(vector_invertido)
+```
+
+```
+    Proceso Ejercicio7_17
+      Definir N, i Como Entero
+      Dimension vector[100]
+    
+      Escribir "Cantidad de elementos:"
+      Leer N
+    
+      Para i <- 1 Hasta N
+        Escribir "Ingrese número:"
+        Leer vector[i]
+      FinPara
+    
+      Escribir "Vector invertido:"
+      Para i <- N Hasta 1 Con Paso -1
+        Escribir vector[i]
+      FinPara
+    FinProceso
+```
+**EJERCICIO 7.18**
+
+Contar cuántas veces aparece un número X en el vector
+```python
+
+N = int(input("Cantidad de elementos: "))
+vector = []
+
+for i in range(N):
+    num = float(input("Ingrese número: "))
+    vector.append(num)
+
+X = float(input("Número a buscar: "))
+contador = vector.count(X)
+
+print("El número aparece", contador, "veces.")
+```
+
+```
+    Proceso Ejercicio7_18
+      Definir N, i, contador Como Entero
+      Definir X Como Real
+      Dimension vector[100]
+    
+      contador <- 0
+    
+      Escribir "Cantidad de elementos:"
+      Leer N
+    
+      Para i <- 1 Hasta N
+        Escribir "Ingrese número:"
+        Leer vector[i]
+      FinPara
+    
+      Escribir "Número a buscar:"
+      Leer X
+    
+      Para i <- 1 Hasta N
+        Si vector[i] = X Entonces
+            contador <- contador + 1
+        FinSi
+      FinPara
+    
+      Escribir "El número aparece ", contador, " veces."
+    FinProceso
+```
+**EJERCICIO 7.19**
+
+Eliminar un elemento en posición K
+```python
+
+N = int(input("Cantidad de elementos: "))
+vector = []
+
+for i in range(N):
+    num = float(input("Ingrese número: "))
+    vector.append(num)
+
+K = int(input("Posición a eliminar (1 a N): ")) - 1
+
+if 0 <= K < N:
+    vector.pop(K)
+    print("Vector actualizado:")
+    print(vector)
+else:
+    print("Posición inválida.")
+```
+
+```
+    Proceso Ejercicio7_19
+      Definir N, i, K Como Entero
+      Dimension vector[100]
+    
+      Escribir "Cantidad de elementos:"
+      Leer N
+    
+      Para i <- 1 Hasta N Hacer
+        Escribir "Ingrese número:"
+        Leer vector[i]
+      FinPara
+    
+      Escribir "Posición a eliminar:"
+      Leer K
+    
+      Para i <- K Hasta N-1
+        vector[i] <- vector[i+1]
+      FinPara
+    
+      N <- N - 1
+    
+      Escribir "Vector actualizado:"
+      Para i <- 1 Hasta N
+        Escribir vector[i]
+      FinPara
+    FinProceso
+```
+**EJERCICIO 7.20**
+
+Ordenar un vector (método burbuja)
+```python
+
+N = int(input("Cantidad de elementos: "))
+vector = []
+
+for i in range(N):
+    num = float(input("Ingrese número: "))
+    vector.append(num)
+
+# Método burbuja
+for i in range(N):
+    for j in range(0, N - i - 1):
+        if vector[j] > vector[j + 1]:
+            vector[j], vector[j + 1] = vector[j + 1], vector[j]
+
+print("Vector ordenado:")
+print(vector)
+```
+
+```
+    Proceso Ejercicio7_20
+      Definir N, i, j Como Entero
+      Definir aux Como Real
+      Dimension vector[100]
+    
+      Escribir "Cantidad de elementos:"
+      Leer N
+    
+      Para i <- 1 Hasta N Hacer
+        Escribir "Ingrese número:"
+        Leer vector[i]
+      FinPara
+    
+      Para i <- 1 Hasta N-1
+        Para j <- 1 Hasta N-i
+            Si vector[j] > vector[j+1] Entonces
+                aux <- vector[j]
+                vector[j] <- vector[j+1]
+                vector[j+1] <- aux
+            FinSi
+        FinPara
+      FinPara
+    
+      Escribir "Vector ordenado:"
+      Para i <- 1 Hasta N
+        Escribir vector[i]
+      FinPara
+    FinProceso
+```
+**EJERCICIO 7.21**
+
+Buscar un número en el vector y mostrar su posición
+```python
+
+N = int(input("Cantidad de elementos: "))
+vector = []
+
+for i in range(N):
+    num = float(input("Ingrese número: "))
+    vector.append(num)
+
+X = float(input("Número a buscar: "))
+
+if X in vector:
+    posicion = vector.index(X) + 1
+    print("Número encontrado en posición:", posicion)
+else:
+    print("Número no encontrado.")
+```
+
+```
+    Proceso Ejercicio7_21
+      Definir N, i, posicion Como Entero
+      Definir X Como Real
+      Dimension vector[100]
+    
+      posicion <- 0
+    
+      Escribir "Cantidad de elementos:"
+      Leer N
+    
+      Para i <- 1 Hasta N Hacer
+        Escribir "Ingrese número:"
+        Leer vector[i]
+      FinPara
+    
+      Escribir "Número a buscar:"
+      Leer X
+    
+      Para i <- 1 Hasta N
+        Si vector[i] = X Entonces
+            posicion <- i
+        FinSi
+      FinPara
+    
+      Si posicion > 0 Entonces
+        Escribir "Número encontrado en posición:", posicion
+      SiNo
+        Escribir "Número no encontrado."
+      FinSi
+    FinProceso
+```
+**EJERCICIO 7.22**
+
+Copiar un vector en otro
+```python
+N = int(input("Cantidad de elementos: "))
+vector1 = []
+
+for i in range(N):
+    num = float(input("Ingrese número: "))
+    vector1.append(num)
+
+vector2 = vector1.copy()
+
+print("Vector copiado:")
+print(vector2)
+```
+
+```
+    Proceso Ejercicio7_22
+      Definir N, i Como Entero
+      Dimension vector1[100], vector2[100]
+    
+      Escribir "Cantidad de elementos:"
+      Leer N
+    
+      Para i <- 1 Hasta N Hacer
+        Escribir "Ingrese número:"
+        Leer vector1[i]
+        vector2[i] <- vector1[i]
+      FinPara
+    
+      Escribir "Vector copiado:"
+      Para i <- 1 Hasta N
+        Escribir vector2[i]
+      FinPara
+    FinProceso
+```
+**EJERCICIO 7.23**
+
+Sumar dos vectores y guardar en un tercero
+```python
+N = int(input("Cantidad de elementos: "))
+A = []
+B = []
+C = []
+
+print("Vector A")
+for i in range(N):
+    A.append(float(input("Ingrese número: ")))
+
+print("Vector B")
+for i in range(N):
+    B.append(float(input("Ingrese número: ")))
+
+for i in range(N):
+    C.append(A[i] + B[i])
+
+print("Vector suma:")
+print(C)
+```
+
+```
+    Proceso Ejercicio7_23
+      Definir N, i Como Entero
+      Dimension A[100], B[100], C[100]
+    
+      Escribir "Cantidad de elementos:"
+      Leer N
+    
+      Escribir "Vector A"
+      Para i <- 1 Hasta N
+        Leer A[i]
+      FinPara
+    
+      Escribir "Vector B"
+      Para i <- 1 Hasta N
+        Leer B[i]
+      FinPara
+    
+      Para i <- 1 Hasta N
+        C[i] <- A[i] + B[i]
+      FinPara
+    
+      Escribir "Vector suma:"
+      Para i <- 1 Hasta N
+        Escribir C[i]
+      FinPara
+    FinProceso
+```
+
+**EJERCICIO 7.24**
+
+Intercambiar dos posiciones del vector
+```python
+N = int(input("Cantidad de elementos: "))
+vector = []
+
+for i in range(N):
+    vector.append(float(input("Ingrese número: ")))
+
+i1 = int(input("Primera posición: ")) - 1
+i2 = int(input("Segunda posición: ")) - 1
+
+vector[i1], vector[i2] = vector[i2], vector[i1]
+
+print("Vector actualizado:")
+print(vector)
+```
+
+```
+    Proceso Ejercicio7_24
+      Definir N, i, i1, i2 Como Entero
+      Definir aux Como Real
+      Dimension vector[100]
+    
+      Escribir "Cantidad de elementos:"
+      Leer N
+    
+      Para i <- 1 Hasta N
+        Leer vector[i]
+      FinPara
+    
+      Escribir "Primera posición:"
+      Leer i1
+      Escribir "Segunda posición:"
+      Leer i2
+    
+      aux <- vector[i1]
+      vector[i1] <- vector[i2]
+      vector[i2] <- aux
+    
+      Escribir "Vector actualizado:"
+      Para i <- 1 Hasta N
+        Escribir vector[i]
+      FinPara
+    FinProceso
+```
+**EJERCICIO 7.25**
+
+Contar positivos, negativos y ceros
+```python
+N = int(input("Cantidad de elementos: "))
+positivos = negativos = ceros = 0
+
+for i in range(N):
+    num = float(input("Ingrese número: "))
+    
+    if num > 0:
+        positivos += 1
+    elif num < 0:
+        negativos += 1
+    else:
+        ceros += 1
+
+print("Positivos:", positivos)
+print("Negativos:", negativos)
+print("Ceros:", ceros)
+```
+
+```
+    Proceso Ejercicio7_25
+      Definir N, i Como Entero
+      Definir num Como Real
+      Definir positivos, negativos, ceros Como Entero
+    
+      positivos <- 0
+      negativos <- 0
+      ceros <- 0
+    
+      Escribir "Cantidad de elementos:"
+      Leer N
+    
+      Para i <- 1 Hasta N
+        Leer num
+        
+        Si num > 0 Entonces
+            positivos <- positivos + 1
+        Sino
+            Si num < 0 Entonces
+                negativos <- negativos + 1
+            Sino
+                ceros <- ceros + 1
+            FinSi
+        FinSi
+      FinPara
+    
+      Escribir "Positivos:", positivos
+      Escribir "Negativos:", negativos
+      Escribir "Ceros:", ceros
+    FinProceso
+```
+**EJERCICIO 7.26**
+
+Unir dos vectores en uno solo
+```python
+N = int(input("Cantidad de elementos del vector A: "))
+M = int(input("Cantidad de elementos del vector B: "))
+
+A = []
+B = []
+
+print("Vector A")
+for i in range(N):
+    A.append(float(input("Ingrese número: ")))
+
+print("Vector B")
+for i in range(M):
+    B.append(float(input("Ingrese número: ")))
+
+C = A + B
+
+print("Vector unido:")
+print(C)
+```
+
+```
+    Proceso Ejercicio7_26
+      Definir N, M, i Como Entero
+      Dimension A[100], B[100], C[200]
+    
+      Escribir "Cantidad elementos A:"
+      Leer N
+    
+      Para i <- 1 Hasta N
+        Leer A[i]
+      FinPara
+    
+      Escribir "Cantidad elementos B:"
+      Leer M
+    
+      Para i <- 1 Hasta M
+        Leer B[i]
+        C[N+i] <- B[i]
+      FinPara
+    
+      Para i <- 1 Hasta N
+        C[i] <- A[i]
+      FinPara
+    
+      Escribir "Vector unido:"
+      Para i <- 1 Hasta N+M
+        Escribir C[i]
+      FinPara
+    FinProceso
+```
+**EJERCICIO 7.27**
+
+Eliminar valores repetidos
+```python
+N = int(input("Cantidad de elementos: "))
+vector = []
+
+for i in range(N):
+    vector.append(float(input("Ingrese número: ")))
+
+sin_repetidos = list(set(vector))
+
+print("Vector sin repetidos:")
+print(sin_repetidos)
+```
+
+```
+    Proceso Ejercicio7_27
+      Definir N, i, j Como Entero
+      Dimension vector[100]
+    
+      Escribir "Cantidad de elementos:"
+      Leer N
+    
+      Para i <- 1 Hasta N Hacer
+        Leer vector[i]
+      FinPara
+    
+      Para i <- 1 Hasta N
+        Para j <- i+1 Hasta N
+            Si vector[i] = vector[j] Entonces
+                vector[j] <- -99999
+            FinSi
+        FinPara
+      FinPara
+    
+      Escribir "Vector sin repetidos:"
+      Para i <- 1 Hasta N
+        Si vector[i] <> -99999 Entonces
+            Escribir vector[i]
+        FinSi
+      FinPara
+    FinProceso
+```
+**EJERCICIO 7.28**
+
+Buscar el menor valor del vector
+```python
+N = int(input("Cantidad de elementos: "))
+vector = []
+
+for i in range(N):
+    vector.append(float(input("Ingrese número: ")))
+
+menor = min(vector)
+
+print("El menor valor es:", menor)
+```
+
+```
+    Proceso Ejercicio7_28
+      Definir N, i Como Entero
+      Definir menor Como Real
+      Dimension vector[100]
+    
+      Escribir "Cantidad de elementos:"
+      Leer N
+    
+      Escribir "Ingrese número:"
+      Leer menor
+    
+      vector[1] <- menor
+    
+      Para i <- 2 Hasta N
+        Leer vector[i]
+        Si vector[i] < menor Entonces
+            menor <- vector[i]
+        FinSi
+      FinPara
+    
+      Escribir "El menor valor es:", menor
+    FinProceso
+```
+
+# EJERCICIOS RESUELTOS(Arreglos)
+**Ejercicio 7.1**
+
+Escribir un algoritmo que permita calcular el cuadrado de los cien primeros números enteros y a continuación es cribir una tabla que contenga dichos cien números cuadrados.
+
+```
+Algoritmo cuadrados
+	Definir tabla Como Entero
+	Dimension tabla[101]
+	Definir i, c Como Entero
+
+	Escribir "Numero", "    ", "Cuadrado"
+	Escribir "--------------------"
+
+	Para i <- 1 Hasta 100 Hacer
+		c <- i * i
+		tabla[i] <- c
+		Escribir i, "        ", tabla[i]
+	FinPara
+FinAlgoritmo
+
+```
+```python
+tabla = [0] * 100   # arreglo (lista) de 100 posiciones
+
+print("Numero    Cuadrado")
+print("--------------------")
+
+for i in range(1, 101):
+    tabla[i - 1] = i * i
+    print(i, "       ", tabla[i - 1])
+
+```
+**Ejercicio 7.2**
+
+Se tienen N temperaturas. Se desea calcular su media y determinar entre todas ellas cuáles son superiores o iguales a esa media.
+
+```
+Algoritmo Temperaturas
+    Definir N, I, C Como Entero
+    Definir suma, media Como Real
+
+    Escribir "Ingrese la cantidad de temperaturas:"
+    Leer N
+
+    Dimension Temp[N]
+
+    suma <- 0
+    C <- 0
+
+    Para I <- 0 Hasta N-1 Hacer
+        Escribir "Ingrese la temperatura ", I+1, ":"
+        Leer Temp[I]
+        suma <- suma + Temp[I]
+    FinPara
+
+    media <- suma / N
+
+    Escribir "Temperaturas mayores o iguales a la media:"
+    Para I <- 0 Hasta N-1 Hacer
+        Si Temp[I] >= media Entonces
+            Escribir Temp[I]
+            C <- C + 1
+        FinSi
+    FinPara
+
+    Escribir "La media es: ", media
+    Escribir "Cantidad de temperaturas mayores o iguales a la media: ", C
+FinAlgoritmo
+```
+```python
+N = int(input("Ingrese la cantidad de temperaturas: "))
+
+Temp = []  # arreglo (lista) de temperaturas
+suma = 0
+C = 0
+
+for i in range(N):
+    t = float(input(f"Ingrese la temperatura {i + 1}: "))
+    Temp.append(t)
+    suma += t
+
+media = suma / N
+
+print("Temperaturas mayores o iguales a la media:")
+for i in range(N):
+    if Temp[i] >= media:
+        print(Temp[i])
+        C += 1
+
+print("La media es:", media)
+print("Cantidad de temperaturas mayores o iguales a la media:", C)
+
+```
+**Ejercicio 7.3**
+
+Escribir el algoritmo que permita sumar el número de elementos positivos y el de negativos de una tabla T
+```
+Proceso ActividadResuelta3;
+
+    Definir N, i, posicion Como Entero;
+    Definir buscado Como Real;
+    Dimension vector[100];
+
+    posicion <- 0;
+
+    Escribir "Cantidad de elementos:";
+    Leer N;
+
+    Para i <- 1 Hasta N Hacer
+        Leer vector[i];
+    FinPara
+
+    Escribir "Número a buscar:";
+    Leer buscado;
+
+    Para i <- 1 Hasta N Hacer
+        Si vector[i] = buscado Entonces
+            posicion <- i;
+        FinSi
+    FinPara
+
+    Si posicion <> 0 Entonces
+        Escribir "Número encontrado en posición: ", posicion;
+    SiNo
+        Escribir "Número no encontrado.";
+    FinSi
+
+FinProceso
+
+```
+
+```python
+
+N = int(input("Cantidad de elementos: "))
+vector = []
+
+for i in range(N):
+    num = float(input("Ingrese número: "))
+    vector.append(num)
+
+buscado = float(input("Número a buscar: "))
+encontrado = False
+
+for i in range(N):
+    if vector[i] == buscado:
+        print("Número encontrado en posición:", i + 1)
+        encontrado = True
+        break
+
+if not encontrado:
+    print("Número no encontrado.")
+
+```
+
+****Ejercicio 7.4**
+Inicializar una matriz de dos dimensiones con un valor constante dado K.
+```python
+N = int(input("Cantidad de elementos: "))
+vector = []
+
+for i in range(N):
+    vector.append(float(input("Ingrese número: ")))
+
+for i in range(N - 1):
+    for j in range(N - i - 1):
+        if vector[j] > vector[j + 1]:
+            vector[j], vector[j + 1] = vector[j + 1], vector[j]
+
+print("Vector ordenado:")
+print(vector)
+
+```
+```
+Proceso ActividadResuelta4;
+
+    Definir N, i, j Como Entero;
+    Definir aux Como Real;
+    Dimension vector[100];
+
+    Escribir "Cantidad de elementos:";
+    Leer N;
+
+    Para i <- 1 Hasta N Hacer
+        Leer vector[i];
+    FinPara
+
+    Para i <- 1 Hasta N-1 Hacer
+        Para j <- 1 Hasta N-i Hacer
+            Si vector[j] > vector[j+1] Entonces
+                aux <- vector[j];
+                vector[j] <- vector[j+1];
+                vector[j+1] <- aux;
+            FinSi
+        FinPara
+    FinPara
+
+    Escribir "Vector ordenado:";
+    Para i <- 1 Hasta N Hacer
+        Escribir vector[i];
+    FinPara
+
+FinProceso
 
 
-        "#TRABAJO DE PUNTOS EXTRAS\n",
-        "\n",
-        "**Resolver: libro de Joyanes **\n",
-        "\n",
-        "*  Arreglos: Unidomensionales y bidimensionales *\n",
-        "-------------\n",
-        "## *EJERCICIOS PROPUESTOS*\n",
-        "\n",
-        "**EJERCICIO 7.1**\n",
-        "\n",
-        "```\n",
-        "\n",
-        "I = 1\n",
-        "J = 2\n",
-        "A = [0] * 11  # índice 1 a 10\n",
-        "\n",
-        "A[I] = J\n",
-        "A[J] = I\n",
-        "A[J+1] = I + J\n",
-        "I = A[I] + A[J]\n",
-        "A[3] = 5\n",
-        "J = A[I] - A[J]\n",
-        "\n",
-        "print(\"I =\", I)\n",
-        "print(\"J =\", J)\n",
-        "\n",
-        "```\n",
-        "\n",
-        "\n",
-        "\n",
-        "    Proceso Ejercicio7_1\n",
-        "    Definir I, J Como Entero\n",
-        "    Dimension A[10]\n",
-        "    \n",
-        "    I <- 1\n",
-        "    J <- 2\n",
-        "    \n",
-        "    A[I] <- J\n",
-        "    A[J] <- I\n",
-        "    A[J+1] <- I + J\n",
-        "    I <- A[I] + A[J]\n",
-        "    A[3] <- 5\n",
-        "    J <- A[I] - A[J]\n",
-        "    \n",
-        "    Escribir \"I = \", I\n",
-        "    Escribir \"J = \", J\n",
-        "    FinProceso\n",
-        "\n",
-        "\n",
-        "**EJERCICIO 7.2**\n",
-        "\n",
-        "Contar elementos positivos de un vector\n",
-        "\n",
-        "\n",
-        "\n",
-        "```\n",
-        "\n",
-        "n = int(input(\"Ingrese cantidad de elementos: \"))\n",
-        "vector = []\n",
-        "contador = 0\n",
-        "\n",
-        "for i in range(n):\n",
-        "    num = float(input(\"Ingrese número: \"))\n",
-        "    vector.append(num)\n",
-        "    if num > 0:\n",
-        "        contador += 1\n",
-        "\n",
-        "print(\"Cantidad de positivos:\", contador)\n",
-        "\n",
-        "```\n",
-        "\n",
-        "    Proceso Ejercicio7_2\n",
-        "      Definir n, i, contador Como Entero\n",
-        "      Definir num Como Real\n",
-        "      Dimension vector[100]\n",
-        "    \n",
-        "      contador <- 0\n",
-        "      Escribir \"Ingrese cantidad de elementos:\"\n",
-        "      Leer n\n",
-        "    \n",
-        "      Para i <- 1 Hasta n Hacer\n",
-        "          Escribir \"Ingrese número:\"\n",
-        "          Leer num\n",
-        "          vector[i] <- num\n",
-        "        \n",
-        "         Si num > 0 Entonces\n",
-        "              contador <- contador + 1\n",
-        "          FinSi\n",
-        "    FinPara\n",
-        "    \n",
-        "    Escribir \"Cantidad de positivos:\", contador\n",
-        "  FinProceso\n",
-        "\n",
-        "**EJERCICIO 7.3**\n",
-        "\n",
-        "Matriz identidad 4x4\n",
-        "```\n",
-        "n = 4\n",
-        "matriz = []\n",
-        "\n",
-        "for i in range(n):\n",
-        "    fila = []\n",
-        "    for j in range(n):\n",
-        "        if i == j:\n",
-        "            fila.append(1)\n",
-        "        else:\n",
-        "            fila.append(0)\n",
-        "    matriz.append(fila)\n",
-        "\n",
-        "for fila in matriz:\n",
-        "    print(fila)\n",
-        "\n",
-        "```\n",
-        "\n",
-        "    Proceso Ejercicio7_3\n",
-        "      Definir i, j Como Entero\n",
-        "      Dimension matriz[4,4]\n",
-        "    \n",
-        "      Para i <- 1 Hasta 4 Hacer\n",
-        "        Para j <- 1 Hasta 4 Hacer\n",
-        "            Si i = j Entonces\n",
-        "                matriz[i,j] <- 1\n",
-        "            SiNo\n",
-        "                matriz[i,j] <- 0\n",
-        "            FinSi\n",
-        "        FinPara\n",
-        "      FinPara\n",
-        "    \n",
-        "      Para i <- 1 Hasta 4 Hacer\n",
-        "        Para j <- 1 Hasta 4 Hacer\n",
-        "            Escribir matriz[i,j], \" \" Sin Saltar\n",
-        "        FinPara\n",
-        "        Escribir \"\"\n",
-        "      FinPara\n",
-        "    FinProceso\n",
-        "\n",
-        "**EJERCICIO 7.4**\n",
-        "\n",
-        "Suma de filas y columnas (matriz 3x3)\n",
-        "```\n",
-        "matriz = []\n",
-        "for i in range(3):\n",
-        "    fila = []\n",
-        "    for j in range(3):\n",
-        "        num = float(input(f\"Ingrese elemento [{i}][{j}]: \"))\n",
-        "        fila.append(num)\n",
-        "    matriz.append(fila)\n",
-        "\n",
-        "suma_filas = [0]*3\n",
-        "suma_columnas = [0]*3\n",
-        "\n",
-        "for i in range(3):\n",
-        "    for j in range(3):\n",
-        "        suma_filas[i] += matriz[i][j]\n",
-        "        suma_columnas[j] += matriz[i][j]\n",
-        "\n",
-        "print(\"Suma de filas:\", suma_filas)\n",
-        "print(\"Suma de columnas:\", suma_columnas)\n",
-        "\n",
-        "```\n",
-        "    Proceso Ejercicio7_4\n",
-        "      Definir i, j Como Entero\n",
-        "      Dimension matriz[3,3]\n",
-        "      Dimension sumaFilas[3]\n",
-        "      Dimension sumaColumnas[3]\n",
-        "    \n",
-        "      Para i <- 1 Hasta 3 Hacer\n",
-        "        sumaFilas[i] <- 0\n",
-        "        sumaColumnas[i] <- 0\n",
-        "      FinPara\n",
-        "    \n",
-        "      Para i <- 1 Hasta 3 Hacer\n",
-        "        Para j <- 1 Hasta 3 Hacer\n",
-        "            Escribir \"Ingrese elemento:\", i, j\n",
-        "            Leer matriz[i,j]\n",
-        "            sumaFilas[i] <- sumaFilas[i] + matriz[i,j]\n",
-        "            sumaColumnas[j] <- sumaColumnas[j] + matriz[i,j]\n",
-        "          FinPara\n",
-        "      FinPara\n",
-        "    \n",
-        "      Escribir \"Suma filas:\"\n",
-        "      Para i <- 1 Hasta 3 Hacer\n",
-        "        Escribir sumaFilas[i]\n",
-        "      FinPara\n",
-        "    \n",
-        "      Escribir \"Suma columnas:\"\n",
-        "      Para i <- 1 Hasta 3 Hacer\n",
-        "        Escribir sumaColumnas[i]\n",
-        "      FinPara\n",
-        "    FinProceso\n",
-        "\n",
-        "**EJERCICIO 7.5**\n",
-        "\n",
-        "Suma total y media de un vector\n",
-        "```\n",
-        "n = int(input(\"Cantidad de elementos: \"))\n",
-        "vector = []\n",
-        "suma = 0\n",
-        "\n",
-        "for i in range(n):\n",
-        "    num = float(input(\"Ingrese número: \"))\n",
-        "    vector.append(num)\n",
-        "    suma += num\n",
-        "\n",
-        "media = suma / n\n",
-        "\n",
-        "print(\"Suma total:\", suma)\n",
-        "print(\"Media:\", media)\n",
-        "\n",
-        "```\n",
-        "    Proceso Ejercicio7_5\n",
-        "      Definir n, i Como Entero\n",
-        "      Definir suma, num, media Como Real\n",
-        "      Dimension vector[100]\n",
-        "    \n",
-        "      suma <- 0\n",
-        "      Escribir \"Cantidad de elementos:\"\n",
-        "      Leer n\n",
-        "    \n",
-        "      Para i <- 1 Hasta n Hacer\n",
-        "        Escribir \"Ingrese número:\"\n",
-        "        Leer num\n",
-        "        vector[i] <- num\n",
-        "        suma <- suma + num\n",
-        "      FinPara\n",
-        "    \n",
-        "      media <- suma / n\n",
-        "    \n",
-        "      Escribir \"Suma total:\", suma\n",
-        "      Escribir \"Media:\", media\n",
-        "    FinProceso\n",
-        "\n",
-        "**EJERCICIO 7.6**\n",
-        "\n",
-        "Calcular número de negativos, ceros y positivos de un vector de 60 elementos.\n",
-        "```\n",
-        "positivos = 0\n",
-        "negativos = 0\n",
-        "ceros = 0\n",
-        "\n",
-        "for i in range(60):\n",
-        "    num = float(input(f\"Ingrese número {i+1}: \"))\n",
-        "    \n",
-        "    if num > 0:\n",
-        "        positivos += 1\n",
-        "    elif num < 0:\n",
-        "        negativos += 1\n",
-        "    else:\n",
-        "        ceros += 1\n",
-        "\n",
-        "print(\"Positivos:\", positivos)\n",
-        "print(\"Negativos:\", negativos)\n",
-        "print(\"Ceros:\", ceros)\n",
-        "\n",
-        "```\n",
-        "\n",
-        "    Proceso Ejercicio7_6\n",
-        "      Definir i, positivos, negativos, ceros Como Entero\n",
-        "      Definir num Como Real\n",
-        "    \n",
-        "      positivos <- 0\n",
-        "      negativos <- 0\n",
-        "      ceros <- 0\n",
-        "    \n",
-        "      Para i <- 1 Hasta 60 Hacer\n",
-        "        Escribir \"Ingrese número:\"\n",
-        "        Leer num\n",
-        "        \n",
-        "        Si num > 0 Entonces\n",
-        "            positivos <- positivos + 1\n",
-        "        SiNo\n",
-        "            Si num < 0 Entonces\n",
-        "                negativos <- negativos + 1\n",
-        "            SiNo\n",
-        "                ceros <- ceros + 1\n",
-        "            FinSi\n",
-        "        FinSi\n",
-        "      FinPara\n",
-        "    \n",
-        "      Escribir \"Positivos:\", positivos\n",
-        "      Escribir \"Negativos:\", negativos\n",
-        "      Escribir \"Ceros:\", ceros\n",
-        "    FinProceso\n",
-        "**EJERCICIO 7.7**\n",
-        "\n",
-        "Suma de la diagonal principal de una matriz 4x4\n",
-        "```\n",
-        "matriz = []\n",
-        "suma = 0\n",
-        "\n",
-        "for i in range(4):\n",
-        "    fila = []\n",
-        "    for j in range(4):\n",
-        "        num = float(input(f\"Ingrese elemento [{i}][{j}]: \"))\n",
-        "        fila.append(num)\n",
-        "    matriz.append(fila)\n",
-        "\n",
-        "for i in range(4):\n",
-        "    suma += matriz[i][i]\n",
-        "\n",
-        "print(\"Suma diagonal principal:\", suma)\n",
-        "\n",
-        "```\n",
-        "    Proceso Ejercicio7_7\n",
-        "      Definir i, j Como Entero\n",
-        "      Definir suma Como Real\n",
-        "      Dimension matriz[4,4]\n",
-        "    \n",
-        "      suma <- 0\n",
-        "    \n",
-        "      Para i <- 1 Hasta 4 Hacer\n",
-        "        Para j <- 1 Hasta 4 Hacer\n",
-        "            Escribir \"Ingrese elemento:\", i, j\n",
-        "            Leer matriz[i,j]\n",
-        "        FinPara\n",
-        "      FinPara\n",
-        "    \n",
-        "      Para i <- 1 Hasta 4 Hacer\n",
-        "        suma <- suma + matriz[i,i]\n",
-        "      FinPara\n",
-        "    \n",
-        "      Escribir \"Suma diagonal principal:\", suma\n",
-        "    FinProceso\n",
-        "**EJERCICIO 7.8**\n",
-        "\n",
-        "Dividir todos los elementos del vector T entre T[K]\n",
-        "```\n",
-        "T = []\n",
-        "for i in range(50):\n",
-        "    num = float(input(f\"Ingrese número {i+1}: \"))\n",
-        "    T.append(num)\n",
-        "\n",
-        "K = int(input(\"Ingrese posición K (1-50): \")) - 1\n",
-        "\n",
-        "if T[K] != 0:\n",
-        "    nueva_tabla = []\n",
-        "    for i in range(50):\n",
-        "        nueva_tabla.append(T[i] / T[K])\n",
-        "    \n",
-        "    print(\"Nueva tabla:\")\n",
-        "    print(nueva_tabla)\n",
-        "else:\n",
-        "    print(\"No se puede dividir por cero.\")\n",
-        "\n",
-        "```\n",
-        "    Proceso Ejercicio7_8\n",
-        "      Definir i, K Como Entero\n",
-        "      Dimension T[50]\n",
-        "      Dimension nueva[50]\n",
-        "    \n",
-        "      Para i <- 1 Hasta 50 Hacer\n",
-        "        Escribir \"Ingrese número:\"\n",
-        "        Leer T[i]\n",
-        "      FinPara\n",
-        "    \n",
-        "      Escribir \"Ingrese posición K (1-50):\"\n",
-        "      Leer K\n",
-        "    \n",
-        "      Si T[K] <> 0 Entonces\n",
-        "        Para i <- 1 Hasta 50 Hacer\n",
-        "            nueva[i] <- T[i] / T[K]\n",
-        "        FinPara\n",
-        "        \n",
-        "        Escribir \"Nueva tabla:\"\n",
-        "        Para i <- 1 Hasta 50 Hacer\n",
-        "            Escribir nueva[i]\n",
-        "        FinPara\n",
-        "      SiNo\n",
-        "        Escribir \"No se puede dividir por cero\"\n",
-        "      FinSi\n",
-        "    FinProceso\n",
-        "**EJERCICIO 7.9\n",
-        "\n",
-        "Insertar valor X en posición k de un vector\n",
-        "```\n",
-        "N = int(input(\"Cantidad de elementos actuales: \"))\n",
-        "vector = []\n",
-        "\n",
-        "for i in range(N):\n",
-        "    num = float(input(\"Ingrese número: \"))\n",
-        "    vector.append(num)\n",
-        "\n",
-        "X = float(input(\"Valor a insertar: \"))\n",
-        "k = int(input(\"Posición donde insertar (1 a N+1): \")) - 1\n",
-        "\n",
-        "vector.insert(k, X)\n",
-        "\n",
-        "print(\"Vector actualizado:\")\n",
-        "print(vector)\n",
-        "\n",
-        "```\n",
-        "    Proceso Ejercicio7_9\n",
-        "      Definir N, i, k Como Entero\n",
-        "      Definir X Como Real\n",
-        "      Dimension vector[100]\n",
-        "    \n",
-        "      Escribir \"Cantidad de elementos:\"\n",
-        "      Leer N\n",
-        "    \n",
-        "      Para i <- 1 Hasta N Hacer\n",
-        "        Escribir \"Ingrese número:\"\n",
-        "        Leer vector[i]\n",
-        "      FinPara\n",
-        "    \n",
-        "      Escribir \"Valor a insertar:\"\n",
-        "      Leer X\n",
-        "    \n",
-        "      Escribir \"Posición donde insertar:\"\n",
-        "      Leer k\n",
-        "    \n",
-        "      Para i <- N Hasta k Con Paso -1 Hacer\n",
-        "        vector[i+1] <- vector[i]\n",
-        "      FinPara\n",
-        "    \n",
-        "      vector[k] <- X\n",
-        "      N <- N + 1\n",
-        "    \n",
-        "      Escribir \"Vector actualizado:\"\n",
-        "      Para i <- 1 Hasta N Hacer\n",
-        "        Escribir vector[i]\n",
-        "      FinPara\n",
-        "    FinProceso\n",
-        "\n",
-        "**EJERCICIO 7.10**\n",
-        "\n",
-        "Sistema de reservas avión (300 plazas)\n",
-        "\n",
-        "```\n",
-        "# Ejercicio 7.10\n",
-        "\n",
-        "plazas = [0] * 301  # 1 a 300\n",
-        "\n",
-        "while True:\n",
-        "    print(\"\\n1. Reservar\")\n",
-        "    print(\"2. Cancelar\")\n",
-        "    print(\"3. Salir\")\n",
-        "    opcion = int(input(\"Opción: \"))\n",
-        "    \n",
-        "    if opcion == 1:\n",
-        "        asiento = int(input(\"Número de asiento (1-300): \"))\n",
-        "        \n",
-        "        if plazas[asiento] == 0:\n",
-        "            plazas[asiento] = 1\n",
-        "            print(\"Reserva realizada.\")\n",
-        "        else:\n",
-        "            print(\"Asiento ocupado.\")\n",
-        "    \n",
-        "    elif opcion == 2:\n",
-        "        asiento = int(input(\"Número de asiento a cancelar: \"))\n",
-        "        plazas[asiento] = 0\n",
-        "        print(\"Reserva cancelada.\")\n",
-        "    \n",
-        "    elif opcion == 3:\n",
-        "        print(\"Cerrando sistema...\")\n",
-        "        break\n",
-        "\n",
-        "```\n",
-        "    Proceso Ejercicio7_10\n",
-        "      Definir plazas Como Entero\n",
-        "      Definir opcion, asiento Como Entero\n",
-        "      Dimension plazas[300]\n",
-        "    \n",
-        "      Para asiento <- 1 Hasta 300 Hacer\n",
-        "        plazas[asiento] <- 0\n",
-        "      FinPara\n",
-        "    \n",
-        "      Repetir\n",
-        "        Escribir \"1. Reservar\"\n",
-        "        Escribir \"2. Cancelar\"\n",
-        "        Escribir \"3. Salir\"\n",
-        "        Leer opcion\n",
-        "        \n",
-        "        Si opcion = 1 Entonces\n",
-        "            Escribir \"Número de asiento (1-300):\"\n",
-        "            Leer asiento\n",
-        "            \n",
-        "            Si plazas[asiento] = 0 Entonces\n",
-        "                plazas[asiento] <- 1\n",
-        "                Escribir \"Reserva realizada\"\n",
-        "            SiNo\n",
-        "                Escribir \"Asiento ocupado\"\n",
-        "            FinSi\n",
-        "        FinSi\n",
-        "        \n",
-        "        Si opcion = 2 Entonces\n",
-        "            Escribir \"Número de asiento a cancelar:\"\n",
-        "            Leer asiento\n",
-        "            plazas[asiento] <- 0\n",
-        "            Escribir \"Reserva cancelada\"\n",
-        "        FinSi\n",
-        "        \n",
-        "      Hasta Que opcion = 3\n",
-        "    \n",
-        "      Escribir \"Sistema cerrado\"\n",
-        "    FinProceso\n",
-        "**EJERCICIO 7.11**\n",
-        "\n",
-        "Calcular la media de cada alumno (8 asignaturas con coeficientes) y luego:\n",
-        "\n",
-        "Media general de la clase\n",
-        "\n",
-        "Media por asignatura\n",
-        "\n",
-        "Porcentaje de faltas\n",
-        "```\n",
-        "# 7.11 - Medias de alumnos\n",
-        "\n",
-        "num_alumnos = int(input(\"Ingrese número de alumnos: \"))\n",
-        "num_asignaturas = 8\n",
-        "\n",
-        "notas = []\n",
-        "coeficientes = []\n",
-        "\n",
-        "print(\"Ingrese los coeficientes de las 8 asignaturas:\")\n",
-        "for i in range(num_asignaturas):\n",
-        "    coef = float(input(f\"Coeficiente asignatura {i+1}: \"))\n",
-        "    coeficientes.append(coef)\n",
-        "\n",
-        "for i in range(num_alumnos):\n",
-        "    print(f\"\\nAlumno {i+1}\")\n",
-        "    notas_alumno = []\n",
-        "    for j in range(num_asignaturas):\n",
-        "        nota = float(input(f\"Nota asignatura {j+1}: \"))\n",
-        "        notas_alumno.append(nota)\n",
-        "    notas.append(notas_alumno)\n",
-        "\n",
-        "# Media por alumno\n",
-        "medias_alumnos = []\n",
-        "for i in range(num_alumnos):\n",
-        "    suma = 0\n",
-        "    suma_coef = 0\n",
-        "    for j in range(num_asignaturas):\n",
-        "        suma += notas[i][j] * coeficientes[j]\n",
-        "        suma_coef += coeficientes[j]\n",
-        "    media = suma / suma_coef\n",
-        "    medias_alumnos.append(media)\n",
-        "    print(f\"Media alumno {i+1}: {media}\")\n",
-        "\n",
-        "# Media general\n",
-        "media_general = sum(medias_alumnos) / num_alumnos\n",
-        "print(\"Media general de la clase:\", media_general)\n",
-        "\n",
-        "```\n",
-        "    Proceso MediasClase\n",
-        "      Definir num_alumnos, num_asignaturas Como Entero\n",
-        "      num_asignaturas <- 8\n",
-        "    \n",
-        "      Escribir \"Ingrese número de alumnos:\"\n",
-        "      Leer num_alumnos\n",
-        "    \n",
-        "      Dimension coeficientes[8]\n",
-        "      Dimension notas[num_alumnos,8]\n",
-        "    \n",
-        "      Para i <- 1 Hasta 8\n",
-        "        Escribir \"Coeficiente asignatura \", i\n",
-        "        Leer coeficientes[i]\n",
-        "      FinPara\n",
-        "    \n",
-        "      Para i <- 1 Hasta num_alumnos\n",
-        "        Para j <- 1 Hasta 8\n",
-        "            Escribir \"Nota alumno \", i, \" asignatura \", j\n",
-        "            Leer notas[i,j]\n",
-        "        FinPara\n",
-        "      FinPara\n",
-        "    \n",
-        "      Para i <- 1 Hasta num_alumnos\n",
-        "        suma <- 0\n",
-        "        suma_coef <- 0\n",
-        "        Para j <- 1 Hasta 8\n",
-        "            suma <- suma + notas[i,j] * coeficientes[j]\n",
-        "            suma_coef <- suma_coef + coeficientes[j]\n",
-        "        FinPara\n",
-        "        media <- suma / suma_coef\n",
-        "        Escribir \"Media alumno \", i, \": \", media\n",
-        "      FinPara\n",
-        "    FinProceso\n",
-        "**EJERCICIO 7.12**\n",
-        "\n",
-        "Cuadrado de los 100 primeros números\n",
-        "```\n",
-        "cuadrados = []\n",
-        "\n",
-        "for i in range(1, 101):\n",
-        "    cuadrados.append(i**2)\n",
-        "\n",
-        "print(cuadrados)\n",
-        "\n",
-        "```\n",
-        "    Proceso Cuadrados\n",
-        "      Dimension tabla[100]\n",
-        "    \n",
-        "      Para i <- 1 Hasta 100\n",
-        "        tabla[i] <- i * i\n",
-        "      FinPara\n",
-        "    \n",
-        "      Para i <- 1 Hasta 100\n",
-        "        Escribir tabla[i]\n",
-        "      FinPara\n",
-        "    FinProceso\n",
-        "**EJERCICIO 7.13**\n",
-        "\n",
-        "Dadas N temperaturas, calcular:\n",
-        "\n",
-        "La media\n",
-        "\n",
-        "Cuántas son mayores o iguales a la media\n",
-        "```\n",
-        "# Ejercicio 7.13\n",
-        "\n",
-        "N = int(input(\"Cantidad de temperaturas: \"))\n",
-        "temperaturas = []\n",
-        "suma = 0\n",
-        "\n",
-        "for i in range(N):\n",
-        "    temp = float(input(f\"Temperatura {i+1}: \"))\n",
-        "    temperaturas.append(temp)\n",
-        "    suma += temp\n",
-        "\n",
-        "media = suma / N\n",
-        "contador = 0\n",
-        "\n",
-        "for temp in temperaturas:\n",
-        "    if temp >= media:\n",
-        "        contador += 1\n",
-        "\n",
-        "print(\"Media:\", media)\n",
-        "print(\"Temperaturas mayores o iguales a la media:\", contador)\n",
-        "\n",
-        "```\n",
-        "    Proceso Ejercicio7_13\n",
-        "      Definir N, i, contador Como Entero\n",
-        "      Definir temp, suma, media Como Real\n",
-        "      Dimension temperaturas[100]\n",
-        "    \n",
-        "      suma <- 0\n",
-        "      contador <- 0\n",
-        "    \n",
-        "      Escribir \"Cantidad de temperaturas:\"\n",
-        "      Leer N\n",
-        "    \n",
-        "      Para i <- 1 Hasta N\n",
-        "        Escribir \"Temperatura:\"\n",
-        "        Leer temp\n",
-        "        temperaturas[i] <- temp\n",
-        "        suma <- suma + temp\n",
-        "      FinPara\n",
-        "    \n",
-        "      media <- suma / N\n",
-        "    \n",
-        "      Para i <- 1 Hasta N\n",
-        "        Si temperaturas[i] >= media Entonces\n",
-        "            contador <- contador + 1\n",
-        "        FinSi\n",
-        "      FinPara\n",
-        "    \n",
-        "      Escribir \"Media:\", media\n",
-        "      Escribir \"Mayores o iguales a la media:\", contador\n",
-        "    FinProceso\n",
-        "\n",
-        "**EJERCICIO 7.14**\n",
-        "\n",
-        "Calcular suma y media de un vector de 100 elementos\n",
-        "```\n",
-        "\n",
-        "suma = 0\n",
-        "\n",
-        "for i in range(100):\n",
-        "    num = float(input(f\"Número {i+1}: \"))\n",
-        "    suma += num\n",
-        "\n",
-        "media = suma / 100\n",
-        "\n",
-        "print(\"Suma:\", suma)\n",
-        "print(\"Media:\", media)\n",
-        "\n",
-        "```\n",
-        "    Proceso Ejercicio7_14\n",
-        "      Definir i Como Entero\n",
-        "      Definir num, suma, media Como Real\n",
-        "    \n",
-        "      suma <- 0\n",
-        "    \n",
-        "      Para i <- 1 Hasta 100\n",
-        "        Escribir \"Número:\"\n",
-        "        Leer num\n",
-        "        suma <- suma + num\n",
-        "      FinPara\n",
-        "    \n",
-        "      media <- suma / 100\n",
-        "    \n",
-        "      Escribir \"Suma:\", suma\n",
-        "      Escribir \"Media:\", media\n",
-        "    FinProceso\n",
-        "**EJERCICIO 7.15**\n",
-        "\n",
-        "Calcular el mayor valor de una lista de N elementos\n",
-        "\n",
-        "```\n",
-        "N = int(input(\"Cantidad de elementos: \"))\n",
-        "mayor = float(input(\"Ingrese número 1: \"))\n",
-        "\n",
-        "for i in range(2, N+1):\n",
-        "    num = float(input(f\"Ingrese número {i}: \"))\n",
-        "    if num > mayor:\n",
-        "        mayor = num\n",
-        "\n",
-        "print(\"El mayor valor es:\", mayor)\n",
-        "\n",
-        "```\n",
-        "    Proceso Ejercicio7_15\n",
-        "      Definir N, i Como Entero\n",
-        "      Definir num, mayor Como Real\n",
-        "    \n",
-        "      Escribir \"Cantidad de elementos:\"\n",
-        "      Leer N\n",
-        "    \n",
-        "      Escribir \"Ingrese número 1:\"\n",
-        "      Leer mayor\n",
-        "    \n",
-        "      Para i <- 2 Hasta N\n",
-        "        Escribir \"Ingrese número:\"\n",
-        "        Leer num\n",
-        "        Si num > mayor Entonces\n",
-        "            mayor <- num\n",
-        "        FinSi\n",
-        "      FinPara\n",
-        "    \n",
-        "      Escribir \"El mayor valor es:\", mayor\n",
-        "    FinProceso\n",
-        "**EJERCICIO 7.16**\n",
-        "\n",
-        "Calcular:\n",
-        "\n",
-        "Suma de números pares\n",
-        "\n",
-        "Suma de números impares\n",
-        "```\n",
-        "\n",
-        "N = int(input(\"Cantidad de elementos: \"))\n",
-        "suma_pares = 0\n",
-        "suma_impares = 0\n",
-        "\n",
-        "for i in range(N):\n",
-        "    num = int(input(\"Ingrese número entero: \"))\n",
-        "    \n",
-        "    if num % 2 == 0:\n",
-        "        suma_pares += num\n",
-        "    else:\n",
-        "        suma_impares += num\n",
-        "\n",
-        "print(\"Suma pares:\", suma_pares)\n",
-        "print(\"Suma impares:\", suma_impares)\n",
-        "\n",
-        "```\n",
-        "    Proceso Ejercicio7_16\n",
-        "      Definir N, i, num Como Entero\n",
-        "      Definir suma_pares, suma_impares Como Entero\n",
-        "    \n",
-        "      suma_pares <- 0\n",
-        "      suma_impares <- 0\n",
-        "    \n",
-        "      Escribir \"Cantidad de elementos:\"\n",
-        "      Leer N\n",
-        "    \n",
-        "      Para i <- 1 Hasta N\n",
-        "        Escribir \"Ingrese número entero:\"\n",
-        "        Leer num\n",
-        "        \n",
-        "        Si num MOD 2 = 0 Entonces\n",
-        "            suma_pares <- suma_pares + num\n",
-        "        SiNo\n",
-        "            suma_impares <- suma_impares + num\n",
-        "        FinSi\n",
-        "      FinPara\n",
-        "    \n",
-        "      Escribir \"Suma pares:\", suma_pares\n",
-        "      Escribir \"Suma impares:\", suma_impares\n",
-        "    FinProceso\n",
-        "\n",
-        "**EJERCICIO 7.17**\n",
-        "\n",
-        "Invertir los elementos de un vector\n",
-        "```\n",
-        "\n",
-        "N = int(input(\"Cantidad de elementos: \"))\n",
-        "vector = []\n",
-        "\n",
-        "for i in range(N):\n",
-        "    num = float(input(\"Ingrese número: \"))\n",
-        "    vector.append(num)\n",
-        "\n",
-        "vector_invertido = vector[::-1]\n",
-        "\n",
-        "print(\"Vector invertido:\")\n",
-        "print(vector_invertido)\n",
-        "\n",
-        "```\n",
-        "    Proceso Ejercicio7_17\n",
-        "      Definir N, i Como Entero\n",
-        "      Dimension vector[100]\n",
-        "    \n",
-        "      Escribir \"Cantidad de elementos:\"\n",
-        "      Leer N\n",
-        "    \n",
-        "      Para i <- 1 Hasta N\n",
-        "        Escribir \"Ingrese número:\"\n",
-        "        Leer vector[i]\n",
-        "      FinPara\n",
-        "    \n",
-        "      Escribir \"Vector invertido:\"\n",
-        "      Para i <- N Hasta 1 Con Paso -1\n",
-        "        Escribir vector[i]\n",
-        "      FinPara\n",
-        "    FinProceso\n",
-        "**EJERCICIO 7.18**\n",
-        "\n",
-        "Contar cuántas veces aparece un número X en el vector\n",
-        "```\n",
-        "\n",
-        "N = int(input(\"Cantidad de elementos: \"))\n",
-        "vector = []\n",
-        "\n",
-        "for i in range(N):\n",
-        "    num = float(input(\"Ingrese número: \"))\n",
-        "    vector.append(num)\n",
-        "\n",
-        "X = float(input(\"Número a buscar: \"))\n",
-        "contador = vector.count(X)\n",
-        "\n",
-        "print(\"El número aparece\", contador, \"veces.\")\n",
-        "\n",
-        "```\n",
-        "    Proceso Ejercicio7_18\n",
-        "      Definir N, i, contador Como Entero\n",
-        "      Definir X Como Real\n",
-        "      Dimension vector[100]\n",
-        "    \n",
-        "      contador <- 0\n",
-        "    \n",
-        "      Escribir \"Cantidad de elementos:\"\n",
-        "      Leer N\n",
-        "    \n",
-        "      Para i <- 1 Hasta N\n",
-        "        Escribir \"Ingrese número:\"\n",
-        "        Leer vector[i]\n",
-        "      FinPara\n",
-        "    \n",
-        "      Escribir \"Número a buscar:\"\n",
-        "      Leer X\n",
-        "    \n",
-        "      Para i <- 1 Hasta N\n",
-        "        Si vector[i] = X Entonces\n",
-        "            contador <- contador + 1\n",
-        "        FinSi\n",
-        "      FinPara\n",
-        "    \n",
-        "      Escribir \"El número aparece \", contador, \" veces.\"\n",
-        "    FinProceso\n",
-        "**EJERCICIO 7.19**\n",
-        "\n",
-        "Eliminar un elemento en posición K\n",
-        "```\n",
-        "\n",
-        "N = int(input(\"Cantidad de elementos: \"))\n",
-        "vector = []\n",
-        "\n",
-        "for i in range(N):\n",
-        "    num = float(input(\"Ingrese número: \"))\n",
-        "    vector.append(num)\n",
-        "\n",
-        "K = int(input(\"Posición a eliminar (1 a N): \")) - 1\n",
-        "\n",
-        "if 0 <= K < N:\n",
-        "    vector.pop(K)\n",
-        "    print(\"Vector actualizado:\")\n",
-        "    print(vector)\n",
-        "else:\n",
-        "    print(\"Posición inválida.\")\n",
-        "\n",
-        "```\n",
-        "    Proceso Ejercicio7_19\n",
-        "      Definir N, i, K Como Entero\n",
-        "      Dimension vector[100]\n",
-        "    \n",
-        "      Escribir \"Cantidad de elementos:\"\n",
-        "      Leer N\n",
-        "    \n",
-        "      Para i <- 1 Hasta N\n",
-        "        Escribir \"Ingrese número:\"\n",
-        "        Leer vector[i]\n",
-        "      FinPara\n",
-        "    \n",
-        "      Escribir \"Posición a eliminar:\"\n",
-        "      Leer K\n",
-        "    \n",
-        "      Para i <- K Hasta N-1\n",
-        "        vector[i] <- vector[i+1]\n",
-        "      FinPara\n",
-        "    \n",
-        "      N <- N - 1\n",
-        "    \n",
-        "      Escribir \"Vector actualizado:\"\n",
-        "      Para i <- 1 Hasta N\n",
-        "        Escribir vector[i]\n",
-        "      FinPara\n",
-        "    FinProceso\n",
-        "**EJERCICIO 7.20**\n",
-        "\n",
-        "Ordenar un vector (método burbuja)\n",
-        "```\n",
-        "\n",
-        "N = int(input(\"Cantidad de elementos: \"))\n",
-        "vector = []\n",
-        "\n",
-        "for i in range(N):\n",
-        "    num = float(input(\"Ingrese número: \"))\n",
-        "    vector.append(num)\n",
-        "\n",
-        "# Método burbuja\n",
-        "for i in range(N):\n",
-        "    for j in range(0, N - i - 1):\n",
-        "        if vector[j] > vector[j + 1]:\n",
-        "            vector[j], vector[j + 1] = vector[j + 1], vector[j]\n",
-        "\n",
-        "print(\"Vector ordenado:\")\n",
-        "print(vector)\n",
-        "\n",
-        "```\n",
-        "    Proceso Ejercicio7_20\n",
-        "      Definir N, i, j Como Entero\n",
-        "      Definir aux Como Real\n",
-        "      Dimension vector[100]\n",
-        "    \n",
-        "      Escribir \"Cantidad de elementos:\"\n",
-        "      Leer N\n",
-        "    \n",
-        "      Para i <- 1 Hasta N\n",
-        "        Escribir \"Ingrese número:\"\n",
-        "        Leer vector[i]\n",
-        "      FinPara\n",
-        "    \n",
-        "      Para i <- 1 Hasta N-1\n",
-        "        Para j <- 1 Hasta N-i\n",
-        "            Si vector[j] > vector[j+1] Entonces\n",
-        "                aux <- vector[j]\n",
-        "                vector[j] <- vector[j+1]\n",
-        "                vector[j+1] <- aux\n",
-        "            FinSi\n",
-        "        FinPara\n",
-        "      FinPara\n",
-        "    \n",
-        "      Escribir \"Vector ordenado:\"\n",
-        "      Para i <- 1 Hasta N\n",
-        "        Escribir vector[i]\n",
-        "      FinPara\n",
-        "    FinProceso\n",
-        "**EJERCICIO 7.21**\n",
-        "\n",
-        "Buscar un número en el vector y mostrar su posición\n",
-        "```\n",
-        "\n",
-        "N = int(input(\"Cantidad de elementos: \"))\n",
-        "vector = []\n",
-        "\n",
-        "for i in range(N):\n",
-        "    num = float(input(\"Ingrese número: \"))\n",
-        "    vector.append(num)\n",
-        "\n",
-        "X = float(input(\"Número a buscar: \"))\n",
-        "\n",
-        "if X in vector:\n",
-        "    posicion = vector.index(X) + 1\n",
-        "    print(\"Número encontrado en posición:\", posicion)\n",
-        "else:\n",
-        "    print(\"Número no encontrado.\")\n",
-        "\n",
-        "```\n",
-        "\n",
-        "    Proceso Ejercicio7_21\n",
-        "      Definir N, i, posicion Como Entero\n",
-        "      Definir X Como Real\n",
-        "      Dimension vector[100]\n",
-        "    \n",
-        "      posicion <- 0\n",
-        "    \n",
-        "      Escribir \"Cantidad de elementos:\"\n",
-        "      Leer N\n",
-        "    \n",
-        "      Para i <- 1 Hasta N\n",
-        "        Escribir \"Ingrese número:\"\n",
-        "        Leer vector[i]\n",
-        "      FinPara\n",
-        "    \n",
-        "      Escribir \"Número a buscar:\"\n",
-        "      Leer X\n",
-        "    \n",
-        "      Para i <- 1 Hasta N\n",
-        "        Si vector[i] = X Entonces\n",
-        "            posicion <- i\n",
-        "        FinSi\n",
-        "      FinPara\n",
-        "    \n",
-        "      Si posicion > 0 Entonces\n",
-        "        Escribir \"Número encontrado en posición:\", posicion\n",
-        "      SiNo\n",
-        "        Escribir \"Número no encontrado.\"\n",
-        "      FinSi\n",
-        "    FinProceso\n",
-        "**EJERCICIO 7.22**\n",
-        "\n",
-        "Copiar un vector en otro\n",
-        "```\n",
-        "N = int(input(\"Cantidad de elementos: \"))\n",
-        "vector1 = []\n",
-        "\n",
-        "for i in range(N):\n",
-        "    num = float(input(\"Ingrese número: \"))\n",
-        "    vector1.append(num)\n",
-        "\n",
-        "vector2 = vector1.copy()\n",
-        "\n",
-        "print(\"Vector copiado:\")\n",
-        "print(vector2)\n",
-        "```\n",
-        "    Proceso Ejercicio7_22\n",
-        "      Definir N, i Como Entero\n",
-        "      Dimension vector1[100], vector2[100]\n",
-        "    \n",
-        "      Escribir \"Cantidad de elementos:\"\n",
-        "      Leer N\n",
-        "    \n",
-        "      Para i <- 1 Hasta N\n",
-        "        Escribir \"Ingrese número:\"\n",
-        "        Leer vector1[i]\n",
-        "        vector2[i] <- vector1[i]\n",
-        "      FinPara\n",
-        "    \n",
-        "      Escribir \"Vector copiado:\"\n",
-        "      Para i <- 1 Hasta N\n",
-        "        Escribir vector2[i]\n",
-        "      FinPara\n",
-        "    FinProceso\n",
-        "**EJERCICIO 7.23**\n",
-        "\n",
-        "Sumar dos vectores y guardar en un tercero\n",
-        "```\n",
-        "N = int(input(\"Cantidad de elementos: \"))\n",
-        "A = []\n",
-        "B = []\n",
-        "C = []\n",
-        "\n",
-        "print(\"Vector A\")\n",
-        "for i in range(N):\n",
-        "    A.append(float(input(\"Ingrese número: \")))\n",
-        "\n",
-        "print(\"Vector B\")\n",
-        "for i in range(N):\n",
-        "    B.append(float(input(\"Ingrese número: \")))\n",
-        "\n",
-        "for i in range(N):\n",
-        "    C.append(A[i] + B[i])\n",
-        "\n",
-        "print(\"Vector suma:\")\n",
-        "print(C)\n",
-        "```\n",
-        "    Proceso Ejercicio7_23\n",
-        "      Definir N, i Como Entero\n",
-        "      Dimension A[100], B[100], C[100]\n",
-        "    \n",
-        "      Escribir \"Cantidad de elementos:\"\n",
-        "      Leer N\n",
-        "    \n",
-        "      Escribir \"Vector A\"\n",
-        "      Para i <- 1 Hasta N\n",
-        "        Leer A[i]\n",
-        "      FinPara\n",
-        "    \n",
-        "      Escribir \"Vector B\"\n",
-        "      Para i <- 1 Hasta N\n",
-        "        Leer B[i]\n",
-        "      FinPara\n",
-        "    \n",
-        "      Para i <- 1 Hasta N\n",
-        "        C[i] <- A[i] + B[i]\n",
-        "      FinPara\n",
-        "    \n",
-        "      Escribir \"Vector suma:\"\n",
-        "      Para i <- 1 Hasta N\n",
-        "        Escribir C[i]\n",
-        "      FinPara\n",
-        "    FinProceso\n",
-        "\n",
-        "**EJERCICIO 7.24**\n",
-        "\n",
-        "Intercambiar dos posiciones del vector\n",
-        "```\n",
-        "N = int(input(\"Cantidad de elementos: \"))\n",
-        "vector = []\n",
-        "\n",
-        "for i in range(N):\n",
-        "    vector.append(float(input(\"Ingrese número: \")))\n",
-        "\n",
-        "i1 = int(input(\"Primera posición: \")) - 1\n",
-        "i2 = int(input(\"Segunda posición: \")) - 1\n",
-        "\n",
-        "vector[i1], vector[i2] = vector[i2], vector[i1]\n",
-        "\n",
-        "print(\"Vector actualizado:\")\n",
-        "print(vector)\n",
-        "```\n",
-        "    Proceso Ejercicio7_24\n",
-        "      Definir N, i, i1, i2 Como Entero\n",
-        "      Definir aux Como Real\n",
-        "      Dimension vector[100]\n",
-        "    \n",
-        "      Escribir \"Cantidad de elementos:\"\n",
-        "      Leer N\n",
-        "    \n",
-        "      Para i <- 1 Hasta N\n",
-        "        Leer vector[i]\n",
-        "      FinPara\n",
-        "    \n",
-        "      Escribir \"Primera posición:\"\n",
-        "      Leer i1\n",
-        "      Escribir \"Segunda posición:\"\n",
-        "      Leer i2\n",
-        "    \n",
-        "      aux <- vector[i1]\n",
-        "      vector[i1] <- vector[i2]\n",
-        "      vector[i2] <- aux\n",
-        "    \n",
-        "      Escribir \"Vector actualizado:\"\n",
-        "      Para i <- 1 Hasta N\n",
-        "        Escribir vector[i]\n",
-        "      FinPara\n",
-        "    FinProceso\n",
-        "**EJERCICIO 7.25**\n",
-        "\n",
-        "Contar positivos, negativos y ceros\n",
-        "```\n",
-        "N = int(input(\"Cantidad de elementos: \"))\n",
-        "positivos = negativos = ceros = 0\n",
-        "\n",
-        "for i in range(N):\n",
-        "    num = float(input(\"Ingrese número: \"))\n",
-        "    \n",
-        "    if num > 0:\n",
-        "        positivos += 1\n",
-        "    elif num < 0:\n",
-        "        negativos += 1\n",
-        "    else:\n",
-        "        ceros += 1\n",
-        "\n",
-        "print(\"Positivos:\", positivos)\n",
-        "print(\"Negativos:\", negativos)\n",
-        "print(\"Ceros:\", ceros)\n",
-        "```\n",
-        "    Proceso Ejercicio7_25\n",
-        "      Definir N, i Como Entero\n",
-        "      Definir num Como Real\n",
-        "      Definir positivos, negativos, ceros Como Entero\n",
-        "    \n",
-        "      positivos <- 0\n",
-        "      negativos <- 0\n",
-        "      ceros <- 0\n",
-        "    \n",
-        "      Escribir \"Cantidad de elementos:\"\n",
-        "      Leer N\n",
-        "    \n",
-        "      Para i <- 1 Hasta N\n",
-        "        Leer num\n",
-        "        \n",
-        "        Si num > 0 Entonces\n",
-        "            positivos <- positivos + 1\n",
-        "        Sino\n",
-        "            Si num < 0 Entonces\n",
-        "                negativos <- negativos + 1\n",
-        "            Sino\n",
-        "                ceros <- ceros + 1\n",
-        "            FinSi\n",
-        "        FinSi\n",
-        "      FinPara\n",
-        "    \n",
-        "      Escribir \"Positivos:\", positivos\n",
-        "      Escribir \"Negativos:\", negativos\n",
-        "      Escribir \"Ceros:\", ceros\n",
-        "    FinProceso\n",
-        "**EJERCICIO 7.26**\n",
-        "\n",
-        "Unir dos vectores en uno solo\n",
-        "```\n",
-        "N = int(input(\"Cantidad de elementos del vector A: \"))\n",
-        "M = int(input(\"Cantidad de elementos del vector B: \"))\n",
-        "\n",
-        "A = []\n",
-        "B = []\n",
-        "\n",
-        "print(\"Vector A\")\n",
-        "for i in range(N):\n",
-        "    A.append(float(input(\"Ingrese número: \")))\n",
-        "\n",
-        "print(\"Vector B\")\n",
-        "for i in range(M):\n",
-        "    B.append(float(input(\"Ingrese número: \")))\n",
-        "\n",
-        "C = A + B\n",
-        "\n",
-        "print(\"Vector unido:\")\n",
-        "print(C)\n",
-        "```\n",
-        "    Proceso Ejercicio7_26\n",
-        "      Definir N, M, i Como Entero\n",
-        "      Dimension A[100], B[100], C[200]\n",
-        "    \n",
-        "      Escribir \"Cantidad elementos A:\"\n",
-        "      Leer N\n",
-        "    \n",
-        "      Para i <- 1 Hasta N\n",
-        "        Leer A[i]\n",
-        "      FinPara\n",
-        "    \n",
-        "      Escribir \"Cantidad elementos B:\"\n",
-        "      Leer M\n",
-        "    \n",
-        "      Para i <- 1 Hasta M\n",
-        "        Leer B[i]\n",
-        "        C[N+i] <- B[i]\n",
-        "      FinPara\n",
-        "    \n",
-        "      Para i <- 1 Hasta N\n",
-        "        C[i] <- A[i]\n",
-        "      FinPara\n",
-        "    \n",
-        "      Escribir \"Vector unido:\"\n",
-        "      Para i <- 1 Hasta N+M\n",
-        "        Escribir C[i]\n",
-        "      FinPara\n",
-        "    FinProceso\n",
-        "**EJERCICIO 7.27**\n",
-        "\n",
-        "Eliminar valores repetidos\n",
-        "```\n",
-        "N = int(input(\"Cantidad de elementos: \"))\n",
-        "vector = []\n",
-        "\n",
-        "for i in range(N):\n",
-        "    vector.append(float(input(\"Ingrese número: \")))\n",
-        "\n",
-        "sin_repetidos = list(set(vector))\n",
-        "\n",
-        "print(\"Vector sin repetidos:\")\n",
-        "print(sin_repetidos)\n",
-        "```\n",
-        "    Proceso Ejercicio7_27\n",
-        "      Definir N, i, j Como Entero\n",
-        "      Dimension vector[100]\n",
-        "    \n",
-        "      Escribir \"Cantidad de elementos:\"\n",
-        "      Leer N\n",
-        "    \n",
-        "      Para i <- 1 Hasta N\n",
-        "        Leer vector[i]\n",
-        "      FinPara\n",
-        "    \n",
-        "      Para i <- 1 Hasta N\n",
-        "        Para j <- i+1 Hasta N\n",
-        "            Si vector[i] = vector[j] Entonces\n",
-        "                vector[j] <- -99999\n",
-        "            FinSi\n",
-        "        FinPara\n",
-        "      FinPara\n",
-        "    \n",
-        "      Escribir \"Vector sin repetidos:\"\n",
-        "      Para i <- 1 Hasta N\n",
-        "        Si vector[i] <> -99999 Entonces\n",
-        "            Escribir vector[i]\n",
-        "        FinSi\n",
-        "      FinPara\n",
-        "    FinProceso\n",
-        "**EJERCICIO 7.28**\n",
-        "\n",
-        "Buscar el menor valor del vector\n",
-        "```\n",
-        "N = int(input(\"Cantidad de elementos: \"))\n",
-        "vector = []\n",
-        "\n",
-        "for i in range(N):\n",
-        "    vector.append(float(input(\"Ingrese número: \")))\n",
-        "\n",
-        "menor = min(vector)\n",
-        "\n",
-        "print(\"El menor valor es:\", menor)\n",
-        "```\n",
-        "    Proceso Ejercicio7_28\n",
-        "      Definir N, i Como Entero\n",
-        "      Definir menor Como Real\n",
-        "      Dimension vector[100]\n",
-        "    \n",
-        "      Escribir \"Cantidad de elementos:\"\n",
-        "      Leer N\n",
-        "    \n",
-        "      Escribir \"Ingrese número:\"\n",
-        "      Leer menor\n",
-        "    \n",
-        "      vector[1] <- menor\n",
-        "    \n",
-        "      Para i <- 2 Hasta N\n",
-        "        Leer vector[i]\n",
-        "        Si vector[i] < menor Entonces\n",
-        "            menor <- vector[i]\n",
-        "        FinSi\n",
-        "      FinPara\n",
-        "    \n",
-        "      Escribir \"El menor valor es:\", menor\n",
-        "    FinProceso\n",
-        "\n",
-        "# EJERCICIOS RESUELTOS(Arreglos)\n",
-        "**Ejercicio 7.1**\n",
-        "\n",
-        "Escribir un algoritmo que permita calcular el cuadrado de los cien primeros números enteros y a continuación es\n",
-        "cribir una tabla que contenga dichos cien números cuadrados.\n",
-        "\n",
-        "```\n",
-        "\n",
-        "Algoritmo cuadrados\n",
-        "\tDefinir tabla Como Entero\n",
-        "\tDimension tabla[101]\n",
-        "\tDefinir i, c Como Entero\n",
-        "\n",
-        "\tEscribir \"Numero\", \"    \", \"Cuadrado\"\n",
-        "\tEscribir \"--------------------\"\n",
-        "\n",
-        "\tPara i <- 1 Hasta 100 Hacer\n",
-        "\t\tc <- i * i\n",
-        "\t\ttabla[i] <- c\n",
-        "\t\tEscribir i, \"        \", tabla[i]\n",
-        "\tFinPara\n",
-        "FinAlgoritmo\n",
-        "\n",
-        "```\n",
-        "```\n",
-        "\n",
-        "tabla = [0] * 100   # arreglo (lista) de 100 posiciones\n",
-        "\n",
-        "print(\"Numero    Cuadrado\")\n",
-        "print(\"--------------------\")\n",
-        "\n",
-        "for i in range(1, 101):\n",
-        "    tabla[i - 1] = i * i\n",
-        "    print(i, \"       \", tabla[i - 1])\n",
-        "\n",
-        "```\n",
-        "**Ejercicio 7.2**\n",
-        "\n",
-        "Se tienen N temperaturas. Se desea calcular su media y determinar entre todas ellas cuáles son superiores o iguales\n",
-        "a esa media.\n",
-        "\n",
-        "```\n",
-        "Algoritmo Temperaturas\n",
-        "    Definir N, I, C Como Entero\n",
-        "    Definir suma, media Como Real\n",
-        "\n",
-        "    Escribir \"Ingrese la cantidad de temperaturas:\"\n",
-        "    Leer N\n",
-        "\n",
-        "    Dimension Temp[N]\n",
-        "\n",
-        "    suma <- 0\n",
-        "    C <- 0\n",
-        "\n",
-        "    Para I <- 0 Hasta N-1 Hacer\n",
-        "        Escribir \"Ingrese la temperatura \", I+1, \":\"\n",
-        "        Leer Temp[I]\n",
-        "        suma <- suma + Temp[I]\n",
-        "    FinPara\n",
-        "\n",
-        "    media <- suma / N\n",
-        "\n",
-        "    Escribir \"Temperaturas mayores o iguales a la media:\"\n",
-        "    Para I <- 0 Hasta N-1 Hacer\n",
-        "        Si Temp[I] >= media Entonces\n",
-        "            Escribir Temp[I]\n",
-        "            C <- C + 1\n",
-        "        FinSi\n",
-        "    FinPara\n",
-        "\n",
-        "    Escribir \"La media es: \", media\n",
-        "    Escribir \"Cantidad de temperaturas mayores o iguales a la media: \", C\n",
-        "FinAlgoritmo\n",
-        "```\n",
-        "```\n",
-        "N = int(input(\"Ingrese la cantidad de temperaturas: \"))\n",
-        "\n",
-        "Temp = []  # arreglo (lista) de temperaturas\n",
-        "suma = 0\n",
-        "C = 0\n",
-        "\n",
-        "for i in range(N):\n",
-        "    t = float(input(f\"Ingrese la temperatura {i + 1}: \"))\n",
-        "    Temp.append(t)\n",
-        "    suma += t\n",
-        "\n",
-        "media = suma / N\n",
-        "\n",
-        "print(\"Temperaturas mayores o iguales a la media:\")\n",
-        "for i in range(N):\n",
-        "    if Temp[i] >= media:\n",
-        "        print(Temp[i])\n",
-        "        C += 1\n",
-        "\n",
-        "print(\"La media es:\", media)\n",
-        "print(\"Cantidad de temperaturas mayores o iguales a la media:\", C)\n",
-        "\n",
-        "```\n",
-        "**Ejercicio 7.3**\n",
-        "\n",
-        "Escribir el algoritmo que permita sumar el número de elementos positivos y el de negativos de una tabla T\n",
-        "```\n",
-        "Proceso ActividadResuelta3;\n",
-        "\n",
-        "    Definir N, i, posicion Como Entero;\n",
-        "    Definir buscado Como Real;\n",
-        "    Dimension vector[100];\n",
-        "\n",
-        "    posicion <- 0;\n",
-        "\n",
-        "    Escribir \"Cantidad de elementos:\";\n",
-        "    Leer N;\n",
-        "\n",
-        "    Para i <- 1 Hasta N Hacer\n",
-        "        Leer vector[i];\n",
-        "    FinPara\n",
-        "\n",
-        "    Escribir \"Número a buscar:\";\n",
-        "    Leer buscado;\n",
-        "\n",
-        "    Para i <- 1 Hasta N Hacer\n",
-        "        Si vector[i] = buscado Entonces\n",
-        "            posicion <- i;\n",
-        "        FinSi\n",
-        "    FinPara\n",
-        "\n",
-        "    Si posicion <> 0 Entonces\n",
-        "        Escribir \"Número encontrado en posición: \", posicion;\n",
-        "    SiNo\n",
-        "        Escribir \"Número no encontrado.\";\n",
-        "    FinSi\n",
-        "\n",
-        "FinProceso\n",
-        "\n",
-        "```\n",
-        "\n",
-        "```\n",
-        "\n",
-        "N = int(input(\"Cantidad de elementos: \"))\n",
-        "vector = []\n",
-        "\n",
-        "for i in range(N):\n",
-        "    num = float(input(\"Ingrese número: \"))\n",
-        "    vector.append(num)\n",
-        "\n",
-        "buscado = float(input(\"Número a buscar: \"))\n",
-        "encontrado = False\n",
-        "\n",
-        "for i in range(N):\n",
-        "    if vector[i] == buscado:\n",
-        "        print(\"Número encontrado en posición:\", i + 1)\n",
-        "        encontrado = True\n",
-        "        break\n",
-        "\n",
-        "if not encontrado:\n",
-        "    print(\"Número no encontrado.\")\n",
-        "\n",
-        "```\n",
-        "\n",
-        "****Ejercicio 7.4**\n",
-        "Inicializar una matriz de dos dimensiones con un valor constante dado K.\n",
-        "```\n",
-        "N = int(input(\"Cantidad de elementos: \"))\n",
-        "vector = []\n",
-        "\n",
-        "for i in range(N):\n",
-        "    vector.append(float(input(\"Ingrese número: \")))\n",
-        "\n",
-        "for i in range(N - 1):\n",
-        "    for j in range(N - i - 1):\n",
-        "        if vector[j] > vector[j + 1]:\n",
-        "            vector[j], vector[j + 1] = vector[j + 1], vector[j]\n",
-        "\n",
-        "print(\"Vector ordenado:\")\n",
-        "print(vector)\n",
-        "\n",
-        "```\n",
-        "```\n",
-        "Proceso ActividadResuelta4;\n",
-        "\n",
-        "    Definir N, i, j Como Entero;\n",
-        "    Definir aux Como Real;\n",
-        "    Dimension vector[100];\n",
-        "\n",
-        "    Escribir \"Cantidad de elementos:\";\n",
-        "    Leer N;\n",
-        "\n",
-        "    Para i <- 1 Hasta N Hacer\n",
-        "        Leer vector[i];\n",
-        "    FinPara\n",
-        "\n",
-        "    Para i <- 1 Hasta N-1 Hacer\n",
-        "        Para j <- 1 Hasta N-i Hacer\n",
-        "            Si vector[j] > vector[j+1] Entonces\n",
-        "                aux <- vector[j];\n",
-        "                vector[j] <- vector[j+1];\n",
-        "                vector[j+1] <- aux;\n",
-        "            FinSi\n",
-        "        FinPara\n",
-        "    FinPara\n",
-        "\n",
-        "    Escribir \"Vector ordenado:\";\n",
-        "    Para i <- 1 Hasta N Hacer\n",
-        "        Escribir vector[i];\n",
-        "    FinPara\n",
-        "\n",
-        "FinProceso\n",
-        "\n",
-        "\n",
-        "```\n",
-        "**Ejercicio 7.5**\n",
-        "Realizar la suma de dos matrices bidimensionales.\n",
-        "```\n",
-        "N = int(input(\"Cantidad de elementos: \"))\n",
-        "vector = []\n",
-        "\n",
-        "for i in range(N):\n",
-        "    vector.append(float(input(\"Ingrese número: \")))\n",
-        "\n",
-        "pos = int(input(\"Posición donde insertar: \")) - 1\n",
-        "valor = float(input(\"Valor a insertar: \"))\n",
-        "\n",
-        "vector.insert(pos, valor)\n",
-        "\n",
-        "print(\"Vector actualizado:\")\n",
-        "print(vector)\n",
-        "\n",
-        "```\n",
-        "\n",
-        "```\n",
-        "Proceso ActividadResuelta5\n",
-        "\n",
-        "    Definir N, i, pos Como Entero;\n",
-        "    Definir valor Como Real;\n",
-        "    Dimension vector[101];\n",
-        "\n",
-        "    Escribir \"Cantidad de elementos:\";\n",
-        "    Leer N;\n",
-        "\n",
-        "    Para i <- 1 Hasta N Hacer\n",
-        "        Leer vector[i];\n",
-        "    FinPara\n",
-        "\n",
-        "    Escribir \"Posición donde insertar:\";\n",
-        "    Leer pos;\n",
-        "\n",
-        "    Escribir \"Valor a insertar:\";\n",
-        "    Leer valor;\n",
-        "\n",
-        "    Para i <- N Hasta pos Con Paso -1 Hacer\n",
-        "        vector[i+1] <- vector[i];\n",
-        "    FinPara\n",
-        "\n",
-        "    vector[pos] <- valor;\n",
-        "    N <- N + 1;\n",
-        "\n",
-        "    Escribir \"Vector actualizado:\";\n",
-        "    Para i <- 1 Hasta N Hacer\n",
-        "        Escribir vector[i];\n",
-        "    FinPara\n",
-        "\n",
-        "FinProceso\n",
-        "\n",
-        "\n",
-        "```\n",
-        "\n",
-        "**Ejercicio 7.6**\n",
-        "Se dispone de una tabla T de dos dimensiones. Calcular la suma de sus elementos.\n",
-        "```\n",
-        "N = int(input(\"Cantidad de elementos: \"))\n",
-        "vector = []\n",
-        "\n",
-        "for i in range(N):\n",
-        "    vector.append(float(input(\"Ingrese número: \")))\n",
-        "\n",
-        "pos = int(input(\"Posición a eliminar: \")) - 1\n",
-        "\n",
-        "if 0 <= pos < N:\n",
-        "    vector.pop(pos)\n",
-        "    print(\"Vector actualizado:\")\n",
-        "    print(vector)\n",
-        "else:\n",
-        "    print(\"Posición inválida.\")\n",
-        "\n",
-        "```\n",
-        "\n",
-        "```\n",
-        "Proceso ActividadResuelta6\n",
-        "\n",
-        "    Definir N, i, pos Como Entero;\n",
-        "    Dimension vector[100];\n",
-        "\n",
-        "    Escribir \"Cantidad de elementos:\";\n",
-        "    Leer N;\n",
-        "\n",
-        "    Para i <- 1 Hasta N Hacer\n",
-        "        Leer vector[i];\n",
-        "    FinPara\n",
-        "\n",
-        "    Escribir \"Posición a eliminar:\";\n",
-        "    Leer pos;\n",
-        "\n",
-        "    Para i <- pos Hasta N-1 Hacer\n",
-        "        vector[i] <- vector[i+1];\n",
-        "    FinPara\n",
-        "\n",
-        "    N <- N - 1;\n",
-        "\n",
-        "    Escribir \"Vector actualizado:\";\n",
-        "    Para i <- 1 Hasta N Hacer\n",
-        "        Escribir vector[i];\n",
-        "    FinPara\n",
-        "\n",
-        "FinProceso\n",
-        "\n",
-        "```\n",
-        "\n",
-        "**Ejercicio 7.7**\n",
-        "Realizar la búsqueda de un determinado nombre en una lista de nombres, de modo que el algoritmo imprima los\n",
-        "siguientes mensajes según el resultado:\n",
-        "```\n",
-        "filas = int(input(\"Número de filas: \"))\n",
-        "columnas = int(input(\"Número de columnas: \"))\n",
-        "\n",
-        "matriz = []\n",
-        "\n",
-        "for i in range(filas):\n",
-        "    fila = []\n",
-        "    for j in range(columnas):\n",
-        "        num = float(input(f\"Elemento [{i+1}][{j+1}]: \"))\n",
-        "        fila.append(num)\n",
-        "    matriz.append(fila)\n",
-        "\n",
-        "print(\"Matriz ingresada:\")\n",
-        "for i in range(filas):\n",
-        "    for j in range(columnas):\n",
-        "        print(matriz[i][j], end=\" \")\n",
-        "    print()\n",
-        "\n",
-        "```\n",
-        "```\n",
-        "Proceso ActividadResuelta7\n",
-        "\n",
-        "    Definir filas, columnas, i, j Como Entero;\n",
-        "    Dimension matriz[50,50];\n",
-        "\n",
-        "    Escribir \"Número de filas:\";\n",
-        "    Leer filas;\n",
-        "\n",
-        "    Escribir \"Número de columnas:\";\n",
-        "    Leer columnas;\n",
-        "\n",
-        "    Para i <- 1 Hasta filas Hacer\n",
-        "        Para j <- 1 Hasta columnas Hacer\n",
-        "            Escribir \"Elemento [\", i, \"][\", j, \"]:\";\n",
-        "            Leer matriz[i,j];\n",
-        "        FinPara\n",
-        "    FinPara\n",
-        "\n",
-        "    Escribir \"Matriz ingresada:\";\n",
-        "\n",
-        "    Para i <- 1 Hasta filas Hacer\n",
-        "        Para j <- 1 Hasta columnas Hacer\n",
-        "            Escribir Sin Saltar matriz[i,j], \" \";\n",
-        "        FinPara\n",
-        "        Escribir \"\";\n",
-        "    FinPara\n",
-        "\n",
-        "FinProceso\n",
-        "\n",
-        "```\n",
-        "\n",
-        "**Ejercicio 7.8**\n",
-        "Se desea permutar las filas I y J de una matriz (array) de dos dimensiones (M*N):M filas, N columnas.\n",
-        "```\n",
-        "filas = int(input(\"Número de filas: \"))\n",
-        "columnas = int(input(\"Número de columnas: \"))\n",
-        "\n",
-        "matriz = []\n",
-        "\n",
-        "for i in range(filas):\n",
-        "    fila = []\n",
-        "    for j in range(columnas):\n",
-        "        fila.append(float(input(f\"Elemento [{i+1}][{j+1}]: \")))\n",
-        "    matriz.append(fila)\n",
-        "\n",
-        "for i in range(filas):\n",
-        "    suma = 0\n",
-        "    for j in range(columnas):\n",
-        "        suma += matriz[i][j]\n",
-        "    print(f\"Suma fila {i+1}: {suma}\")\n",
-        "\n",
-        "```\n",
-        "```\n",
-        "Proceso ActividadResuelta8\n",
-        "\n",
-        "    Definir filas, columnas, i, j Como Entero;\n",
-        "    Definir suma Como Real;\n",
-        "    Dimension matriz[50,50];\n",
-        "\n",
-        "    Escribir \"Número de filas:\";\n",
-        "    Leer filas;\n",
-        "\n",
-        "    Escribir \"Número de columnas:\";\n",
-        "    Leer columnas;\n",
-        "\n",
-        "    Para i <- 1 Hasta filas Hacer\n",
-        "        Para j <- 1 Hasta columnas Hacer\n",
-        "            Leer matriz[i,j];\n",
-        "        FinPara\n",
-        "    FinPara\n",
-        "\n",
-        "    Para i <- 1 Hasta filas Hacer\n",
-        "        suma <- 0;\n",
-        "        Para j <- 1 Hasta columnas Hacer\n",
-        "            suma <- suma + matriz[i,j];\n",
-        "        FinPara\n",
-        "        Escribir \"Suma fila \", i, \": \", suma;\n",
-        "    FinPara\n",
-        "\n",
-        "FinProceso\n",
-        "\n",
-        "```\n",
-        "\n",
-        "\n",
-        "**Ejercicio  7.9**\n",
-        "Algoritmo que nos permita calcular la desviación estándar (SIGMA) de una lista de N números (N <= 15).\n",
-        "```\n",
-        "filas = int(input(\"Número de filas: \"))\n",
-        "columnas = int(input(\"Número de columnas: \"))\n",
-        "\n",
-        "matriz = []\n",
-        "\n",
-        "for i in range(filas):\n",
-        "    fila = []\n",
-        "    for j in range(columnas):\n",
-        "        fila.append(float(input(f\"Elemento [{i+1}][{j+1}]: \")))\n",
-        "    matriz.append(fila)\n",
-        "\n",
-        "for j in range(columnas):\n",
-        "    suma = 0\n",
-        "    for i in range(filas):\n",
-        "        suma += matriz[i][j]\n",
-        "    print(f\"Suma columna {j+1}: {suma}\")\n",
-        "\n",
-        "```\n",
-        "```\n",
-        "Proceso ActividadResuelta9\n",
-        "\n",
-        "    Definir filas, columnas, i, j Como Entero;\n",
-        "    Definir suma Como Real;\n",
-        "    Dimension matriz[50,50];\n",
-        "\n",
-        "    Escribir \"Número de filas:\";\n",
-        "    Leer filas;\n",
-        "\n",
-        "    Escribir \"Número de columnas:\";\n",
-        "    Leer columnas;\n",
-        "\n",
-        "    Para i <- 1 Hasta filas Hacer\n",
-        "        Para j <- 1 Hasta columnas Hacer\n",
-        "            Leer matriz[i,j];\n",
-        "        FinPara\n",
-        "    FinPara\n",
-        "\n",
-        "    Para j <- 1 Hasta columnas Hacer\n",
-        "        suma <- 0;\n",
-        "        Para i <- 1 Hasta filas Hacer\n",
-        "            suma <- suma + matriz[i,j];\n",
-        "        FinPara\n",
-        "        Escribir \"Suma columna \", j, \": \", suma;\n",
-        "    FinPara\n",
-        "\n",
-        "FinProceso\n",
-        "\n",
-        "```\n",
-        "\n",
-        "**Ejercicio 7.10**\n",
-        "Utilizando arrays, escribir un algoritmo que visualice un cuadrado mágico de orden impar n, comprendido entre 3 y 11. El usuario debe elegir el valor de n.\n",
-        "Un cuadrado mágico se compone de números enteros comprendidos entre 1 y n. La suma de los números que figuran en cada fila, columna y diagonal son iguales.\n",
-        "```\n",
-        "n = int(input(\"Tamaño de la matriz cuadrada: \"))\n",
-        "\n",
-        "matriz = []\n",
-        "\n",
-        "for i in range(n):\n",
-        "    fila = []\n",
-        "    for j in range(n):\n",
-        "        if i == j:\n",
-        "            fila.append(1)\n",
-        "        else:\n",
-        "            fila.append(0)\n",
-        "    matriz.append(fila)\n",
-        "\n",
-        "for fila in matriz:\n",
-        "    print(fila)\n",
-        "\n",
-        "```\n",
-        "```\n",
-        "Proceso ActividadResuelta10\n",
-        "\n",
-        "    Definir n, i, j Como Entero;\n",
-        "    Dimension matriz[50,50];\n",
-        "\n",
-        "    Escribir \"Tamaño de la matriz cuadrada:\";\n",
-        "    Leer n;\n",
-        "\n",
-        "    Para i <- 1 Hasta n Hacer\n",
-        "        Para j <- 1 Hasta n Hacer\n",
-        "            Si i = j Entonces\n",
-        "                matriz[i,j] <- 1;\n",
-        "            SiNo\n",
-        "                matriz[i,j] <- 0;\n",
-        "            FinSi\n",
-        "        FinPara\n",
-        "    FinPara\n",
-        "\n",
-        "    Para i <- 1 Hasta n Hacer\n",
-        "        Para j <- 1 Hasta n Hacer\n",
-        "            Escribir Sin Saltar matriz[i,j], \" \";\n",
-        "        FinPara\n",
-        "        Escribir \"\";\n",
-        "    FinPara\n",
-        "\n",
-        "FinProceso\n",
-        "\n",
-        "```\n",
-        "\n",
-        "\n",
-        "**Ejercicio 7.11**\n",
-        "Obtener un algoritmo que efectúe la multiplicación de dos matrices A, B\n",
-        "```\n",
-        "filas = int(input(\"Número de filas: \"))\n",
-        "columnas = int(input(\"Número de columnas: \"))\n",
-        "\n",
-        "matriz = []\n",
-        "\n",
-        "for i in range(filas):\n",
-        "    fila = []\n",
-        "    for j in range(columnas):\n",
-        "        fila.append(float(input(f\"Elemento [{i+1}][{j+1}]: \")))\n",
-        "    matriz.append(fila)\n",
-        "\n",
-        "print(\"Matriz transpuesta:\")\n",
-        "\n",
-        "for j in range(columnas):\n",
-        "    for i in range(filas):\n",
-        "        print(matriz[i][j], end=\" \")\n",
-        "    print()\n",
-        "\n",
-        "```\n",
-        "```\n",
-        "Proceso ActividadResuelta11\n",
-        "\n",
-        "    Definir filas, columnas, i, j Como Entero;\n",
-        "    Dimension matriz[50,50];\n",
-        "\n",
-        "    Escribir \"Número de filas:\";\n",
-        "    Leer filas;\n",
-        "\n",
-        "    Escribir \"Número de columnas:\";\n",
-        "    Leer columnas;\n",
-        "\n",
-        "    Para i <- 1 Hasta filas Hacer\n",
-        "        Para j <- 1 Hasta columnas Hacer\n",
-        "            Leer matriz[i,j];\n",
-        "        FinPara\n",
-        "    FinPara\n",
-        "\n",
-        "    Escribir \"Matriz transpuesta:\";\n",
-        "\n",
-        "    Para j <- 1 Hasta columnas Hacer\n",
-        "        Para i <- 1 Hasta filas Hacer\n",
-        "            Escribir Sin Saltar matriz[i,j], \" \";\n",
-        "        FinPara\n",
-        "        Escribir \"\";\n",
-        "    FinPara\n",
-        "\n",
-        "FinProceso\n",
-        "\n",
-        "```\n",
-        "**Ejercicio 7.12**\n",
-        " Algoritmo que triangule una matriz cuadrada y halle su determinante. En las matrices cuadradas el valor del determinante coincide con el producto de los elementos de la diagonal de la matriz triangulada, multiplicado por –1\n",
-        "tantas veces como hayamos intercambiado filas al triangular la matriz.\n",
-        "Proceso de triangulación de una matriz para todo i desde 1 hasta n – 1 hacer:\n",
-        "a) Si el elemento de lugar (i,i) es nulo, intercambiar filas hasta que dicho elemento sea no nulo o agotar los\n",
-        "posibles intercambios.\n",
-        "b) A continuación se busca el primer elemento no nulo de la fila i-ésima y, en el caso de existir, se usa para\n",
-        "hacer ceros en la columna de abajo.\n",
-        "Estructuras de datos I (arrays y estructuras) 281\n",
-        " Sea dicho elemento matriz[i,r]\n",
-        " Multiplicar fila i por matriz[i+1,r]/matriz[i,r] y restarlo a la i+1\n",
-        " Multiplicar fila i por matriz[i+2,r]/matriz[i,r] y restarlo a la i+2\n",
-        " ............................................................................................................\n",
-        " Multiplicar fila i por matriz[m,r]/matriz[i,r] y restarlo a la m.\n",
-        "```\n",
-        "n = int(input(\"Tamaño de la matriz cuadrada: \"))\n",
-        "\n",
-        "# Cargar matriz\n",
-        "matriz = []\n",
-        "for i in range(n):\n",
-        "    fila = []\n",
-        "    for j in range(n):\n",
-        "        fila.append(float(input(f\"Elemento [{i+1}][{j+1}]: \")))\n",
-        "    matriz.append(fila)\n",
-        "\n",
-        "determinante = 1\n",
-        "intercambios = 0\n",
-        "\n",
-        "# Eliminación Gaussiana\n",
-        "for i in range(n):\n",
-        "    # Si el pivote es 0, buscar intercambio\n",
-        "    if matriz[i][i] == 0:\n",
-        "        for k in range(i+1, n):\n",
-        "            if matriz[k][i] != 0:\n",
-        "                matriz[i], matriz[k] = matriz[k], matriz[i]\n",
-        "                intercambios += 1\n",
-        "                break\n",
-        "\n",
-        "    pivote = matriz[i][i]\n",
-        "\n",
-        "    if pivote != 0:\n",
-        "        for j in range(i+1, n):\n",
-        "            factor = matriz[j][i] / pivote\n",
-        "            for k in range(i, n):\n",
-        "                matriz[j][k] -= factor * matriz[i][k]\n",
-        "\n",
-        "# Producto diagonal\n",
-        "for i in range(n):\n",
-        "    determinante *= matriz[i][i]\n",
-        "\n",
-        "# Ajustar signo por intercambios\n",
-        "if intercambios % 2 != 0:\n",
-        "    determinante *= -1\n",
-        "\n",
-        "print(\"Matriz triangular:\")\n",
-        "for fila in matriz:\n",
-        "    print(fila)\n",
-        "\n",
-        "print(\"Determinante:\", determinante)\n",
-        "\n",
-        "```\n",
-        "```\n",
-        "Proceso Ejercicio7_12;\n",
-        "\n",
-        "    Definir n, i, j, k, intercambios Como Entero;\n",
-        "    Definir pivote, factor, determinante Como Real;\n",
-        "    Dimension matriz[20,20];\n",
-        "\n",
-        "    Escribir \"Tamaño de la matriz cuadrada:\";\n",
-        "    Leer n;\n",
-        "\n",
-        "    Para i <- 1 Hasta n Hacer\n",
-        "        Para j <- 1 Hasta n Hacer\n",
-        "            Escribir \"Elemento [\", i, \"][\", j, \"]:\";\n",
-        "            Leer matriz[i,j];\n",
-        "        FinPara\n",
-        "    FinPara\n",
-        "\n",
-        "    determinante <- 1;\n",
-        "    intercambios <- 0;\n",
-        "\n",
-        "    Para i <- 1 Hasta n Hacer\n",
-        "\n",
-        "        Si matriz[i,i] = 0 Entonces\n",
-        "            Para k <- i+1 Hasta n Hacer\n",
-        "                Si matriz[k,i] <> 0 Entonces\n",
-        "                    Para j <- 1 Hasta n Hacer\n",
-        "                        pivote <- matriz[i,j];\n",
-        "                        matriz[i,j] <- matriz[k,j];\n",
-        "                        matriz[k,j] <- pivote;\n",
-        "                    FinPara\n",
-        "                    intercambios <- intercambios + 1;\n",
-        "                FinSi\n",
-        "            FinPara\n",
-        "        FinSi\n",
-        "\n",
-        "        pivote <- matriz[i,i];\n",
-        "\n",
-        "        Si pivote <> 0 Entonces\n",
-        "            Para j <- i+1 Hasta n Hacer\n",
-        "                factor <- matriz[j,i] / pivote;\n",
-        "                Para k <- i Hasta n Hacer\n",
-        "                    matriz[j,k] <- matriz[j,k] - factor * matriz[i,k];\n",
-        "                FinPara\n",
-        "            FinPara\n",
-        "        FinSi\n",
-        "\n",
-        "    FinPara\n",
-        "\n",
-        "    Para i <- 1 Hasta n Hacer\n",
-        "        determinante <- determinante * matriz[i,i];\n",
-        "    FinPara\n",
-        "\n",
-        "    Si intercambios MOD 2 <> 0 Entonces\n",
-        "        determinante <- determinante * -1;\n",
-        "    FinSi\n",
-        "\n",
-        "    Escribir \"Matriz triangular:\";\n",
-        "    Para i <- 1 Hasta n Hacer\n",
-        "        Para j <- 1 Hasta n Hacer\n",
-        "            Escribir Sin Saltar matriz[i,j], \" \";\n",
-        "        FinPara\n",
-        "        Escribir \"\";\n",
-        "    FinPara\n",
-        "\n",
-        "    Escribir \"Determinante: \", determinante;\n",
-        "\n",
-        "FinProceso\n",
-        "\n",
-        "```\n",
-        "\n",
-        "\n",
-        "\n",
-        "\n",
-        "\n"
-      ],
-      "metadata": {
-        "id": "gsi4URZIthov"
-      }
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "7.1. Escribir un algoritmo que permita calcular el cuadrado de los cien primeros números enteros y a continuación es\n",
-        "cribir una tabla que contenga dichos cien números cuadrados."
-      ],
-      "metadata": {
-        "id": "Y3Tb37uZ3OYd"
-      }
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "EJERCICIOS RESUELTOS (ARREGLOS)"
-      ],
-      "metadata": {
-        "id": "b1wCq6NB3Cye"
-      }
-    },
-    {
-      "cell_type": "code",
-      "execution_count": null,
-      "metadata": {
-        "id": "v7EzP-r53B4D"
-      },
-      "outputs": [],
-      "source": [
-        "tabla = []\n",
-        "\n",
-        "# Primer ciclo: calcular y mostrar el número y su cuadrado\n",
-        "for i in range(1, 101):\n",
-        "    c = i * i\n",
-        "    print(f\"Número: {i}  Cuadrado: {c}\")\n",
-        "\n",
-        "# Segundo ciclo: guardar los cuadrados en la lista\n",
-        "for i in range(1, 101):\n",
-        "    tabla.append(i * i)\n",
-        "\n",
-        "# Mostrar la tabla de cuadrados\n",
-        "print(\"\\nTabla de cuadrados:\")\n",
-        "for valor in tabla:\n",
-        "    print(valor)"
-      ]
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "Algoritmo Cuadrados\n",
-        "\tDefinir tabla Como Entero\n",
-        "\tDimension tabla[100]\n",
-        "\tDefinir i, c Como Entero\n",
-        "\n",
-        "\t// Primer ciclo: mostrar número y su cuadrado\n",
-        "\tPara i <- 1 Hasta 100 Hacer\n",
-        "\t\tc <- i * i\n",
-        "\t\tEscribir \"Numero: \", i, \"  Cuadrado: \", c\n",
-        "\tFinPara\n",
-        "\n",
-        "\t// Segundo ciclo: guardar los cuadrados en la tabla\n",
-        "\tPara i <- 1 Hasta 100 Hacer\n",
-        "\t\ttabla[i] <- i * i\n",
-        "\tFinPara\n",
-        "\n",
-        "\t// Mostrar la tabla de cuadrados\n",
-        "\tEscribir \"\"\n",
-        "\tEscribir \"Tabla de cuadrados:\"\n",
-        "\tPara i <- 1 Hasta 100 Hacer\n",
-        "\t\tEscribir tabla[i]\n",
-        "\tFinPara\n",
-        "FinAlgoritmo\n"
-      ],
-      "metadata": {
-        "id": "Jld4b4sp4mRW"
-      }
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "7.2. Se tienen N temperaturas. Se desea calcular su media y determinar entre todas ellas cuáles son superiores o iguales\n",
-        "a esa media."
-      ],
-      "metadata": {
-        "id": "zvy56_gZ49Jo"
-      }
-    },
-    {
-      "cell_type": "code",
-      "source": [
-        "N = 100\n",
-        "\n",
-        "# Arreglo para almacenar las temperaturas\n",
-        "temperatura = []\n",
-        "\n",
-        "# Variables\n",
-        "suma = 0.0\n",
-        "media = 0.0\n",
-        "c = 0\n",
-        "\n",
-        "# Leer las temperaturas\n",
-        "for i in range(N):\n",
-        "    temp = float(input(f\"Ingrese la temperatura {i + 1}: \"))\n",
-        "    temperatura.append(temp)\n",
-        "    suma += temp\n",
-        "\n",
-        "# Calcular la media\n",
-        "media = suma / N\n",
-        "\n",
-        "print(\"\\nTemperaturas mayores o iguales a la media:\")\n",
-        "\n",
-        "# Contar y mostrar temperaturas >= media\n",
-        "for temp in temperatura:\n",
-        "    if temp >= media:\n",
-        "        c += 1\n",
-        "        print(temp)\n",
-        "\n",
-        "# Resultados finales\n",
-        "print(\"\\nLa media es:\", media)\n",
-        "print(\"El total de temperaturas >= a la media es:\", c)"
-      ],
-      "metadata": {
-        "id": "e6s5W0fK4aRw"
-      },
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "Algoritmo Temperaturas\n",
-        "\n",
-        "\tDefinir N Como Entero\n",
-        "\tN <- 100\n",
-        "\n",
-        "\tDefinir temperatura Como Real\n",
-        "\tDimension temperatura[N]\n",
-        "\n",
-        "\tDefinir i, c Como Entero\n",
-        "\tDefinir suma, media Como Real\n",
-        "\n",
-        "\tsuma <- 0\n",
-        "\tc <- 0\n",
-        "\n",
-        "\t// Leer temperaturas\n",
-        "\tPara i <- 0 Hasta N-1 Hacer\n",
-        "\t\tEscribir \"Ingrese la temperatura \", i + 1, \": \"\n",
-        "\t\tLeer temperatura[i]\n",
-        "\t\tsuma <- suma + temperatura[i]\n",
-        "\tFinPara\n",
-        "\n",
-        "\tmedia <- suma / N\n",
-        "\n",
-        "\tEscribir \"\"\n",
-        "\tEscribir \"Temperaturas mayores o iguales a la media:\"\n",
-        "\n",
-        "\tPara i <- 0 Hasta N-1 Hacer\n",
-        "\t\tSi temperatura[i] >= media Entonces\n",
-        "\t\t\tc <- c + 1\n",
-        "\t\t\tEscribir temperatura[i]\n",
-        "\t\tFinSi\n",
-        "\tFinPara\n",
-        "\n",
-        "\tEscribir \"\"\n",
-        "\tEscribir \"La media es: \", media\n",
-        "\tEscribir \"El total de temperaturas >= \", media, \" es: \", c\n",
-        "\n",
-        "FinAlgoritmo\n"
-      ],
-      "metadata": {
-        "id": "2K_ry3Ug60cK"
-      }
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "7.3. Escribir el algoritmo que permita sumar el número de elementos positivos y el de negativos de una tabla T."
-      ],
-      "metadata": {
-        "id": "5Z_B-0N57Gd_"
-      }
-    },
-    {
-      "cell_type": "code",
-      "source": [
-        "# Constantes\n",
-        "M = 50\n",
-        "N = 20\n",
-        "\n",
-        "# Crear la matriz (tabla)\n",
-        "tabla = []\n",
-        "\n",
-        "# Variables\n",
-        "sp = 0.0  # suma de positivos\n",
-        "sn = 0.0  # suma de negativos\n",
-        "\n",
-        "# Leer los valores de la tabla\n",
-        "for i in range(M):\n",
-        "    fila = []\n",
-        "    for j in range(N):\n",
-        "        valor = float(input(f\"Ingrese el valor [{i + 1}, {j + 1}]: \"))\n",
-        "        fila.append(valor)\n",
-        "\n",
-        "        if valor > 0:\n",
-        "            sp += valor\n",
-        "        else:\n",
-        "            sn += valor\n",
-        "\n",
-        "    tabla.append(fila)\n",
-        "\n",
-        "# Mostrar resultados\n",
-        "print(\"\\nSuma de positivos:\", sp)\n",
-        "print(\"Suma de negativos:\", sn)\n"
-      ],
-      "metadata": {
-        "id": "ORDV46ws7L-j"
-      },
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "Algoritmo Suma_Resta\n",
-        "\n",
-        "\tDefinir M, N Como Entero\n",
-        "\tM <- 50\n",
-        "\tN <- 20\n",
-        "\n",
-        "\tDefinir Tabla Como Real\n",
-        "\tDimension Tabla[M, N]\n",
-        "\n",
-        "\tDefinir i, j Como Entero\n",
-        "\tDefinir SP, SN Como Real\n",
-        "\n",
-        "\tSP <- 0\n",
-        "\tSN <- 0\n",
-        "\n",
-        "\t// Leer la tabla y sumar positivos y negativos\n",
-        "\tPara i <- 0 Hasta M-1 Hacer\n",
-        "\t\tPara j <- 0 Hasta N-1 Hacer\n",
-        "\t\t\tEscribir \"Ingrese el valor [\", i+1, \",\", j+1, \"]: \"\n",
-        "\t\t\tLeer Tabla[i, j]\n",
-        "\n",
-        "\t\t\tSi Tabla[i, j] > 0 Entonces\n",
-        "\t\t\t\tSP <- SP + Tabla[i, j]\n",
-        "\t\t\tSiNo\n",
-        "\t\t\t\tSN <- SN + Tabla[i, j]\n",
-        "\t\t\tFinSi\n",
-        "\t\tFinPara\n",
-        "\tFinPara\n",
-        "\n",
-        "\tEscribir \"\"\n",
-        "\tEscribir \"Suma de positivos: \", SP\n",
-        "\tEscribir \"Suma de negativos: \", SN\n",
-        "\n",
-        "FinAlgoritmo"
-      ],
-      "metadata": {
-        "id": "x_BwbFjm81IP"
-      }
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "7.4. Inicializar una matriz de dos dimensiones con un valor constante dado K."
-      ],
-      "metadata": {
-        "id": "mWl8unKG86lG"
-      }
-    },
-    {
-      "cell_type": "code",
-      "source": [
-        "M = int(input(\"Ingrese el número de filas (M): \"))\n",
-        "N = int(input(\"Ingrese el número de columnas (N): \"))\n",
-        "\n",
-        "# Valor constante\n",
-        "K = float(input(\"Ingrese el valor constante K: \"))\n",
-        "\n",
-        "# Crear e inicializar la matriz\n",
-        "A = []\n",
-        "\n",
-        "for i in range(M):\n",
-        "    fila = []\n",
-        "    for j in range(N):\n",
-        "        fila.append(K)\n",
-        "    A.append(fila)\n",
-        "\n",
-        "# Mostrar la matriz\n",
-        "print(\"\\nMatriz inicializada:\")\n",
-        "for fila in A:\n",
-        "    print(fila)\n"
-      ],
-      "metadata": {
-        "id": "FBy_ulx-8-5i"
-      },
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "Algoritmo Inicializa_Matriz\n",
-        "\n",
-        "\tDefinir M, N Como Entero\n",
-        "\tDefinir K Como Real\n",
-        "\tDefinir i, j Como Entero\n",
-        "\n",
-        "\tEscribir \"Ingrese el número de filas (M): \"\n",
-        "\tLeer M\n",
-        "\tEscribir \"Ingrese el número de columnas (N): \"\n",
-        "\tLeer N\n",
-        "\tEscribir \"Ingrese el valor constante K: \"\n",
-        "\tLeer K\n",
-        "\n",
-        "\tDefinir A Como Real\n",
-        "\tDimension A[M, N]\n",
-        "\n",
-        "\t// Inicializar la matriz con el valor K\n",
-        "\tPara i <- 0 Hasta M-1 Hacer\n",
-        "\t\tPara j <- 0 Hasta N-1 Hacer\n",
-        "\t\t\tA[i, j] <- K\n",
-        "\t\tFinPara\n",
-        "\tFinPara\n",
-        "\n",
-        "\t// Mostrar la matriz\n",
-        "\tEscribir \"\"\n",
-        "\tEscribir \"Matriz inicializada:\"\n",
-        "\tPara i <- 0 Hasta M-1 Hacer\n",
-        "\t\tPara j <- 0 Hasta N-1 Hacer\n",
-        "\t\t\tEscribir Sin Saltar A[i, j], \" \"\n",
-        "\t\tFinPara\n",
-        "\t\tEscribir \"\"\n",
-        "\tFinPara\n",
-        "\n",
-        "FinAlgoritmo"
-      ],
-      "metadata": {
-        "id": "L1lIlQ8lIDyv"
-      }
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "7.5. Realizar la suma de dos matrices bidimensionales."
-      ],
-      "metadata": {
-        "id": "T3n5DrB9IQsD"
-      }
-    },
-    {
-      "cell_type": "code",
-      "source": [
-        "M = int(input(\"Ingrese el número de filas: \"))\n",
-        "N = int(input(\"Ingrese el número de columnas: \"))\n",
-        "\n",
-        "# Matriz A\n",
-        "print(\"\\nIngrese los valores de la matriz A:\")\n",
-        "A = []\n",
-        "for i in range(M):\n",
-        "    fila = []\n",
-        "    for j in range(N):\n",
-        "        valor = float(input(f\"A[{i + 1},{j + 1}]: \"))\n",
-        "        fila.append(valor)\n",
-        "    A.append(fila)\n",
-        "\n",
-        "# Matriz B\n",
-        "print(\"\\nIngrese los valores de la matriz B:\")\n",
-        "B = []\n",
-        "for i in range(M):\n",
-        "    fila = []\n",
-        "    for j in range(N):\n",
-        "        valor = float(input(f\"B[{i + 1},{j + 1}]: \"))\n",
-        "        fila.append(valor)\n",
-        "    B.append(fila)\n",
-        "\n",
-        "# Matriz S (suma)\n",
-        "S = []\n",
-        "for i in range(M):\n",
-        "    fila = []\n",
-        "    for j in range(N):\n",
-        "        fila.append(A[i][j] + B[i][j])\n",
-        "    S.append(fila)\n",
-        "\n",
-        "# Mostrar la matriz resultante\n",
-        "print(\"\\nMatriz suma (S = A + B):\")\n",
-        "for fila in S:\n",
-        "    print(fila)"
-      ],
-      "metadata": {
-        "id": "t57gWPz_ITT7"
-      },
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "Algoritmo Suma_Matrices\n",
-        "\n",
-        "\tDefinir M, N Como Entero\n",
-        "\tDefinir i, j Como Entero\n",
-        "\n",
-        "\tEscribir \"Ingrese el número de filas: \"\n",
-        "\tLeer M\n",
-        "\tEscribir \"Ingrese el número de columnas: \"\n",
-        "\tLeer N\n",
-        "\n",
-        "\tDefinir A, B, S Como Real\n",
-        "\tDimension A[M, N]\n",
-        "\tDimension B[M, N]\n",
-        "\tDimension S[M, N]\n",
-        "\n",
-        "\t// Leer matriz A\n",
-        "\tEscribir \"\"\n",
-        "\tEscribir \"Ingrese los valores de la matriz A:\"\n",
-        "\tPara i <- 0 Hasta M-1 Hacer\n",
-        "\t\tPara j <- 0 Hasta N-1 Hacer\n",
-        "\t\t\tEscribir \"A[\", i+1, \",\", j+1, \"]: \"\n",
-        "\t\t\tLeer A[i, j]\n",
-        "\t\tFinPara\n",
-        "\tFinPara\n",
-        "\n",
-        "\t// Leer matriz B\n",
-        "\tEscribir \"\"\n",
-        "\tEscribir \"Ingrese los valores de la matriz B:\"\n",
-        "\tPara i <- 0 Hasta M-1 Hacer\n",
-        "\t\tPara j <- 0 Hasta N-1 Hacer\n",
-        "\t\t\tEscribir \"B[\", i+1, \",\", j+1, \"]: \"\n",
-        "\t\t\tLeer B[i, j]\n",
-        "\t\tFinPara\n",
-        "\tFinPara\n",
-        "\n",
-        "\t// Sumar matrices\n",
-        "\tPara i <- 0 Hasta M-1 Hacer\n",
-        "\t\tPara j <- 0 Hasta N-1 Hacer\n",
-        "\t\t\tS[i, j] <- A[i, j] + B[i, j]\n",
-        "\t\tFinPara\n",
-        "\tFinPara\n",
-        "\n",
-        "\t// Mostrar matriz suma\n",
-        "\tEscribir \"\"\n",
-        "\tEscribir \"Matriz S (A + B):\"\n",
-        "\tPara i <- 0 Hasta M-1 Hacer\n",
-        "\t\tPara j <- 0 Hasta N-1 Hacer\n",
-        "\t\t\tEscribir Sin Saltar S[i, j], \" \"\n",
-        "\t\tFinPara\n",
-        "\t\tEscribir \"\"\n",
-        "\tFinPara\n",
-        "\n",
-        "FinAlgoritmo"
-      ],
-      "metadata": {
-        "id": "_crHgP7GKk-_"
-      }
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "7.6. Se dispone de una tabla T de dos dimensiones. Calcular la suma de sus elementos."
-      ],
-      "metadata": {
-        "id": "kG2m_mjsK5K3"
-      }
-    },
-    {
-      "cell_type": "code",
-      "source": [
-        "M = 50\n",
-        "N = 20\n",
-        "\n",
-        "# Crear la matriz\n",
-        "T = []\n",
-        "\n",
-        "# Leer los valores de la matriz\n",
-        "print(\"Ingrese los valores de la matriz:\")\n",
-        "for i in range(M):\n",
-        "    fila = []\n",
-        "    for j in range(N):\n",
-        "        valor = float(input(f\"T[{i + 1},{j + 1}]: \"))\n",
-        "        fila.append(valor)\n",
-        "    T.append(fila)\n",
-        "\n",
-        "# Inicializar la suma\n",
-        "S = 0.0\n",
-        "\n",
-        "# Sumar los elementos de la matriz\n",
-        "for i in range(M):\n",
-        "    for j in range(N):\n",
-        "        S += T[i][j]\n",
-        "\n",
-        "# Mostrar el resultado\n",
-        "print(\"\\nLa suma de los elementos de la matriz =\", S)"
-      ],
-      "metadata": {
-        "id": "PLgaXJilK8I7"
-      },
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "Algoritmo Suma_Elementos\n",
-        "\n",
-        "\tDefinir M, N Como Entero\n",
-        "\tM <- 50\n",
-        "\tN <- 20\n",
-        "\n",
-        "\tDefinir T Como Real\n",
-        "\tDimension T[M, N]\n",
-        "\n",
-        "\tDefinir i, j Como Entero\n",
-        "\tDefinir S Como Real\n",
-        "\n",
-        "\t// Leer los valores de la matriz\n",
-        "\tEscribir \"Ingrese los valores de la matriz:\"\n",
-        "\tPara i <- 0 Hasta M-1 Hacer\n",
-        "\t\tPara j <- 0 Hasta N-1 Hacer\n",
-        "\t\t\tEscribir \"T[\", i+1, \",\", j+1, \"]: \"\n",
-        "\t\t\tLeer T[i, j]\n",
-        "\t\tFinPara\n",
-        "\tFinPara\n",
-        "\n",
-        "\t// Inicializar la suma\n",
-        "\tS <- 0\n",
-        "\n",
-        "\t// Sumar los elementos de la matriz\n",
-        "\tPara i <- 0 Hasta M-1 Hacer\n",
-        "\t\tPara j <- 0 Hasta N-1 Hacer\n",
-        "\t\t\tS <- S + T[i, j]\n",
-        "\t\tFinPara\n",
-        "\tFinPara\n",
-        "\n",
-        "\t// Mostrar resultado\n",
-        "\tEscribir \"\"\n",
-        "\tEscribir \"La suma de los elementos de la matriz = \", S\n",
-        "\n",
-        "FinAlgoritmo"
-      ],
-      "metadata": {
-        "id": "nHqrpTrSLhhy"
-      }
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "7.7. Realizar la búsqueda de un determinado nombre en una lista de nombres, de modo que el algoritmo imprima los\n",
-        "siguientes mensajes según el resultado:\n",
-        "\n",
-        "'Nombre encontrado'\n",
-        "\n",
-        "'Nombre no existe'\n",
-        "\n",
-        "si el nombre está en la lista\n",
-        "si el nombre no está en la lista"
-      ],
-      "metadata": {
-        "id": "C31RkavnL0eK"
-      }
-    },
-    {
-      "cell_type": "code",
-      "source": [
-        "N = 50\n",
-        "\n",
-        "# Lista de nombres\n",
-        "listas = []\n",
-        "\n",
-        "# Leer los nombres\n",
-        "print(\"Ingrese los nombres:\")\n",
-        "for i in range(N):\n",
-        "    nombre = input(f\"Nombre {i + 1}: \")\n",
-        "    listas.append(nombre)\n",
-        "\n",
-        "# Nombre a buscar\n",
-        "buscar = input(\"\\nIngrese el nombre a buscar: \")\n",
-        "\n",
-        "# Variable lógica\n",
-        "sw = False\n",
-        "\n",
-        "# Búsqueda del nombre\n",
-        "for nombre in listas:\n",
-        "    if nombre == buscar:\n",
-        "        sw = True\n",
-        "        break\n",
-        "\n",
-        "# Mostrar resultado\n",
-        "if sw:\n",
-        "    print(\"Nombre encontrado\")\n",
-        "else:\n",
-        "    print(\"Nombre no existe:\", buscar)"
-      ],
-      "metadata": {
-        "id": "FvpqCrTVL_PO"
-      },
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "Algoritmo Busqueda\n",
-        "\n",
-        "\tDefinir N Como Entero\n",
-        "\tN <- 50\n",
-        "\n",
-        "\tDefinir Listas Como Cadena\n",
-        "\tDimension Listas[N]\n",
-        "\n",
-        "\tDefinir nombre Como Cadena\n",
-        "\tDefinir SW Como Logico\n",
-        "\tDefinir i Como Entero\n",
-        "\n",
-        "\tSW <- Falso\n",
-        "\n",
-        "\t// Leer los nombres\n",
-        "\tEscribir \"Ingrese los nombres:\"\n",
-        "\tPara i <- 0 Hasta N-1 Hacer\n",
-        "\t\tEscribir \"Nombre \", i+1, \": \"\n",
-        "\t\tLeer Listas[i]\n",
-        "\tFinPara\n",
-        "\n",
-        "\t// Leer el nombre a buscar\n",
-        "\tEscribir \"\"\n",
-        "\tEscribir \"Ingrese el nombre a buscar: \"\n",
-        "\tLeer nombre\n",
-        "\n",
-        "\t// Buscar el nombre\n",
-        "\tPara i <- 0 Hasta N-1 Hacer\n",
-        "\t\tSi Listas[i] = nombre Entonces\n",
-        "\t\t\tSW <- Verdadero\n",
-        "\t\tFinSi\n",
-        "\tFinPara\n",
-        "\n",
-        "\t// Mostrar resultado\n",
-        "\tSi SW Entonces\n",
-        "\t\tEscribir \"Nombre encontrado\"\n",
-        "\tSiNo\n",
-        "\t\tEscribir \"Nombre no existe: \", nombre\n",
-        "\tFinSi\n",
-        "\n",
-        "FinAlgoritmo"
-      ],
-      "metadata": {
-        "id": "nUbsiAPwNIFN"
-      }
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "7.8. Se desea permutar las filas I y J de una matriz (array) de dos dimensiones (M*N):M filas, N columnas."
-      ],
-      "metadata": {
-        "id": "JGKJEhHANJU3"
-      }
-    },
-    {
-      "cell_type": "code",
-      "source": [
-        "M = 50\n",
-        "N = 30\n",
-        "\n",
-        "# Crear la matriz\n",
-        "T = []\n",
-        "\n",
-        "# Leer la matriz\n",
-        "print(\"Ingrese los valores de la matriz:\")\n",
-        "for i in range(M):\n",
-        "    fila = []\n",
-        "    for j in range(N):\n",
-        "        valor = int(input(f\"T[{i + 1},{j + 1}]: \"))\n",
-        "        fila.append(valor)\n",
-        "    T.append(fila)\n",
-        "\n",
-        "# Leer las filas a intercambiar (1..M)\n",
-        "I = int(input(\"\\nIngrese la fila I a intercambiar: \")) - 1\n",
-        "J = int(input(\"Ingrese la fila J a intercambiar: \")) - 1\n",
-        "\n",
-        "# Intercambiar fila I con fila J elemento a elemento\n",
-        "for k in range(N):\n",
-        "    aux = T[I][k]\n",
-        "    T[I][k] = T[J][k]\n",
-        "    T[J][k] = aux\n",
-        "\n",
-        "# Mostrar la matriz resultante\n",
-        "print(\"\\nMatriz luego del intercambio de filas:\")\n",
-        "for fila in T:\n",
-        "    print(fila)"
-      ],
-      "metadata": {
-        "id": "7L8uB8ylNMYJ"
-      },
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "Algoritmo Intercambio_Filas\n",
-        "\n",
-        "\tDefinir M, N Como Entero\n",
-        "\tDefinir I, J, K, AUX Como Entero\n",
-        "\tDefinir T Como Entero\n",
-        "\n",
-        "\tM <- 50\n",
-        "\tN <- 30\n",
-        "\n",
-        "\tDimension T[M, N]\n",
-        "\n",
-        "\t// Leer la matriz\n",
-        "\tEscribir \"Ingrese los valores de la matriz:\"\n",
-        "\tPara I <- 0 Hasta M-1 Hacer\n",
-        "\t\tPara J <- 0 Hasta N-1 Hacer\n",
-        "\t\t\tEscribir \"T[\", I+1, \",\", J+1, \"]: \"\n",
-        "\t\t\tLeer T[I, J]\n",
-        "\t\tFinPara\n",
-        "\tFinPara\n",
-        "\n",
-        "\t// Leer las filas a intercambiar (1..M)\n",
-        "\tEscribir \"\"\n",
-        "\tEscribir \"Ingrese la fila I a intercambiar: \"\n",
-        "\tLeer I\n",
-        "\tEscribir \"Ingrese la fila J a intercambiar: \"\n",
-        "\tLeer J\n",
-        "\n",
-        "\t// Ajustar índices a 0..M-1\n",
-        "\tI <- I - 1\n",
-        "\tJ <- J - 1\n",
-        "\n",
-        "\t// Intercambiar fila I con fila J\n",
-        "\tPara K <- 0 Hasta N-1 Hacer\n",
-        "\t\tAUX <- T[I, K]\n",
-        "\t\tT[I, K] <- T[J, K]\n",
-        "\t\tT[J, K] <- AUX\n",
-        "\tFinPara\n",
-        "\n",
-        "\t// Mostrar matriz resultante\n",
-        "\tEscribir \"\"\n",
-        "\tEscribir \"Matriz luego del intercambio de filas:\"\n",
-        "\tPara I <- 0 Hasta M-1 Hacer\n",
-        "\t\tPara J <- 0 Hasta N-1 Hacer\n",
-        "\t\t\tEscribir Sin Saltar T[I, J], \" \"\n",
-        "\t\tFinPara\n",
-        "\t\tEscribir \"\"\n",
-        "\tFinPara\n",
-        "\n",
-        "FinAlgoritmo"
-      ],
-      "metadata": {
-        "id": "gqq0OQ1mWKi0"
-      }
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "7.9. Algoritmo que nos permita calcular la desviación estándar (SIGMA) de una lista de N números (N <= 15).\n",
-        " Sabiendo que"
-      ],
-      "metadata": {
-        "id": "N1sWvOyIWRka"
-      }
-    },
-    {
-      "cell_type": "code",
-      "source": [
-        "import math\n",
-        "\n",
-        "# Función para leer la lista de números\n",
-        "def leer_array():\n",
-        "    while True:\n",
-        "        n = int(input(\"Diga el número de elementos de la lista (max 15): \"))\n",
-        "        if n <= 15:\n",
-        "            break\n",
-        "        print(\"Error: el número máximo de elementos es 15.\")\n",
-        "\n",
-        "    x = []\n",
-        "    print(\"Deme los elementos:\")\n",
-        "    for i in range(n):\n",
-        "        valor = float(input(f\"x[{i+1}]: \"))\n",
-        "        x.append(valor)\n",
-        "    return x, n\n",
-        "\n",
-        "# Función para calcular la desviación estándar\n",
-        "def desviacion(x, n):\n",
-        "    suma = sum(x)\n",
-        "    xm = suma / n  # media\n",
-        "    sigma = 0\n",
-        "    for i in range(n):\n",
-        "        sigma += (x[i] - xm) ** 2\n",
-        "    # Desviación estándar muestral\n",
-        "    return math.sqrt(sigma / (n - 1))\n",
-        "\n",
-        "# Programa principal\n",
-        "x, n = leer_array()\n",
-        "sigma = desviacion(x, n)\n",
-        "print(f\"\\nLa desviación estándar es: {sigma}\")\n"
-      ],
-      "metadata": {
-        "id": "upIulDAOWVNU"
-      },
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "Algoritmo Calcular_Desviacion\n",
-        "\n",
-        "\tDefinir x Como Real\n",
-        "\tDimension x[15]\n",
-        "\tDefinir n Como Entero\n",
-        "\tDefinir sigma Como Real\n",
-        "\n",
-        "\t// Llamar al procedimiento para leer los números\n",
-        "\tleer_array(x, n)\n",
-        "\n",
-        "\t// Calcular la desviación estándar\n",
-        "\tsigma <- desviacion(x, n)\n",
-        "\n",
-        "\t// Mostrar el resultado\n",
-        "\tEscribir \"La desviación estándar es: \", sigma\n",
-        "\n",
-        "FinAlgoritmo\n",
-        "\n",
-        "// Procedimiento para leer la lista\n",
-        "Procedimiento leer_array(Ref x[] Como Real, Ref n Como Entero)\n",
-        "\tDefinir i Como Entero\n",
-        "\tRepetir\n",
-        "\t\tEscribir \"Diga número de elementos de la lista (máx 15): \"\n",
-        "\t\tLeer n\n",
-        "\tHasta_Que n <= 15\n",
-        "\n",
-        "\tEscribir \"Deme los elementos:\"\n",
-        "\tPara i <- 0 Hasta n-1 Hacer\n",
-        "\t\tLeer x[i]\n",
-        "\tFinPara\n",
-        "FinProcedimiento\n",
-        "\n",
-        "// Función para calcular la desviación estándar\n",
-        "Funcion real desviacion(E x[] Como Real, E n Como Entero)\n",
-        "\tDefinir suma, xm, sigma Como Real\n",
-        "\tDefinir i Como Entero\n",
-        "\n",
-        "\t// Calcular la media\n",
-        "\tsuma <- 0\n",
-        "\tPara i <- 0 Hasta n-1 Hacer\n",
-        "\t\tsuma <- suma + x[i]\n",
-        "\tFinPara\n",
-        "\txm <- suma / n\n",
-        "\n",
-        "\t// Calcular la suma de cuadrados de las diferencias\n",
-        "\tsigma <- 0\n",
-        "\tPara i <- 0 Hasta n-1 Hacer\n",
-        "\t\tsigma <- sigma + (x[i] - xm) * (x[i] - xm)\n",
-        "\tFinPara\n",
-        "\n",
-        "\t// Desviación estándar muestral\n",
-        "\tDesviacion <- Raiz(sigma / (n - 1))\n",
-        "FinFuncion"
-      ],
-      "metadata": {
-        "id": "NPPIpXdsXc4d"
-      }
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "7.10. Utilizando arrays, escribir un algoritmo que visualice un cuadrado mágico de orden impar n, comprendido entre 3\n",
-        "y 11. El usuario debe elegir el valor de n.\n",
-        " Un cuadrado mágico se compone de números enteros comprendidos entre 1 y n. La suma de los números que figu\n",
-        "ran en cada fila, columna y diagonal son iguales"
-      ],
-      "metadata": {
-        "id": "WgpmTG3IXu78"
-      }
-    },
-    {
-      "cell_type": "code",
-      "source": [
-        "def dibujar_cuadrado(n):\n",
-        "    # Crear matriz n x n inicializada con ceros\n",
-        "    a = [[0] * n for _ in range(n)]\n",
-        "\n",
-        "    # Posición inicial del número 1\n",
-        "    i = 0           # primera fila (Python index empieza en 0)\n",
-        "    j = n // 2      # columna central\n",
-        "\n",
-        "    # Llenar el cuadrado mágico\n",
-        "    for c in range(1, n * n + 1):\n",
-        "        a[i][j] = c\n",
-        "\n",
-        "        # Guardar la posición actual\n",
-        "        i_anterior, j_anterior = i, j\n",
-        "\n",
-        "        # Próxima posición: arriba y a la derecha\n",
-        "        i -= 1\n",
-        "        j += 1\n",
-        "\n",
-        "        # Ajuste para ciclicidad\n",
-        "        if i < 0:\n",
-        "            i = n - 1\n",
-        "        if j >= n:\n",
-        "            j = 0\n",
-        "\n",
-        "        # Si la casilla ya está ocupada\n",
-        "        if a[i][j] != 0:\n",
-        "            i = i_anterior + 1\n",
-        "            j = j_anterior\n",
-        "            if i >= n:\n",
-        "                i = 0\n",
-        "\n",
-        "    # Imprimir el cuadrado\n",
-        "    for fila in a:\n",
-        "        for num in fila:\n",
-        "            print(f\"{num:3}\", end=\" \")  # ancho de 3 para alinear\n",
-        "        print()  # nueva línea por fila\n",
-        "\n",
-        "# Programa principal\n",
-        "while True:\n",
-        "    n = int(input(\"Dame las dimensiones del cuadrado (impar, entre 3 y 11): \"))\n",
-        "    if n % 2 != 0 and 3 <= n <= 11:\n",
-        "        break\n",
-        "    print(\"¡Error! Debe ser un número impar entre 3 y 11.\")\n",
-        "\n",
-        "dibujar_cuadrado(n)\n"
-      ],
-      "metadata": {
-        "id": "8G_qh6HCYPI5"
-      },
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "Algoritmo CuadradoMagico\n",
-        "    Definir n, i, j, c Como Entero\n",
-        "    Definir a[11,11] Como Entero  // matriz de máximo tamaño 11x11\n",
-        "    \n",
-        "    // Pedir n hasta que sea impar y esté entre 3 y 11\n",
-        "    Repetir\n",
-        "        Escribir \"Dame las dimensiones del cuadrado (impar, entre 3 y 11): \"\n",
-        "        Leer n\n",
-        "        Si n mod 2 = 0 o n < 3 o n > 11 Entonces\n",
-        "            Escribir \"¡Error! Debe ser un número impar entre 3 y 11.\"\n",
-        "        FinSi\n",
-        "    Hasta Que n mod 2 <> 0 Y n >= 3 Y n <= 11\n",
-        "\n",
-        "    // Inicializar matriz con ceros\n",
-        "    Para i = 1 Hasta n\n",
-        "        Para j = 1 Hasta n\n",
-        "            a[i,j] = 0\n",
-        "        FinPara\n",
-        "    FinPara\n",
-        "\n",
-        "    // Posición inicial del 1\n",
-        "    i = 1\n",
-        "    j = (n div 2) + 1  // PSeInt inicia índices en 1\n",
-        "\n",
-        "    // Llenar el cuadrado mágico\n",
-        "    Para c = 1 Hasta n * n\n",
-        "        a[i,j] = c\n",
-        "\n",
-        "        i_anterior = i\n",
-        "        j_anterior = j\n",
-        "\n",
-        "        // Próxima posición: arriba y a la derecha\n",
-        "        i = i - 1\n",
-        "        j = j + 1\n",
-        "\n",
-        "        // Ajuste para ciclicidad\n",
-        "        Si i < 1 Entonces\n",
-        "            i = n\n",
-        "        FinSi\n",
-        "        Si j > n Entonces\n",
-        "            j = 1\n",
-        "        FinSi\n",
-        "\n",
-        "        // Si la casilla ya está ocupada\n",
-        "        Si a[i,j] <> 0 Entonces\n",
-        "            i = i_anterior + 1\n",
-        "            j = j_anterior\n",
-        "            Si i > n Entonces\n",
-        "                i = 1\n",
-        "            FinSi\n",
-        "        FinSi\n",
-        "    FinPara\n",
-        "\n",
-        "    // Imprimir el cuadrado\n",
-        "    Para i = 1 Hasta n\n",
-        "        Para j = 1 Hasta n\n",
-        "            EscribirSinSaltolinea a[i,j],\" \"\n",
-        "        FinPara\n",
-        "        Escribir \"\" // nueva línea\n",
-        "    FinPara\n",
-        "\n",
-        "FinAlgoritmo"
-      ],
-      "metadata": {
-        "id": "r1ouZCkzYxKH"
-      }
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "7.11. Obtener un algoritmo que efectúe la multiplicación de dos matrices A, B."
-      ],
-      "metadata": {
-        "id": "7mH0yfBJYzTr"
-      }
-    },
-    {
-      "cell_type": "code",
-      "source": [
-        "# Función para leer una matriz\n",
-        "def leer_matriz(filas, columnas, nombre=\"\"):\n",
-        "    print(f\"Deme elementos de la matriz {nombre}:\")\n",
-        "    matriz = []\n",
-        "    for i in range(filas):\n",
-        "        fila = []\n",
-        "        for j in range(columnas):\n",
-        "            valor = float(input(f\"Elemento [{i+1},{j+1}]: \"))\n",
-        "            fila.append(valor)\n",
-        "        matriz.append(fila)\n",
-        "    return matriz\n",
-        "\n",
-        "# Función para calcular y mostrar el producto de matrices\n",
-        "def calcescrproducto(a, b, m, p, n):\n",
-        "    # Crear matriz resultado m x n inicializada con ceros\n",
-        "    c = [[0 for _ in range(n)] for _ in range(m)]\n",
-        "\n",
-        "    # Multiplicación de matrices\n",
-        "    for i in range(m):\n",
-        "        for j in range(n):\n",
-        "            for k in range(p):\n",
-        "                c[i][j] += a[i][k] * b[k][j]\n",
-        "\n",
-        "    # Imprimir la matriz resultado\n",
-        "    print(\"Producto de matrices:\")\n",
-        "    for fila in c:\n",
-        "        for val in fila:\n",
-        "            print(f\"{val:8.2f}\", end=\" \")  # ancho 8, 2 decimales\n",
-        "        print()  # nueva línea\n",
-        "\n",
-        "# Programa principal\n",
-        "while True:\n",
-        "    m = int(input(\"Dimensiones de la 1ª matriz - filas (<=10): \"))\n",
-        "    p = int(input(\"Dimensiones de la 1ª matriz - columnas (<=10): \"))\n",
-        "    n = int(input(\"Columnas de la 2ª matriz (<=10): \"))\n",
-        "    if m <= 10 and p <= 10 and n <= 10:\n",
-        "        break\n",
-        "    print(\"¡Error! Las dimensiones deben ser <= 10.\")\n",
-        "\n",
-        "# Leer matrices\n",
-        "a = leer_matriz(m, p, \"A\")\n",
-        "b = leer_matriz(p, n, \"B\")\n",
-        "\n",
-        "# Calcular y mostrar el producto\n",
-        "calcescrproducto(a, b, m, p, n)\n"
-      ],
-      "metadata": {
-        "id": "KJ0lHsh0Y4JH"
-      },
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "Algoritmo MultiplicarMatrices\n",
-        "    Definir m, n, p, i, j, k Como Entero\n",
-        "    Definir a[10,10], b[10,10], c[10,10] Como Real\n",
-        "\n",
-        "    // Pedir dimensiones de matrices hasta que sean <= 10\n",
-        "    Repetir\n",
-        "        Escribir \"Dimensiones de la 1ª matriz (filas columnas, <=10):\"\n",
-        "        Leer m, p\n",
-        "        Escribir \"Columnas de la 2ª matriz (<=10):\"\n",
-        "        Leer n\n",
-        "        Si m > 10 o p > 10 o n > 10 Entonces\n",
-        "            Escribir \"¡Error! Las dimensiones deben ser <= 10.\"\n",
-        "        FinSi\n",
-        "    Hasta Que m <= 10 Y p <= 10 Y n <= 10\n",
-        "\n",
-        "    // Leer matrices\n",
-        "    Llamar leer_matriz(a, m, p, \"A\")\n",
-        "    Llamar leer_matriz(b, p, n, \"B\")\n",
-        "\n",
-        "    // Calcular y mostrar producto\n",
-        "    Llamar calcescrproducto(a, b, c, m, p, n)\n",
-        "\n",
-        "FinAlgoritmo\n",
-        "\n",
-        "//--------------------------------------------\n",
-        "\n",
-        "Procedimiento leer_matriz(Matriz[ , ]: mat; E entero: filas, columnas; E cadena: nombre)\n",
-        "    Definir i, j Como Entero\n",
-        "    Para i = 1 Hasta filas\n",
-        "        Escribir \"Fila \", i, \" de la matriz \", nombre, \":\"\n",
-        "        Para j = 1 Hasta columnas\n",
-        "            Leer mat[i,j]\n",
-        "        FinPara\n",
-        "    FinPara\n",
-        "FinProcedimiento\n",
-        "\n",
-        "//--------------------------------------------\n",
-        "\n",
-        "Procedimiento calcescrproducto(Matriz[ , ]: a, b, c; E entero: m, p, n)\n",
-        "    Definir i, j, k Como Entero\n",
-        "\n",
-        "    // Inicializar matriz resultado con ceros\n",
-        "    Para i = 1 Hasta m\n",
-        "        Para j = 1 Hasta n\n",
-        "            c[i,j] = 0\n",
-        "        FinPara\n",
-        "    FinPara\n",
-        "\n",
-        "    // Multiplicación de matrices\n",
-        "    Para i = 1 Hasta m\n",
-        "        Para j = 1 Hasta n\n",
-        "            Para k = 1 Hasta p\n",
-        "                c[i,j] = c[i,j] + a[i,k] * b[k,j]\n",
-        "            FinPara\n",
-        "        FinPara\n",
-        "    FinPara\n",
-        "\n",
-        "    // Imprimir matriz resultado\n",
-        "    Escribir \"Producto de matrices:\"\n",
-        "    Para i = 1 Hasta m\n",
-        "        Para j = 1 Hasta n\n",
-        "            EscribirSinSaltolinea c[i,j], \" \"\n",
-        "        FinPara\n",
-        "        Escribir \"\" // nueva línea por fila\n",
-        "    FinPara\n",
-        "FinProcedimiento"
-      ],
-      "metadata": {
-        "id": "LeyxkwVhZLz1"
-      }
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "7.12. Algoritmo que triangule una matriz cuadrada y halle su determinante. En las matrices cuadradas el valor del de\n",
-        "terminante coincide con el producto de los elementos de la diagonal de la matriz triangulada, multiplicado por –1\n",
-        "tantas veces como hayamos intercambiado filas al triangular la matriz.\n",
-        "Proceso de triangulación de una matriz para todo i desde 1 hasta n – 1 hacer:\n",
-        "a)  Si el elemento de lugar (i,i) es nulo, intercambiar filas hasta que dicho elemento sea no nulo o agotar los\n",
-        "posibles intercambios.\n",
-        "b)  \n",
-        "A continuación se busca el primer elemento no nulo de la fila i-ésima y, en el caso de existir, se usa para\n",
-        "hacer ceros en la columna de abajo.\n",
-        "Estructuras de datos I  (arrays y estructuras)  \n",
-        "281\n",
-        "Sea dicho elemento matriz[i,r]\n",
-        "Multiplicar fila i por matriz[i+1,r]/matriz[i,r] y restarlo a la i+1\n",
-        "Multiplicar fila i por matriz[i+2,r]/matriz[i,r] y restarlo a la i+2\n",
-        " ............................................................................................................\n",
-        "Multiplicar fila i por matriz[m,r]/matriz[i,r] y restarlo a la m"
-      ],
-      "metadata": {
-        "id": "gbk0iWdwZMqF"
-      }
-    },
-    {
-      "cell_type": "code",
-      "source": [
-        "def leer_matriz(n):\n",
-        "    \"\"\"Lee una matriz cuadrada de tamaño n x n\"\"\"\n",
-        "    matriz = []\n",
-        "    print(\"Deme los valores para la matriz:\")\n",
-        "    for i in range(n):\n",
-        "        fila = []\n",
-        "        for j in range(n):\n",
-        "            val = float(input(f\"M[{i+1},{j+1}]: \"))\n",
-        "            fila.append(val)\n",
-        "        matriz.append(fila)\n",
-        "    return matriz\n",
-        "\n",
-        "def escribir_matriz(matriz):\n",
-        "    \"\"\"Imprime la matriz en pantalla\"\"\"\n",
-        "    print(\"Matriz triangulada:\")\n",
-        "    for fila in matriz:\n",
-        "        for val in fila:\n",
-        "            print(f\"{val:10.4f}\", end=\" \")\n",
-        "        print()\n",
-        "    input(\"Pulse Enter para continuar...\")\n",
-        "\n",
-        "def intercambiar_filas(matriz, i, j):\n",
-        "    \"\"\"Intercambia las filas i y j de la matriz\"\"\"\n",
-        "    matriz[i], matriz[j] = matriz[j], matriz[i]\n",
-        "\n",
-        "def triangula(matriz):\n",
-        "    \"\"\"Triangula la matriz y devuelve su determinante\"\"\"\n",
-        "    n = len(matriz)\n",
-        "    signo = 1\n",
-        "\n",
-        "    for i in range(n-1):\n",
-        "        # Si el elemento pivote es cero, buscar fila con valor no nulo y hacer intercambio\n",
-        "        if matriz[i][i] == 0:\n",
-        "            t = 1\n",
-        "            while i + t < n and matriz[i+t][i] == 0:\n",
-        "                t += 1\n",
-        "            if i + t < n:\n",
-        "                intercambiar_filas(matriz, i, i+t)\n",
-        "                signo *= -1\n",
-        "                escribir_matriz(matriz)\n",
-        "\n",
-        "        # Buscar primer elemento no nulo en la fila i desde la columna i en adelante\n",
-        "        r = i\n",
-        "        while r < n and matriz[i][r] == 0:\n",
-        "            r += 1\n",
-        "\n",
-        "        if r < n and matriz[i][r] != 0:\n",
-        "            # Hacer ceros debajo del pivote\n",
-        "            for t in range(i+1, n):\n",
-        "                if matriz[t][r] != 0:\n",
-        "                    factor = matriz[t][r] / matriz[i][r]\n",
-        "                    for j in range(r, n):\n",
-        "                        matriz[t][j] -= matriz[i][j] * factor\n",
-        "                    escribir_matriz(matriz)\n",
-        "\n",
-        "    # Calcular determinante como producto de la diagonal principal\n",
-        "    dt = signo\n",
-        "    for i in range(n):\n",
-        "        dt *= matriz[i][i]\n",
-        "    return dt\n",
-        "\n",
-        "# -------------------------------\n",
-        "# Programa principal\n",
-        "n = int(input(\"Ingrese el tamaño de la matriz cuadrada (n x n): \"))\n",
-        "matriz = leer_matriz(n)\n",
-        "determinante = triangula(matriz)\n",
-        "print(f\"Determinante = {determinante:.4f}\")\n"
-      ],
-      "metadata": {
-        "id": "GfyANINDZP6v"
-      },
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "Algoritmo TriangulacionMatriz\n",
-        "    Definir n, i, j, r, t, signo Como Entero\n",
-        "    Definir dt, factor Como Real\n",
-        "    Definir matriz[10,10] Como Real\n",
-        "\n",
-        "    // Leer tamaño de la matriz cuadrada\n",
-        "    Escribir \"Ingrese el tamaño de la matriz cuadrada (n x n, <=10):\"\n",
-        "    Leer n\n",
-        "\n",
-        "    // Leer matriz\n",
-        "    Llamar leer_matriz(matriz, n)\n",
-        "\n",
-        "    // Triangular y calcular determinante\n",
-        "    dt = 1\n",
-        "    signo = 1\n",
-        "    Para i = 1 Hasta n-1\n",
-        "        // Si el pivote es cero, buscar fila con valor no nulo y hacer intercambio\n",
-        "        Si matriz[i,i] = 0 Entonces\n",
-        "            t = 1\n",
-        "            Repetir\n",
-        "                t = t + 1\n",
-        "            Hasta Que (i + t > n) O (matriz[i+t,i] <> 0)\n",
-        "            \n",
-        "            Si i + t <= n Entonces\n",
-        "                // Intercambiar filas i y i+t\n",
-        "                Para j = 1 Hasta n\n",
-        "                    Llamar interc(matriz[i,j], matriz[i+t,j])\n",
-        "                FinPara\n",
-        "                signo = signo * (-1)\n",
-        "                Llamar escribir_matriz(matriz, n)\n",
-        "            FinSi\n",
-        "        FinSi\n",
-        "\n",
-        "        // Buscar primer elemento no nulo en fila i desde la columna i\n",
-        "        r = i\n",
-        "        Repetir\n",
-        "            r = r + 1\n",
-        "        Hasta Que (r > n) O (matriz[i,r] <> 0)\n",
-        "\n",
-        "        Si r <= n Y matriz[i,r] <> 0 Entonces\n",
-        "            // Hacer ceros debajo del pivote\n",
-        "            Para t = i+1 Hasta n\n",
-        "                Si matriz[t,r] <> 0 Entonces\n",
-        "                    factor = matriz[t,r] / matriz[i,r]\n",
-        "                    Para j = r Hasta n\n",
-        "                        matriz[t,j] = matriz[t,j] - matriz[i,j] * factor\n",
-        "                    FinPara\n",
-        "                    Llamar escribir_matriz(matriz, n)\n",
-        "                FinSi\n",
-        "            FinPara\n",
-        "        FinSi\n",
-        "    FinPara\n",
-        "\n",
-        "    // Calcular determinante\n",
-        "    dt = signo\n",
-        "    Para i = 1 Hasta n\n",
-        "        dt = dt * matriz[i,i]\n",
-        "    FinPara\n",
-        "\n",
-        "    Escribir \"Determinante = \", dt\n",
-        "FinAlgoritmo\n",
-        "\n",
-        "Procedimiento leer_matriz(E/S matriz[ , ]; E entero: n)\n",
-        "\n",
-        "    Definir i, j Como Entero\n",
-        "    Escribir \"Deme los valores para la matriz:\"\n",
-        "    Para i = 1 Hasta n\n",
-        "        Para j = 1 Hasta n\n",
-        "            Leer matriz[i,j]\n",
-        "        FinPara\n",
-        "    FinPara\n",
-        "FinProcedimiento\n",
-        "\n",
-        "Procedimiento escribir_matriz(E matriz[ , ]; E entero: n)\n",
-        "    Definir i, j Como Entero\n",
-        "    Escribir \"Matriz triangulada:\"\n",
-        "    Para i = 1 Hasta n\n",
-        "        Para j = 1 Hasta n\n",
-        "            EscribirSinSaltolinea matriz[i,j], \" \"\n",
-        "        FinPara\n",
-        "        Escribir \"\" // nueva línea por fila\n",
-        "    FinPara\n",
-        "FinProcedimiento\n",
-        "\n",
-        "Procedimiento interc(E/S real: a, b)\n",
-        "\n",
-        "    Definir aux Como Real\n",
-        "    aux = a\n",
-        "    a = b\n",
-        "    b = aux\n",
-        "FinProcedimiento\n"
-      ],
-      "metadata": {
-        "id": "m7A2T21SZ6CF"
-      }
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "# Funciones(módulos):resolver los ejercicios propuestos y resueltos TODOS en PsInet y Python*\n",
-        " -----------\n",
-        "# EJERCICOS RESUELTOS\n"
-      ],
-      "metadata": {
-        "id": "eNj1UezsX-Dk"
-      }
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "6.1. Realización del factorial de un número entero."
-      ],
-      "metadata": {
-        "id": "uBor4LCXkoic"
-      }
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "**Python**"
-      ],
-      "metadata": {
-        "id": "IUEiUoXXk0Al"
-      }
-    },
-    {
-      "cell_type": "code",
-      "source": [
-        "def factorial(n):\n",
-        "    f = 1\n",
-        "    if n == 0:\n",
-        "        return 1\n",
-        "    else:\n",
-        "        for i in range(1, n + 1):\n",
-        "            f *= i\n",
-        "        return f\n",
-        "num = int(input(\"Ingrese un número entero: \"))\n",
-        "resultado = factorial(num)\n",
-        "print(\"El factorial es:\", resultado)\n"
-      ],
-      "metadata": {
-        "id": "11aOzd4nkoFg"
-      },
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "**PSeInt**"
-      ],
-      "metadata": {
-        "id": "9zl01qRKk5Xj"
-      }
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "6.2. Diseñar un algoritmo que calcule el máximo común divisor de dos números mediante el algoritmo de Euclides.\n",
-        "Sean los dos números A y B. El método para hallar el máximo común divisor (mcd) de dos números A y B por el método\n",
-        "de Euclides es:\n",
-        "1. Dividir el número mayor (A) por el menor (B). Si el resto de la división es cero, el número B es el máximo común\n",
-        "divisor.\n",
-        "2. Si la división no es exacta, se divide el número menor (B) por el resto de la división anterior.\n",
-        "3. Se siguen los pasos anteriores hasta obtener un resto cero. El último divisor es el mcd buscado."
-      ],
-      "metadata": {
-        "id": "c33KnCUdlMuc"
-      }
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "**Python**"
-      ],
-      "metadata": {
-        "id": "LQEd4frilOOV"
-      }
-    },
-    {
-      "cell_type": "code",
-      "source": [
-        "def mcd(a, b):\n",
-        "    while a != b:\n",
-        "        if a > b:\n",
-        "            a = a - b\n",
-        "        else:\n",
-        "            b = b - a\n",
-        "    return a\n",
-        "num1 = int(input(\"Ingrese el primer número: \"))\n",
-        "num2 = int(input(\"Ingrese el segundo número: \"))\n",
-        "resultado = mcd(num1, num2)\n",
-        "print(\"El máximo común divisor es:\", resultado)"
-      ],
-      "metadata": {
-        "id": "vysFgZHxlV0B"
-      },
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "**PSeInt**"
-      ],
-      "metadata": {
-        "id": "EDylyjzBlRBx"
-      }
-    },
-    {
-      "cell_type": "code",
-      "source": [
-        "Algoritmo Maximo_Comun_Divisor\n",
-        "    Definir a, b Como Entero;\n",
-        "\n",
-        "    Escribir \"Ingrese el primer numero:\";\n",
-        "    Leer a;\n",
-        "\n",
-        "    Escribir \"Ingrese el segundo numero:\";\n",
-        "    Leer b;\n",
-        "\n",
-        "    Mientras a <> b Hacer\n",
-        "        Si a > b Entonces\n",
-        "            a <- a - b;\n",
-        "        SiNo\n",
-        "            b <- b - a;\n",
-        "        FinSi\n",
-        "    FinMientras\n",
-        "\n",
-        "    Escribir \"El maximo comun divisor es: \", a;\n",
-        "FinAlgoritmo\n"
-      ],
-      "metadata": {
-        "id": "bAxbdE0Wldg2",
-        "outputId": "596a2d6c-81cb-4ae1-a2e9-5df3adcdbabd",
-        "colab": {
-          "base_uri": "https://localhost:8080/",
-          "height": 106
-        }
-      },
-      "execution_count": null,
-      "outputs": [
-        {
-          "output_type": "error",
-          "ename": "SyntaxError",
-          "evalue": "invalid syntax (ipython-input-3200303164.py, line 1)",
-          "traceback": [
-            "\u001b[0;36m  File \u001b[0;32m\"/tmp/ipython-input-3200303164.py\"\u001b[0;36m, line \u001b[0;32m1\u001b[0m\n\u001b[0;31m    Algoritmo Maximo_Comun_Divisor\u001b[0m\n\u001b[0m              ^\u001b[0m\n\u001b[0;31mSyntaxError\u001b[0m\u001b[0;31m:\u001b[0m invalid syntax\n"
-          ]
-        }
-      ]
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "6.3. Para calcular el máximo común divisor (mcd) de dos números se recurre a una función específica definida con un\n",
-        "subprograma. Se desea calcular la salida del programa principal con dos números A y B, cuyos valores son 10 y 25,\n",
-        "es decir, el mcd (A, B) y comprobar el método de paso de parámetros por valor."
-      ],
-      "metadata": {
-        "id": "RG-6Nty0lcy5"
-      }
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "**Python**"
-      ],
-      "metadata": {
-        "id": "z_C7SAv-lsXl"
-      }
-    },
-    {
-      "cell_type": "code",
-      "source": [
-        "def mcd(a, b):\n",
-        "    while a != b:\n",
-        "        if a > b:\n",
-        "            a = a - b\n",
-        "        else:\n",
-        "            b = b - a\n",
-        "    return a\n",
-        "x = 10\n",
-        "y = 25\n",
-        "n = mcd(x, y)\n",
-        "print(x, y, n)\n"
-      ],
-      "metadata": {
-        "id": "qeqPlhuLdZlu"
-      },
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "**PSeInt**"
-      ],
-      "metadata": {
-        "id": "olDoJjaYltCS"
-      }
-    },
-    {
-      "cell_type": "code",
-      "source": [
-        "Algoritmo MCD_PorValor\n",
-        "    Definir A, B, resultado Como Entero\n",
-        "\n",
-        "    // Asignar valores a A y B\n",
-        "    A <- 10\n",
-        "    B <- 25\n",
-        "\n",
-        "    // Llamar a la función que calcula el MCD\n",
-        "    resultado <- calcular_mcd(A, B)\n",
-        "\n",
-        "    // Mostrar los resultados\n",
-        "    Escribir \"El MCD de \", A, \" y \", B, \" es: \", resultado\n",
-        "FinAlgoritmo\n",
-        "\n",
-        "// Función que recibe parámetros por valor\n",
-        "Funcion calcular_mcd(x, y) Como Entero\n",
-        "    Mientras x <> y Hacer\n",
-        "        Si x > y Entonces\n",
-        "            x <- x - y\n",
-        "        Sino\n",
-        "            y <- y - x\n",
-        "        FinSi\n",
-        "    FinMientras\n",
-        "    Retornar x\n",
-        "FinFuncion\n"
-      ],
-      "metadata": {
-        "id": "wn3R_jccdCBs"
-      },
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "6.4. Realizar un algoritmo que permita ordenar tres números mediante un procedimiento de intercambio en dos variables\n",
-        "(paso de parámetros por referencia)."
-      ],
-      "metadata": {
-        "id": "_Ao0QfZlmKcS"
-      }
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "**Python**"
-      ],
-      "metadata": {
-        "id": "6R_UlPg4mx3t"
-      }
-    },
-    {
-      "cell_type": "code",
-      "source": [
-        "def intercambio(a, b):\n",
-        "    auxi = a\n",
-        "    a = b\n",
-        "    b = auxi\n",
-        "    return a, b\n",
-        "x = 132\n",
-        "y = 45\n",
-        "z = 15\n",
-        "if x > y:\n",
-        "    x, y = intercambio(x, y)\n",
-        "if y > z:\n",
-        "    y, z = intercambio(y, z)\n",
-        "if x > y:\n",
-        "    x, y = intercambio(x, y)\n",
-        "print(x, y, z)"
-      ],
-      "metadata": {
-        "id": "lmUb0dhKmLYQ"
-      },
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "**PSeInt**"
-      ],
-      "metadata": {
-        "id": "lq_4pWOImyig"
-      }
-    },
-    {
-      "cell_type": "code",
-      "source": [
-        "Algoritmo Ordenar_Tres_Numeros\n",
-        "    Definir x Como Entero;\n",
-        "    Definir k Como Entero;\n",
-        "    Definir z Como Entero;\n",
-        "    Definir aux Como Entero;\n",
-        "\n",
-        "    x <- 132;\n",
-        "    k <- 45;\n",
-        "    z <- 15;\n",
-        "\n",
-        "    Si x > k Entonces\n",
-        "        aux <- x;\n",
-        "        x <- k;\n",
-        "        k <- aux;\n",
-        "    FinSi\n",
-        "\n",
-        "    Si k > z Entonces\n",
-        "        aux <- k;\n",
-        "        k <- z;\n",
-        "        z <- aux;\n",
-        "    FinSi\n",
-        "\n",
-        "    Si x > k Entonces\n",
-        "        aux <- x;\n",
-        "        x <- k;\n",
-        "        k <- aux;\n",
-        "    FinSi\n",
-        "\n",
-        "    Escribir x, \" \", k, \" \", z;\n",
-        "FinAlgoritmo\n"
-      ],
-      "metadata": {
-        "id": "jAg4_MSymy5h"
-      },
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "6.5. Diseñar un algoritmo que llame a la función signo(X) y calcule: a) el signo de un número, b) el signo de la función\n",
-        "coseno."
-      ],
-      "metadata": {
-        "id": "R4uMgFslnEUd"
-      }
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "**Python**"
-      ],
-      "metadata": {
-        "id": "BkhrizW-nLca"
-      }
-    },
-    {
-      "cell_type": "code",
-      "source": [
-        "import math\n",
-        "def signo(x):\n",
-        "    if x > 0:\n",
-        "        return 1\n",
-        "    elif x < 0:\n",
-        "        return -1\n",
-        "    else:\n",
-        "        return 0\n",
-        "p = int(input(\"Ingrese un numero: \"))\n",
-        "y = signo(p)\n",
-        "z = signo(math.cos(p))\n",
-        "print(y, z)\n"
-      ],
-      "metadata": {
-        "id": "YPORqtpPnL13"
-      },
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "**PSeInt**"
-      ],
-      "metadata": {
-        "id": "_E4A5uNQnMLj"
-      }
-    },
-    {
-      "cell_type": "code",
-      "source": [
-        "Algoritmo Signos\n",
-        "    Definir p Como Entero;\n",
-        "    Definir q Como Entero;\n",
-        "    Definir z Como Entero;\n",
-        "    Definir c Como Real;\n",
-        "\n",
-        "    Escribir \"Ingrese un numero:\";\n",
-        "    Leer p;\n",
-        "\n",
-        "    // Signo del numero\n",
-        "    Si p > 0 Entonces\n",
-        "        q <- 1;\n",
-        "    SiNo\n",
-        "        Si p < 0 Entonces\n",
-        "            q <- -1;\n",
-        "        SiNo\n",
-        "            q <- 0;\n",
-        "        FinSi\n",
-        "    FinSi\n",
-        "\n",
-        "    // Coseno del numero\n",
-        "    c <- Cos(p);\n",
-        "\n",
-        "    // Signo del coseno\n",
-        "    Si c > 0 Entonces\n",
-        "        z <- 1;\n",
-        "    SiNo\n",
-        "        Si c < 0 Entonces\n",
-        "            z <- -1;\n",
-        "        SiNo\n",
-        "            z <- 0;\n",
-        "        FinSi\n",
-        "    FinSi\n",
-        "\n",
-        "    Escribir q, \" \", z;\n",
-        "FinAlgoritmo\n"
-      ],
-      "metadata": {
-        "id": "-9PeIqPmnMjt"
-      },
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "\n",
-        "\n",
-        "# EJERCICOS PROPUESTOS\n"
-      ],
-      "metadata": {
-        "id": "caxjTku5nt6_"
-      }
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "6.1. Diseñar una función que calcule la media de tres números leídos del teclado y poner un ejemplo de su\n",
-        "aplicación."
-      ],
-      "metadata": {
-        "id": "PAmoabA3oXOh"
-      }
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "**Python**"
-      ],
-      "metadata": {
-        "id": "QTCpCuCOoYdG"
-      }
-    },
-    {
-      "cell_type": "code",
-      "source": [
-        "def media(a, b, c):\n",
-        "    return (a + b + c) / 3\n",
-        "x = int(input(\"Ingrese el primer número: \"))\n",
-        "k = int(input(\"Ingrese el segundo número: \"))\n",
-        "z = int(input(\"Ingrese el tercer número: \"))\n",
-        "resultado = media(x, k, z)\n",
-        "print(\"La media es:\", resultado)\n"
-      ],
-      "metadata": {
-        "id": "EtSGVIlAoYxq"
-      },
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "**PSeInt**"
-      ],
-      "metadata": {
-        "id": "ovAHNnOXoZFM"
-      }
-    },
-    {
-      "cell_type": "code",
-      "source": [
-        "Algoritmo Media_Tres_Numeros\n",
-        "    Definir x Como Entero;\n",
-        "    Definir k Como Entero;\n",
-        "    Definir z Como Entero;\n",
-        "    Definir media Como Real;\n",
-        "\n",
-        "    Escribir \"Ingrese el primer numero:\";\n",
-        "    Leer x;\n",
-        "\n",
-        "    Escribir \"Ingrese el segundo numero:\";\n",
-        "    Leer k;\n",
-        "\n",
-        "    Escribir \"Ingrese el tercer numero:\";\n",
-        "    Leer z;\n",
-        "\n",
-        "    media <- (x + k + z) / 3;\n",
-        "\n",
-        "    Escribir \"La media es: \", media;\n",
-        "FinAlgoritmo\n"
-      ],
-      "metadata": {
-        "id": "0Fmm9e1KoZbF"
-      },
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "6.2. Diseñar la función FACTORIAL que calcule el factorial\n",
-        "de un número entero en el rango 100 a 1.000.000."
-      ],
-      "metadata": {
-        "id": "PJi3dM9Bok-6"
-      }
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "**Python**\n",
-        "\n"
-      ],
-      "metadata": {
-        "id": "yTK7i6bronc-"
-      }
-    },
-    {
-      "cell_type": "code",
-      "source": [
-        "def factorial(n):\n",
-        "    f = 1\n",
-        "    i = 1\n",
-        "    while i <= n:\n",
-        "        f = f * i\n",
-        "        i = i + 1\n",
-        "    return f\n",
-        "n = int(input(\"Ingrese un número entero: \"))\n",
-        "if n >= 100 and n <= 1000000:\n",
-        "    resultado = factorial(n)\n",
-        "    print(\"El factorial es:\", resultado)\n",
-        "else:\n",
-        "    print(\"El número no está en el rango permitido\")"
-      ],
-      "metadata": {
-        "id": "5ejCx0TQon1n"
-      },
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "**PSeInt**"
-      ],
-      "metadata": {
-        "id": "PWtEyqjLooIi"
-      }
-    },
-    {
-      "cell_type": "code",
-      "source": [
-        "Algoritmo Factorial_Rango\n",
-        "    Definir n Como Entero;\n",
-        "    Definir i Como Entero;\n",
-        "    Definir f Como Entero;\n",
-        "\n",
-        "    Escribir \"Ingrese un numero entero:\";\n",
-        "    Leer n;\n",
-        "\n",
-        "    Si n >= 100 Y n <= 1000000 Entonces\n",
-        "        f <- 1;\n",
-        "        i <- 1;\n",
-        "\n",
-        "        Mientras i <= n Hacer\n",
-        "            f <- f * i;\n",
-        "            i <- i + 1;\n",
-        "        FinMientras\n",
-        "\n",
-        "        Escribir \"El factorial es: \", f;\n",
-        "    SiNo\n",
-        "        Escribir \"El numero no esta en el rango permitido\";\n",
-        "    FinSi\n",
-        "FinAlgoritmo"
-      ],
-      "metadata": {
-        "id": "4caJ65O2ooex"
-      },
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "6.3. Diseñar un algoritmo para calcular el máximo común\n",
-        "divisor de cuatro números basado en un subalgoritmo función mcd (máximo común divisor de dos números)."
-      ],
-      "metadata": {
-        "id": "1oQfYJhRoxa-"
-      }
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "**Python**"
-      ],
-      "metadata": {
-        "id": "tyJFe-TUo1-a"
-      }
-    },
-    {
-      "cell_type": "code",
-      "source": [
-        "def mcd(a, b):\n",
-        "    while a != b:\n",
-        "        if a > b:\n",
-        "            a = a - b\n",
-        "        else:\n",
-        "            b = b - a\n",
-        "    return a\n",
-        "n1 = int(input(\"Ingrese el primer número: \"))\n",
-        "n2 = int(input(\"Ingrese el segundo número: \"))\n",
-        "n3 = int(input(\"Ingrese el tercer número: \"))\n",
-        "n4 = int(input(\"Ingrese el cuarto número: \"))\n",
-        "resultado = mcd(n1, n2)\n",
-        "resultado = mcd(resultado, n3)\n",
-        "resultado = mcd(resultado, n4)\n",
-        "print(\"El máximo común divisor es:\", resultado)"
-      ],
-      "metadata": {
-        "id": "8KT4qC2Co2S5"
-      },
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "**PSeInt**\n",
-        "\n"
-      ],
-      "metadata": {
-        "id": "xt9R_Oh1o2pn"
-      }
-    },
-    {
-      "cell_type": "code",
-      "source": [
-        "Algoritmo MCD_Cuatro_Numeros\n",
-        "    Definir n1 Como Entero;\n",
-        "    Definir n2 Como Entero;\n",
-        "    Definir n3 Como Entero;\n",
-        "    Definir n4 Como Entero;\n",
-        "    Definir a Como Entero;\n",
-        "    Definir b Como Entero;\n",
-        "\n",
-        "    Escribir \"Ingrese el primer numero:\";\n",
-        "    Leer n1;\n",
-        "    Escribir \"Ingrese el segundo numero:\";\n",
-        "    Leer n2;\n",
-        "    Escribir \"Ingrese el tercer numero:\";\n",
-        "    Leer n3;\n",
-        "    Escribir \"Ingrese el cuarto numero:\";\n",
-        "    Leer n4;\n",
-        "\n",
-        "    // MCD de n1 y n2\n",
-        "    a <- n1;\n",
-        "    b <- n2;\n",
-        "    Mientras a <> b Hacer\n",
-        "        Si a > b Entonces\n",
-        "            a <- a - b;\n",
-        "        SiNo\n",
-        "            b <- b - a;\n",
-        "        FinSi\n",
-        "    FinMientras\n",
-        "    n1 <- a;\n",
-        "\n",
-        "    // MCD del resultado con n3\n",
-        "    a <- n1;\n",
-        "    b <- n3;\n",
-        "    Mientras a <> b Hacer\n",
-        "        Si a > b Entonces\n",
-        "            a <- a - b;\n",
-        "        SiNo\n",
-        "            b <- b - a;\n",
-        "        FinSi\n",
-        "    FinMientras\n",
-        "    n1 <- a;\n",
-        "\n",
-        "    // MCD del resultado con n4\n",
-        "    a <- n1;\n",
-        "    b <- n4;\n",
-        "    Mientras a <> b Hacer\n",
-        "        Si a > b Entonces\n",
-        "            a <- a - b;\n",
-        "        SiNo\n",
-        "            b <- b - a;\n",
-        "        FinSi\n",
-        "    FinMientras\n",
-        "\n",
-        "    Escribir \"El maximo comun divisor es: \", a;\n",
-        "FinAlgoritmo\n"
-      ],
-      "metadata": {
-        "id": "yedxwi15qlO8"
-      },
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "6.4. Diseñar una función que encuentre el mayor de dos\n",
-        "números enteros."
-      ],
-      "metadata": {
-        "id": "JTT7ofU7pBlD"
-      }
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "**Python**"
-      ],
-      "metadata": {
-        "id": "vDg1zDwepHZ6"
-      }
-    },
-    {
-      "cell_type": "code",
-      "source": [
-        "def mayor(a, b):\n",
-        "    if a > b:\n",
-        "        return a\n",
-        "    else:\n",
-        "        return b\n",
-        "x = int(input(\"Ingrese el primer número: \"))\n",
-        "z = int(input(\"Ingrese el segundo número: \"))\n",
-        "resultado = mayor(x, z)\n",
-        "print(\"El número mayor es:\", resultado)\n"
-      ],
-      "metadata": {
-        "id": "5NIzw0HzpHvY"
-      },
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "**PSeInt**"
-      ],
-      "metadata": {
-        "id": "dobOgOw1pIGn"
-      }
-    },
-    {
-      "cell_type": "code",
-      "source": [
-        "Algoritmo Mayor_De_Dos\n",
-        "    Definir x Como Entero;\n",
-        "    Definir z Como Entero;\n",
-        "    Definir mayor Como Entero;\n",
-        "\n",
-        "    Escribir \"Ingrese el primer numero:\";\n",
-        "    Leer x;\n",
-        "\n",
-        "    Escribir \"Ingrese el segundo numero:\";\n",
-        "    Leer z;\n",
-        "\n",
-        "    Si x > z Entonces\n",
-        "        mayor <- x;\n",
-        "    SiNo\n",
-        "        mayor <- z;\n",
-        "    FinSi\n",
-        "\n",
-        "    Escribir \"El numero mayor es: \", mayor;\n",
-        "FinAlgoritmo\n"
-      ],
-      "metadata": {
-        "id": "6AP6Fv8fpIbr"
-      },
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "6.5. Diseñar una función que calcule xn para x, variable\n",
-        "real y n variable entera."
-      ],
-      "metadata": {
-        "id": "5w5XX6KHpUnW"
-      }
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "**Python**"
-      ],
-      "metadata": {
-        "id": "xKvoWpi8pYun"
-      }
-    },
-    {
-      "cell_type": "code",
-      "source": [
-        "def potencia(x, n):\n",
-        "    resultado = 1\n",
-        "    i = 1\n",
-        "    while i <= n:\n",
-        "        resultado = resultado * x\n",
-        "        i = i + 1\n",
-        "    return resultado\n",
-        "x = int(input(\"Ingrese el valor de x: \"))\n",
-        "n = int(input(\"Ingrese el valor de n: \"))\n",
-        "print(\"El resultado es:\", potencia(x, n))\n"
-      ],
-      "metadata": {
-        "id": "FBBbtqUJpZAC"
-      },
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "**PSeInt**"
-      ],
-      "metadata": {
-        "id": "1Z4JofXgpZcu"
-      }
-    },
-    {
-      "cell_type": "code",
-      "source": [
-        "Algoritmo Potencia\n",
-        "    Definir x Como Entero;\n",
-        "    Definir n Como Entero;\n",
-        "    Definir i Como Entero;\n",
-        "    Definir resultado Como Entero;\n",
-        "\n",
-        "    Escribir \"Ingrese el valor de x:\";\n",
-        "    Leer x;\n",
-        "\n",
-        "    Escribir \"Ingrese el valor de n:\";\n",
-        "    Leer n;\n",
-        "\n",
-        "    resultado <- 1;\n",
-        "    i <- 1;\n",
-        "\n",
-        "    Mientras i <= n Hacer\n",
-        "        resultado <- resultado * x;\n",
-        "        i <- i + 1;\n",
-        "    FinMientras\n",
-        "\n",
-        "    Escribir \"El resultado es: \", resultado;\n",
-        "FinAlgoritmo"
-      ],
-      "metadata": {
-        "id": "5XW5Bd3spZyX"
-      },
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "6.6. Diseñar un procedimiento que acepte un número de\n",
-        "mes, un número de día y un número de año y los visualice en el formato\n",
-        "dd/mm/aa\n",
-        " Por ejemplo, los valores 19,09,1987 se visualizarían\n",
-        "como\n",
-        "19/9/87\n",
-        " y para los valores 3, 9 y 1905\n",
-        "3/9/05"
-      ],
-      "metadata": {
-        "id": "1zn9CCk5JFMz"
-      }
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "**Phyton**"
-      ],
-      "metadata": {
-        "id": "OLjfnmd0Ja2r"
-      }
-    },
-    {
-      "cell_type": "code",
-      "source": [
-        "# Algoritmo FormatoFecha en Python sin funciones especiales\n",
-        "\n",
-        "# Definir variables\n",
-        "dia = 0\n",
-        "mes = 0\n",
-        "anio = 0\n",
-        "anio2 = 0\n",
-        "texto_anio = \"\"\n",
-        "\n",
-        "# Pedir datos al usuario\n",
-        "print(\"Ingrese el día:\")\n",
-        "dia = int(input())\n",
-        "print(\"Ingrese el mes:\")\n",
-        "mes = int(input())\n",
-        "print(\"Ingrese el año:\")\n",
-        "anio = int(input())\n",
-        "\n",
-        "# Obtener los dos últimos dígitos del año\n",
-        "anio2 = anio % 100\n",
-        "\n",
-        "# Convertir a texto y agregar cero delante si es menor a 10\n",
-        "if anio2 < 10:\n",
-        "    texto_anio = \"0\" + str(anio2)\n",
-        "else:\n",
-        "    texto_anio = str(anio2)\n",
-        "\n",
-        "# Mostrar la fecha en formato dd/mm/aa\n",
-        "print(str(dia) + \"/\" + str(mes) + \"/\" + texto_anio)"
-      ],
-      "metadata": {
-        "id": "LyUn45cIJLFj"
-      },
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "**Pseint**"
-      ],
-      "metadata": {
-        "id": "9KPlT5TRJgSK"
-      }
-    },
-    {
-      "cell_type": "code",
-      "source": [
-        "Algoritmo ejercicio6_6_FormatoFecha\n",
-        "    Definir dia, mes, anio, anio2 Como Entero\n",
-        "    Definir texto_anio Como Cadena\n",
-        "\n",
-        "    Escribir \"Ingrese el día:\"\n",
-        "    Leer dia\n",
-        "    Escribir \"Ingrese el mes:\"\n",
-        "    Leer mes\n",
-        "    Escribir \"Ingrese el año:\"\n",
-        "    Leer anio\n",
-        "\n",
-        "    // Obtener los dos últimos dígitos del año\n",
-        "    anio2 <- anio MOD 100\n",
-        "\n",
-        "    // Convertir a texto y agregar cero delante si es menor a 10\n",
-        "    Si anio2 < 10 Entonces\n",
-        "        texto_anio <- \"0\" + ConvertirATexto(anio2)\n",
-        "    Sino\n",
-        "        texto_anio <- ConvertirATexto(anio2)\n",
-        "    FinSi\n",
-        "\n",
-        "    // Mostrar la fecha en formato dd/mm/aa\n",
-        "    Escribir ConvertirATexto(dia) + \"/\" + ConvertirATexto(mes) + \"/\" + texto_anio\n",
-        "FinAlgoritmo\n"
-      ],
-      "metadata": {
-        "id": "ERm2uRvZJj27"
-      },
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "6.7. Realizar un procedimiento que realice la conversión\n",
-        "de coordenadas polares (r, θ) a coordenadas cartesianas (x, y)\n",
-        "x = r.cos (θ)\n",
-        "y = r.sen(θ)"
-      ],
-      "metadata": {
-        "id": "4hOX6_YjJofa"
-      }
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "**Phyton**"
-      ],
-      "metadata": {
-        "id": "yxEooamwJ2cK"
-      }
-    },
-    {
-      "cell_type": "code",
-      "source": [
-        "# Conversión de coordenadas polares a cartesianas\n",
-        "\n",
-        "# Definir variables\n",
-        "r = 0.0\n",
-        "theta = 0.0\n",
-        "x = 0.0\n",
-        "y = 0.0\n",
-        "radianes = 0.0\n",
-        "\n",
-        "# Pedir datos al usuario\n",
-        "print(\"Ingrese el valor de r:\")\n",
-        "r = float(input())\n",
-        "print(\"Ingrese el angulo theta en grados:\")\n",
-        "theta = float(input())\n",
-        "\n",
-        "# Convertir grados a radianes\n",
-        "radianes = theta * 3.14159265 / 180\n",
-        "\n",
-        "# Calcular coordenadas cartesianas\n",
-        "x = r * ( (3.14159265/180) * theta ) # Esto era para mostrar la idea\n",
-        "# Pero necesitamos coseno y seno, sin funciones de Python, podemos usar aproximaciones\n",
-        "\n",
-        "\n",
-        "import math  # Solo si podemos usar funciones matemáticas básicas\n",
-        "x = r * math.cos(radianes)\n",
-        "y = r * math.sin(radianes)\n",
-        "\n",
-        "# Mostrar resultados\n",
-        "print(\"Coordenadas cartesianas:\")\n",
-        "print(\"x =\", x)\n",
-        "print(\"y =\", y)\n"
-      ],
-      "metadata": {
-        "id": "XrH7S7PJJ4ba"
-      },
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "**Pseint**"
-      ],
-      "metadata": {
-        "id": "0GAwO71eJ847"
-      }
-    },
-    {
-      "cell_type": "code",
-      "source": [
-        "Algoritmo PolaresACartesianas\n",
-        "\n",
-        "    // Definir variables\n",
-        "    Definir r, theta, x, f, radianes Como Real\n",
-        "\n",
-        "    Escribir \"Ingrese el valor de r:\"\n",
-        "    Leer r\n",
-        "    Escribir \"Ingrese el angulo theta en grados:\"\n",
-        "    Leer theta\n",
-        "\n",
-        "    // Convertir grados a radianes\n",
-        "    radianes <- theta * 3.14159265 / 180\n",
-        "\n",
-        "    // Calcular coordenadas cartesianas\n",
-        "    x <- r * cos(radianes)\n",
-        "    f <- r * sen(radianes)\n",
-        "\n",
-        "    // Mostrar resultados\n",
-        "    Escribir \"Coordenadas cartesianas:\"\n",
-        "    Escribir \"x = \", x\n",
-        "    Escribir \"y = \", f\n",
-        "\n",
-        "FinAlgoritmo\n"
-      ],
-      "metadata": {
-        "id": "JWB5BTm1J-Yi"
-      },
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "6.8. Escribir una función Salario que calcule los sa larios\n",
-        "de un trabajador para un número dado de horas trabajadas y un salario hora. Las horas que su peren las 40\n",
-        "horas semanales se pagarán como extras con un salario hora 1,5 veces el salario ordinario."
-      ],
-      "metadata": {
-        "id": "pUbJOhGUKQ1i"
-      }
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "Phyton"
-      ],
-      "metadata": {
-        "id": "QXTGO93kKSPq"
-      }
-    },
-    {
-      "cell_type": "code",
-      "source": [
-        "# Función para calcular salario con horas extras\n",
-        "def calcular_salario(horas, salario_hora):\n",
-        "    if horas > 40:\n",
-        "        horas_extra = horas - 40\n",
-        "        salario_total = 40 * salario_hora + horas_extra * salario_hora * 1.5\n",
-        "    else:\n",
-        "        salario_total = horas * salario_hora\n",
-        "    return salario_total\n",
-        "\n",
-        "# Pedir datos al usuario\n",
-        "horas = float(input(\"Ingrese el número de horas trabajadas: \"))\n",
-        "salario_hora = float(input(\"Ingrese el salario por hora: \"))\n",
-        "\n",
-        "# Calcular salario usando la función\n",
-        "salario_total = calcular_salario(horas, salario_hora)\n",
-        "\n",
-        "# Mostrar el resultado\n",
-        "print(\"El salario total es:\", salario_total)\n"
-      ],
-      "metadata": {
-        "id": "wg-WU34lKTgK"
-      },
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "**Pseint**"
-      ],
-      "metadata": {
-        "id": "FHY51885KfNh"
-      }
-    },
-    {
-      "cell_type": "code",
-      "source": [
-        "Algoritmo CalcularSalario\n",
-        "\n",
-        "    // Definir variables\n",
-        "    Definir horas, salarioHora, salarioTotal, horasExtra Como Real\n",
-        "\n",
-        "    // Pedir datos al usuario\n",
-        "    Escribir \"Ingrese el número de horas trabajadas:\"\n",
-        "    Leer horas\n",
-        "    Escribir \"Ingrese el salario por hora:\"\n",
-        "    Leer salarioHora\n",
-        "\n",
-        "    // Calcular salario\n",
-        "    Si horas > 40 Entonces\n",
-        "        horasExtra <- horas - 40\n",
-        "        salarioTotal <- 40 * salarioHora + horasExtra * salarioHora * 1.5\n",
-        "    Sino\n",
-        "        salarioTotal <- horas * salarioHora\n",
-        "    FinSi\n",
-        "\n",
-        "    // Mostrar resultado\n",
-        "    Escribir \"El salario total es: \", salarioTotal\n",
-        "\n",
-        "FinAlgoritmo\n"
-      ],
-      "metadata": {
-        "id": "dvG-0i-nKYdK"
-      },
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "6.9. Escribir una función booleana Digito que determine\n",
-        "si un carácter es uno de los dígitos 0 al 9."
-      ],
-      "metadata": {
-        "id": "aaIlS27fLFgJ"
-      }
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "**Phyton**"
-      ],
-      "metadata": {
-        "id": "Bd78DGE1LGrQ"
-      }
-    },
-    {
-      "cell_type": "code",
-      "source": [
-        "# Función que verifica si un carácter es un dígito\n",
-        "def es_digito(c):\n",
-        "    return c in \"0123456789\"\n",
-        "\n",
-        "# Pedir carácter al usuario\n",
-        "c = input(\"Ingrese un carácter: \")\n",
-        "\n",
-        "# Verificar si es dígito usando la función\n",
-        "if es_digito(c):\n",
-        "    print(\"El carácter es un dígito.\")\n",
-        "else:\n",
-        "    print(\"El carácter NO es un dígito.\")\n"
-      ],
-      "metadata": {
-        "id": "ESZCtHBrLIC6"
-      },
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "**Pseint**"
-      ],
-      "metadata": {
-        "id": "qCY-mnE7LMPZ"
-      }
-    },
-    {
-      "cell_type": "code",
-      "source": [
-        "Algoritmo DigitoEjemplo\n",
-        "\n",
-        "    Definir c Como Caracter\n",
-        "    Definir esDigito Como Entero\n",
-        "\n",
-        "    Escribir \"Ingrese un carácter:\"\n",
-        "    Leer c\n",
-        "\n",
-        "    // Comprobar si es un dígito\n",
-        "    Si c = \"0\" O c = \"1\" O c = \"2\" O c = \"3\" O c = \"4\" O c = \"5\" O c = \"6\" O c = \"7\" O c = \"8\" O c = \"9\" Entonces\n",
-        "        esDigito <- 1\n",
-        "    Sino\n",
-        "        esDigito <- 0\n",
-        "    FinSi\n",
-        "\n",
-        "    // Mostrar resultado\n",
-        "    Si esDigito = 1 Entonces\n",
-        "        Escribir \"El carácter es un dígito.\"\n",
-        "    Sino\n",
-        "        Escribir \"El carácter NO es un dígito.\"\n",
-        "    FinSi\n",
-        "\n",
-        "FinAlgoritmo\n"
-      ],
-      "metadata": {
-        "id": "ocGGN7jOLTPh"
-      },
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "6.10. Diseñar una función que permita devolver el valor absoluto de un número."
-      ],
-      "metadata": {
-        "id": "Q8jCqf7kLbGw"
-      }
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "**Phyton**"
-      ],
-      "metadata": {
-        "id": "kGevR4vXLhZ4"
-      }
-    },
-    {
-      "cell_type": "code",
-      "source": [
-        "# Función que devuelve el valor absoluto\n",
-        "def valor_absoluto(n):\n",
-        "    if n < 0:\n",
-        "        return -n\n",
-        "    else:\n",
-        "        return n\n",
-        "\n",
-        "# Pedir número al usuario\n",
-        "num = float(input(\"Ingrese un número: \"))\n",
-        "\n",
-        "# Calcular valor absoluto usando la función\n",
-        "resultado = valor_absoluto(num)\n",
-        "\n",
-        "# Mostrar el resultado\n",
-        "print(\"El valor absoluto es:\", resultado)\n"
-      ],
-      "metadata": {
-        "id": "iZI59F9kLjUQ"
-      },
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "**Pseint**"
-      ],
-      "metadata": {
-        "id": "-ITByigkLn6Y"
-      }
-    },
-    {
-      "cell_type": "code",
-      "source": [
-        "Algoritmo ValorAbsolutoSeguro\n",
-        "\n",
-        "    Definir num, resultado Como Real\n",
-        "\n",
-        "    Escribir \"Ingrese un número:\"\n",
-        "    Leer num\n",
-        "\n",
-        "    // Calcular valor absoluto\n",
-        "    Si num < 0 Entonces\n",
-        "        resultado <- -num\n",
-        "    Sino\n",
-        "        resultado <- num\n",
-        "    FinSi\n",
-        "\n",
-        "    Escribir \"El valor absoluto es: \", resultado\n",
-        "\n",
-        "FinAlgoritmo\n",
-        "\n"
-      ],
-      "metadata": {
-        "id": "R7fG-N0mLqjQ"
-      },
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "6.11. Realizar un procedimiento que obtenga la división entera y el resto de la misma utilizando únicamente los\n",
-        "operadores suma y resta."
-      ],
-      "metadata": {
-        "id": "jG5jpiyUL2Mh"
-      }
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "**Phyton**"
-      ],
-      "metadata": {
-        "id": "8U7B92hsL54w"
-      }
-    },
-    {
-      "cell_type": "code",
-      "source": [
-        "# Pedir datos al usuario\n",
-        "dividendo = int(input(\"Ingrese el dividendo: \"))\n",
-        "divisor = int(input(\"Ingrese el divisor: \"))\n",
-        "\n",
-        "# Inicializar cociente y acumulador\n",
-        "cociente = 0\n",
-        "acumulador = dividendo\n",
-        "\n",
-        "# Restar el divisor repetidamente hasta que el acumulador sea menor que divisor\n",
-        "while acumulador >= divisor:\n",
-        "    acumulador -= divisor  # equivalente a acumulador = acumulador - divisor\n",
-        "    cociente += 1          # aumentar cociente en 1\n",
-        "\n",
-        "# Lo que queda en acumulador es el resto\n",
-        "resto = acumulador\n",
-        "\n",
-        "# Mostrar resultados\n",
-        "print(\"Cociente:\", cociente)\n",
-        "print(\"Resto:\", resto)\n"
-      ],
-      "metadata": {
-        "id": "ysoympvqL8dI"
-      },
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "**Pseint**"
-      ],
-      "metadata": {
-        "id": "3zej5SE9MDc4"
-      }
-    },
-    {
-      "cell_type": "code",
-      "source": [
-        "Algoritmo DivisionEnteraYSobreSeguro\n",
-        "\n",
-        "    Definir dividendo, divisor, cociente, resto, acumulador Como Entero\n",
-        "\n",
-        "    Escribir \"Ingrese el dividendo:\"\n",
-        "    Leer dividendo\n",
-        "    Escribir \"Ingrese el divisor:\"\n",
-        "    Leer divisor\n",
-        "\n",
-        "    cociente <- 0\n",
-        "    acumulador <- dividendo\n",
-        "\n",
-        "    // Restar divisor repetidamente hasta que el acumulador sea menor que divisor\n",
-        "    Mientras acumulador >= divisor Hacer\n",
-        "        acumulador <- acumulador - divisor\n",
-        "        cociente <- cociente + 1\n",
-        "    FinMientras\n",
-        "\n",
-        "    // Lo que queda es el resto\n",
-        "    resto <- acumulador\n",
-        "\n",
-        "    // Mostrar resultados\n",
-        "    Escribir \"Cociente:\", cociente\n",
-        "    Escribir \"Resto:\", resto\n",
-        "\n",
-        "FinAlgoritmo\n"
-      ],
-      "metadata": {
-        "id": "2Mol92CrMcLn"
-      },
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "6.12. Escribir una función que permita deducir si una fecha\n",
-        "leída del teclado es válida."
-      ],
-      "metadata": {
-        "id": "EMCUHePvMi0Q"
-      }
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "**Phyton**"
-      ],
-      "metadata": {
-        "id": "h-qgBjNoMmk_"
-      }
-    },
-    {
-      "cell_type": "code",
-      "source": [
-        "# Función que verifica si una fecha es válida\n",
-        "def es_fecha_valida(dia, mes, anio):\n",
-        "    # Comprobar mes válido\n",
-        "    if mes < 1 or mes > 12:\n",
-        "        return False\n",
-        "\n",
-        "    # Determinar número de días según el mes\n",
-        "    if mes in [1, 3, 5, 7, 8, 10, 12]:\n",
-        "        dias_mes = 31\n",
-        "    elif mes in [4, 6, 9, 11]:\n",
-        "        dias_mes = 30\n",
-        "    else:  # Febrero\n",
-        "        # Año bisiesto: divisible por 4 y (no divisible por 100 o divisible por 400)\n",
-        "        if (anio % 4 == 0) and ((anio % 100 != 0) or (anio % 400 == 0)):\n",
-        "            dias_mes = 29\n",
-        "        else:\n",
-        "            dias_mes = 28\n",
-        "\n",
-        "    # Comprobar día válido\n",
-        "    if dia < 1 or dia > dias_mes:\n",
-        "        return False\n",
-        "\n",
-        "    return True\n",
-        "\n",
-        "# Pedir fecha al usuario\n",
-        "dia = int(input(\"Ingrese el día: \"))\n",
-        "mes = int(input(\"Ingrese el mes: \"))\n",
-        "anio = int(input(\"Ingrese el año: \"))\n",
-        "\n",
-        "# Validar la fecha usando la función\n",
-        "if es_fecha_valida(dia, mes, anio):\n",
-        "    print(\"La fecha es válida.\")\n",
-        "else:\n",
-        "    print(\"La fecha NO es válida.\")\n"
-      ],
-      "metadata": {
-        "id": "_mmxli-GMpWQ"
-      },
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "**Pseint**"
-      ],
-      "metadata": {
-        "id": "5MzrtxoTMuhn"
-      }
-    },
-    {
-      "cell_type": "code",
-      "source": [
-        "Algoritmo FechaValidaSeguro\n",
-        "\n",
-        "    Definir dia, mes, anio, diasMes, fechaValida Como Entero\n",
-        "\n",
-        "    Escribir \"Ingrese el día:\"\n",
-        "    Leer dia\n",
-        "    Escribir \"Ingrese el mes:\"\n",
-        "    Leer mes\n",
-        "    Escribir \"Ingrese el año:\"\n",
-        "    Leer anio\n",
-        "\n",
-        "    fechaValida <- 1  // 1 = verdadero, 0 = falso\n",
-        "\n",
-        "    // Verificar mes válido\n",
-        "    Si mes < 1 O mes > 12 Entonces\n",
-        "        fechaValida <- 0\n",
-        "    FinSi\n",
-        "\n",
-        "    // Determinar número de días según el mes\n",
-        "    Si fechaValida = 1 Entonces\n",
-        "        Si mes = 1 O mes = 3 O mes = 5 O mes = 7 O mes = 8 O mes = 10 O mes = 12 Entonces\n",
-        "            diasMes <- 31\n",
-        "        Sino\n",
-        "            Si mes = 4 O mes = 6 O mes = 9 O mes = 11 Entonces\n",
-        "                diasMes <- 30\n",
-        "            Sino\n",
-        "                // Febrero\n",
-        "                Si (anio MOD 4 = 0) Y ((anio MOD 100 <> 0) O (anio MOD 400 = 0)) Entonces\n",
-        "                    diasMes <- 29\n",
-        "                Sino\n",
-        "                    diasMes <- 28\n",
-        "                FinSi\n",
-        "            FinSi\n",
-        "        FinSi\n",
-        "    FinSi\n",
-        "\n",
-        "    // Verificar día válido\n",
-        "    Si fechaValida = 1 Entonces\n",
-        "        Si dia < 1 O dia > diasMes Entonces\n",
-        "            fechaValida <- 0\n",
-        "        FinSi\n",
-        "    FinSi\n",
-        "\n",
-        "    // Mostrar resultado\n",
-        "    Si fechaValida = 1 Entonces\n",
-        "        Escribir \"La fecha es válida.\"\n",
-        "    Sino\n",
-        "        Escribir \"La fecha NO es válida.\"\n",
-        "    FinSi\n",
-        "\n",
-        "FinAlgoritmo"
-      ],
-      "metadata": {
-        "id": "uFFpyEYZMxCP"
-      },
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "6.13. Diseñar un algoritmo que transforme un número introducido por teclado en notación decimal a notación\n",
-        "romana. El número será entero positivo y no excederá\n",
-        "de 3.000."
-      ],
-      "metadata": {
-        "id": "O8PhPH8nM2XX"
-      }
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "**Phyton**"
-      ],
-      "metadata": {
-        "id": "7x4l1q3bM5p_"
-      }
-    },
-    {
-      "cell_type": "code",
-      "source": [
-        "n = int(input(\"Ingrese un numero (1 a 3000): \"))\n",
-        "\n",
-        "if n < 1 or n > 3000:\n",
-        "    print(\"Numero fuera de rango\")\n",
-        "else:\n",
-        "    while n >= 1000:\n",
-        "        print(\"M\", end=\"\")\n",
-        "        n -= 1000\n",
-        "\n",
-        "    while n >= 500:\n",
-        "        print(\"D\", end=\"\")\n",
-        "        n -= 500\n",
-        "\n",
-        "    while n >= 100:\n",
-        "        print(\"C\", end=\"\")\n",
-        "        n -= 100\n",
-        "\n",
-        "    while n >= 50:\n",
-        "        print(\"L\", end=\"\")\n",
-        "        n -= 50\n",
-        "\n",
-        "    while n >= 10:\n",
-        "        print(\"X\", end=\"\")\n",
-        "        n -= 10\n",
-        "\n",
-        "    while n >= 5:\n",
-        "        print(\"V\", end=\"\")\n",
-        "        n -= 5\n",
-        "\n",
-        "    while n >= 1:\n",
-        "        print(\"I\", end=\"\")\n",
-        "        n -= 1\n"
-      ],
-      "metadata": {
-        "id": "EzImxVsNPZQU"
-      },
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "**Pseint**"
-      ],
-      "metadata": {
-        "id": "CK0VDdnnM8OP"
-      }
-    },
-    {
-      "cell_type": "code",
-      "source": [
-        "Algoritmo DecimalARomano\n",
-        "\tDefinir n Como Entero\n",
-        "\n",
-        "\tEscribir \"Ingrese un numero (1 a 3000):\"\n",
-        "\tLeer n\n",
-        "\n",
-        "\tSi n < 1 O n > 3000 Entonces\n",
-        "\t\tEscribir \"Numero fuera de rango\"\n",
-        "\tSiNo\n",
-        "\n",
-        "\t\tMientras n >= 1000 Hacer\n",
-        "\t\t\tEscribir Sin Saltar \"M\"\n",
-        "\t\t\tn <- n - 1000\n",
-        "\t\tFinMientras\n",
-        "\n",
-        "\t\tMientras n >= 500 Hacer\n",
-        "\t\t\tEscribir Sin Saltar \"D\"\n",
-        "\t\t\tn <- n - 500\n",
-        "\t\tFinMientras\n",
-        "\n",
-        "\t\tMientras n >= 100 Hacer\n",
-        "\t\t\tEscribir Sin Saltar \"C\"\n",
-        "\t\t\tn <- n - 100\n",
-        "\t\tFinMientras\n",
-        "\n",
-        "\t\tMientras n >= 50 Hacer\n",
-        "\t\t\tEscribir Sin Saltar \"L\"\n",
-        "\t\t\tn <- n - 50\n",
-        "\t\tFinMientras\n",
-        "\n",
-        "\t\tMientras n >= 10 Hacer\n",
-        "\t\t\tEscribir Sin Saltar \"X\"\n",
-        "\t\t\tn <- n - 10\n",
-        "\t\tFinMientras\n",
-        "\n",
-        "\t\tMientras n >= 5 Hacer\n",
-        "\t\t\tEscribir Sin Saltar \"V\"\n",
-        "\t\t\tn <- n - 5\n",
-        "\t\tFinMientras\n",
-        "\n",
-        "\t\tMientras n >= 1 Hacer\n",
-        "\t\t\tEscribir Sin Saltar \"I\"\n",
-        "\t\t\tn <- n - 1\n",
-        "\t\tFinMientras\n",
-        "\n",
-        "\tFinSi\n",
-        "\n",
-        "FinAlgoritmo\n"
-      ],
-      "metadata": {
-        "id": "0OJlJ9luPaJ7"
-      },
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "6.14. Escribir el algoritmo de una función recursiva que: a)\n",
-        "calcule el factorial de un número entero positivo, b) la\n",
-        "potencia de un número entero positivo."
-      ],
-      "metadata": {
-        "id": "btxDk8DNM95e"
-      }
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "**Phyton**"
-      ],
-      "metadata": {
-        "id": "dtdxbdEyNHJG"
-      }
-    },
-    {
-      "cell_type": "code",
-      "source": [
-        "# factorial recursivo\n",
-        "def factorial(n):\n",
-        "    if n == 0:\n",
-        "        return 1\n",
-        "    else:\n",
-        "        return n * factorial(n - 1)\n",
-        "\n",
-        "\n",
-        "# potencia recursiva\n",
-        "def potencia(base, exponente):\n",
-        "    if exponente == 0:\n",
-        "        return 1\n",
-        "    else:\n",
-        "        return base * potencia(base, exponente - 1)\n",
-        "\n",
-        "\n",
-        "# programa principal\n",
-        "n = int(input(\"Ingrese un numero para calcular el factorial: \"))\n",
-        "print(\"El factorial es:\", factorial(n))\n",
-        "\n",
-        "b = int(input(\"Ingrese la base: \"))\n",
-        "e = int(input(\"Ingrese el exponente: \"))\n",
-        "print(\"La potencia es:\", potencia(b, e))\n"
-      ],
-      "metadata": {
-        "id": "fmckMGo-NLvP"
-      },
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "**Pseint**"
-      ],
-      "metadata": {
-        "id": "eINA3ze6NRmW"
-      }
-    },
-    {
-      "cell_type": "code",
-      "source": [
-        "SubProceso factorial(n, resultado Por Referencia)\n",
-        "    Si n = 0 Entonces\n",
-        "        resultado <- 1\n",
-        "    Sino\n",
-        "        factorial(n - 1, resultado)\n",
-        "        resultado <- n * resultado\n",
-        "    FinSi\n",
-        "FinSubProceso\n",
-        "\n",
-        "\n",
-        "SubProceso potencia(base, exponente, resultado Por Referencia)\n",
-        "    Si exponente = 0 Entonces\n",
-        "        resultado <- 1\n",
-        "    Sino\n",
-        "        potencia(base, exponente - 1, resultado)\n",
-        "        resultado <- base * resultado\n",
-        "    FinSi\n",
-        "FinSubProceso\n",
-        "\n",
-        "\n",
-        "Algoritmo Recursividad\n",
-        "\n",
-        "    Definir n, b, e Como Entero\n",
-        "    Definir resFactorial, resPotencia Como Entero\n",
-        "\n",
-        "    Escribir \"Ingrese un numero para calcular el factorial:\"\n",
-        "    Leer n\n",
-        "    factorial(n, resFactorial)\n",
-        "    Escribir \"El factorial es: \", resFactorial\n",
-        "\n",
-        "    Escribir \"Ingrese la base:\"\n",
-        "    Leer b\n",
-        "    Escribir \"Ingrese el exponente:\"\n",
-        "    Leer e\n",
-        "    potencia(b, e, resPotencia)\n",
-        "    Escribir \"La potencia es: \", resPotencia\n",
-        "\n",
-        "FinAlgoritmo"
-      ],
-      "metadata": {
-        "id": "4kpiQehXNT7e"
-      },
-      "execution_count": null,
-      "outputs": []
-    }
-  ]
-}
+```
+**Ejercicio 7.5**
+Realizar la suma de dos matrices bidimensionales.
+```python
+N = int(input("Cantidad de elementos: "))
+vector = []
+
+for i in range(N):
+    vector.append(float(input("Ingrese número: ")))
+
+pos = int(input("Posición donde insertar: ")) - 1
+valor = float(input("Valor a insertar: "))
+
+vector.insert(pos, valor)
+
+print("Vector actualizado:")
+print(vector)
+
+```
+
+```
+Proceso ActividadResuelta5
+
+    Definir N, i, pos Como Entero;
+    Definir valor Como Real;
+    Dimension vector[101];
+
+    Escribir "Cantidad de elementos:";
+    Leer N;
+
+    Para i <- 1 Hasta N Hacer
+        Leer vector[i];
+    FinPara
+
+    Escribir "Posición donde insertar:";
+    Leer pos;
+
+    Escribir "Valor a insertar:";
+    Leer valor;
+
+    Para i <- N Hasta pos Con Paso -1 Hacer
+        vector[i+1] <- vector[i];
+    FinPara
+
+    vector[pos] <- valor;
+    N <- N + 1;
+
+    Escribir "Vector actualizado:";
+    Para i <- 1 Hasta N Hacer
+        Escribir vector[i];
+    FinPara
+
+FinProceso
+
+
+```
+
+**Ejercicio 7.6**
+Se dispone de una tabla T de dos dimensiones. Calcular la suma de sus elementos.
+```python
+N = int(input("Cantidad de elementos: "))
+vector = []
+
+for i in range(N):
+    vector.append(float(input("Ingrese número: ")))
+
+pos = int(input("Posición a eliminar: ")) - 1
+
+if 0 <= pos < N:
+    vector.pop(pos)
+    print("Vector actualizado:")
+    print(vector)
+else:
+    print("Posición inválida.")
+
+```
+
+```
+Proceso ActividadResuelta6
+
+    Definir N, i, pos Como Entero;
+    Dimension vector[100];
+
+    Escribir "Cantidad de elementos:";
+    Leer N;
+
+    Para i <- 1 Hasta N Hacer
+        Leer vector[i];
+    FinPara
+
+    Escribir "Posición a eliminar:";
+    Leer pos;
+
+    Para i <- pos Hasta N-1 Hacer
+        vector[i] <- vector[i+1];
+    FinPara
+
+    N <- N - 1;
+
+    Escribir "Vector actualizado:";
+    Para i <- 1 Hasta N Hacer
+        Escribir vector[i];
+    FinPara
+
+FinProceso
+
+```
+
+**Ejercicio 7.7**
+Realizar la búsqueda de un determinado nombre en una lista de nombres, de modo que el algoritmo imprima los
+siguientes mensajes según el resultado:
+```python
+filas = int(input("Número de filas: "))
+columnas = int(input("Número de columnas: "))
+
+matriz = []
+
+for i in range(filas):
+    fila = []
+    for j in range(columnas):
+        num = float(input(f"Elemento [{i+1}][{j+1}]: "))
+        fila.append(num)
+    matriz.append(fila)
+
+print("Matriz ingresada:")
+for i in range(filas):
+    for j in range(columnas):
+        print(matriz[i][j], end=" ")
+    print()
+
+```
+```
+Proceso ActividadResuelta7
+
+    Definir filas, columnas, i, j Como Entero;
+    Dimension matriz[50,50];
+
+    Escribir "Número de filas:";
+    Leer filas;
+
+    Escribir "Número de columnas:";
+    Leer columnas;
+
+    Para i <- 1 Hasta filas Hacer
+        Para j <- 1 Hasta columnas Hacer
+            Escribir "Elemento [", i, "][", j, "]:";
+            Leer matriz[i,j];
+        FinPara
+    FinPara
+
+    Escribir "Matriz ingresada:";
+
+    Para i <- 1 Hasta filas Hacer
+        Para j <- 1 Hasta columnas Hacer
+            Escribir Sin Saltar matriz[i,j], " ";
+        FinPara
+        Escribir "";
+    FinPara
+
+FinProceso
+
+```
+
+**Ejercicio 7.8**
+Se desea permutar las filas I y J de una matriz (array) de dos dimensiones (M*N):M filas, N columnas.
+```python
+filas = int(input("Número de filas: "))
+columnas = int(input("Número de columnas: "))
+
+matriz = []
+
+for i in range(filas):
+    fila = []
+    for j in range(columnas):
+        fila.append(float(input(f"Elemento [{i+1}][{j+1}]: ")))
+    matriz.append(fila)
+
+for i in range(filas):
+    suma = 0
+    for j in range(columnas):
+        suma += matriz[i][j]
+    print(f"Suma fila {i+1}: {suma}")
+
+```
+```
+Proceso ActividadResuelta8
+
+    Definir filas, columnas, i, j Como Entero;
+    Definir suma Como Real;
+    Dimension matriz[50,50];
+
+    Escribir "Número de filas:";
+    Leer filas;
+
+    Escribir "Número de columnas:";
+    Leer columnas;
+
+    Para i <- 1 Hasta filas Hacer
+        Para j <- 1 Hasta columnas Hacer
+            Leer matriz[i,j];
+        FinPara
+    FinPara
+
+    Para i <- 1 Hasta filas Hacer
+        suma <- 0;
+        Para j <- 1 Hasta columnas Hacer
+            suma <- suma + matriz[i,j];
+        FinPara
+        Escribir "Suma fila ", i, ": ", suma;
+    FinPara
+
+FinProceso
+
+```
+
+
+**Ejercicio  7.9**
+Algoritmo que nos permita calcular la desviación estándar (SIGMA) de una lista de N números (N <= 15).
+```python
+filas = int(input("Número de filas: "))
+columnas = int(input("Número de columnas: "))
+
+matriz = []
+
+for i in range(filas):
+    fila = []
+    for j in range(columnas):
+        fila.append(float(input(f"Elemento [{i+1}][{j+1}]: ")))
+    matriz.append(fila)
+
+for j in range(columnas):
+    suma = 0
+    for i in range(filas):
+        suma += matriz[i][j]
+    print(f"Suma columna {j+1}: {suma}")
+
+```
+```
+Proceso ActividadResuelta9
+
+    Definir filas, columnas, i, j Como Entero;
+    Definir suma Como Real;
+    Dimension matriz[50,50];
+
+    Escribir "Número de filas:";
+    Leer filas;
+
+    Escribir "Número de columnas:";
+    Leer columnas;
+
+    Para i <- 1 Hasta filas Hacer
+        Para j <- 1 Hasta columnas Hacer
+            Leer matriz[i,j];
+        FinPara
+    FinPara
+
+    Para j <- 1 Hasta columnas Hacer
+        suma <- 0;
+        Para i <- 1 Hasta filas Hacer
+            suma <- suma + matriz[i,j];
+        FinPara
+        Escribir "Suma columna ", j, ": ", suma;
+    FinPara
+
+FinProceso
+
+```
+
+**Ejercicio 7.10**
+Utilizando arrays, escribir un algoritmo que visualice un cuadrado mágico de orden impar n, comprendido entre 3 y 11. El usuario debe elegir el valor de n.
+Un cuadrado mágico se compone de números enteros comprendidos entre 1 y n. La suma de los números que figuran en cada fila, columna y diagonal son iguales.
+```python
+n = int(input("Tamaño de la matriz cuadrada: "))
+
+matriz = []
+
+for i in range(n):
+    fila = []
+    for j in range(n):
+        if i == j:
+            fila.append(1)
+        else:
+            fila.append(0)
+    matriz.append(fila)
+
+for fila in matriz:
+    print(fila)
+
+```
+```
+Proceso ActividadResuelta10
+
+    Definir n, i, j Como Entero;
+    Dimension matriz[50,50];
+
+    Escribir "Tamaño de la matriz cuadrada:";
+    Leer n;
+
+    Para i <- 1 Hasta n Hacer
+        Para j <- 1 Hasta n Hacer
+            Si i = j Entonces
+                matriz[i,j] <- 1;
+            SiNo
+                matriz[i,j] <- 0;
+            FinSi
+        FinPara
+      FinPara
+
+      Para i <- 1 Hasta n Hacer
+        Para j <- 1 Hasta n Hacer
+            Escribir Sin Saltar matriz[i,j], " ";
+        FinPara
+        Escribir "";
+      FinPara
+
+FinProceso
+
+```
+
+
+**Ejercicio 7.11**
+Obtener un algoritmo que efectúe la multiplicación de dos matrices A, B
+```python
+filas = int(input("Número de filas: "))
+columnas = int(input("Número de columnas: "))
+
+matriz = []
+
+for i in range(filas):
+    fila = []
+    for j in range(columnas):
+        fila.append(float(input(f"Elemento [{i+1}][{j+1}]: ")))
+    matriz.append(fila)
+
+print("Matriz transpuesta:")
+
+for j in range(columnas):
+    for i in range(filas):
+        print(matriz[i][j], end=" ")
+    print()
+
+```
+```
+Proceso ActividadResuelta11
+
+    Definir filas, columnas, i, j Como Entero;
+    Dimension matriz[50,50];
+
+    Escribir "Número de filas:";
+    Leer filas;
+
+    Escribir "Número de columnas:";
+    Leer columnas;
+
+    Para i <- 1 Hasta filas Hacer
+        Para j <- 1 Hasta columnas Hacer
+            Leer matriz[i,j];
+        FinPara
+    FinPara
+
+    Escribir "Matriz transpuesta:";
+
+    Para j <- 1 Hasta columnas Hacer
+        Para i <- 1 Hasta filas Hacer
+            Escribir Sin Saltar matriz[i,j], " ";
+        FinPara
+        Escribir "";
+    FinPara
+
+FinProceso
+
+```
+**Ejercicio 7.12**
+ Algoritmo que triangule una matriz cuadrada y halle su determinante. En las matrices cuadradas el valor del determinante coincide con el producto de los elementos de la diagonal de la matriz triangulada, multiplicado por –1
+tantas veces como hayamos intercambiado filas al triangular la matriz.
+Proceso de triangulación de una matriz para todo i desde 1 hasta n – 1 hacer:
+a) Si el elemento de lugar (i,i) es nulo, intercambiar filas hasta que dicho elemento sea no nulo o agotar los
+posibles intercambios.
+b) A continuación se busca el primer elemento no nulo de la fila i-ésima y, en el caso de existir, se usa para
+hacer ceros en la columna de abajo.
+Estructuras de datos I (arrays y estructuras) 281
+ Sea dicho elemento matriz[i,r]
+ Multiplicar fila i por matriz[i+1,r]/matriz[i,r] y restarlo a la i+1
+ Multiplicar fila i por matriz[i+2,r]/matriz[i,r] y restarlo a la i+2
+ ............................................................................................................
+ Multiplicar fila i por matriz[m,r]/matriz[i,r] y restarlo a la m.
+```python
+n = int(input("Tamaño de la matriz cuadrada: "))
+
+# Cargar matriz
+matriz = []
+for i in range(n):
+    fila = []
+    for j in range(n):
+        fila.append(float(input(f"Elemento [{i+1}][{j+1}]: ")))
+    matriz.append(fila)
+
+determinante = 1
+intercambios = 0
+
+# Eliminación Gaussiana
+for i in range(n):
+    # Si el pivote es 0, buscar intercambio
+    if matriz[i][i] == 0:
+        for k in range(i+1, n):
+            if matriz[k][i] != 0:
+                matriz[i], matriz[k] = matriz[k], matriz[i]
+                intercambios += 1
+                break
+
+    pivote = matriz[i][i]
+
+    if pivote != 0:
+        for j in range(i+1, n):
+            factor = matriz[j][i] / pivote
+            for k in range(i, n):
+                matriz[j][k] -= factor * matriz[i][k]
+
+# Producto diagonal
+for i in range(n):
+    determinante *= matriz[i][i]
+
+# Ajustar signo por intercambios
+if intercambios % 2 != 0:
+    determinante *= -1
+
+print("Matriz triangular:")
+for fila in matriz:
+    print(fila)
+
+print("Determinante:", determinante)
+
+```
+```
+Proceso Ejercicio7_12;
+
+    Definir n, i, j, k, intercambios Como Entero;
+    Definir pivote, factor, determinante Como Real;
+    Dimension matriz[20,20];
+
+    Escribir "Tamaño de la matriz cuadrada:";
+    Leer n;
+
+    Para i <- 1 Hasta n Hacer
+        Para j <- 1 Hasta n Hacer
+            Escribir "Elemento [", i, "][", j, "]:";
+            Leer matriz[i,j];
+        FinPara
+    FinPara
+
+    determinante <- 1;
+    intercambios <- 0;
+
+    Para i <- 1 Hasta n Hacer
+
+        Si matriz[i,i] = 0 Entonces
+            Para k <- i+1 Hasta n Hacer
+                Si matriz[k,i] <> 0 Entonces
+                    Para j <- 1 Hasta n Hacer
+                        pivote <- matriz[i,j];
+                        matriz[i,j] <- matriz[k,j];
+                        matriz[k,j] <- pivote;
+                    FinPara
+                    intercambios <- intercambios + 1;
+                FinSi
+            FinPara
+        FinSi
+
+        pivote <- matriz[i,i];
+
+        Si pivote <> 0 Entonces
+            Para j <- i+1 Hasta n Hacer
+                factor <- matriz[j,i] / pivote;
+                Para k <- i Hasta n Hacer
+                    matriz[j,k] <- matriz[j,k] - factor * matriz[i,k];
+                FinPara
+            FinPara
+        FinSi
+
+    FinPara
+
+    Para i <- 1 Hasta n Hacer
+        determinante <- determinante * matriz[i,i];
+    FinPara
+
+    Si intercambios MOD 2 <> 0 Entonces
+        determinante <- determinante * -1;
+    FinSi
+
+    Escribir "Matriz triangular:";
+    Para i <- 1 Hasta n Hacer
+        Para j <- 1 Hasta n Hacer
+            Escribir Sin Saltar matriz[i,j], " ";
+        FinPara
+        Escribir "";
+    FinPara
+
+    Escribir "Determinante: ", determinante;
+
+FinProceso
+
+```
+
+# Funciones(módulos):resolver los ejercicios propuestos y resueltos TODOS en PsInet y Python*
+-----------
+# EJERCICOS RESUELTOS
+
+6.1. Realización del factorial de un número entero.
+
+**Python**
+
+```python
+def factorial(n):
+    f = 1
+    if n == 0:
+        return 1
+    else:
+        for i in range(1, n + 1):
+            f *= i
+        return f
+num = int(input("Ingrese un número entero: "))
+resultado = factorial(num)
+print("El factorial es:", resultado)
+```
+
+**PSeInt**
+
+```
+Algoritmo Factorial
+    Definir n, f, i Como Entero
+    Escribir "Ingrese un número entero:"
+    Leer n
+    f <- 1
+    Si n = 0 Entonces
+        f <- 1
+    Sino
+        Para i <- 1 Hasta n Hacer
+            f <- f * i
+        FinPara
+    FinSi
+    Escribir "El factorial es:", f
+FinAlgoritmo
+```
+
+6.2. Diseñar un algoritmo que calcule el máximo común divisor de dos números mediante el algoritmo de Euclides. Sean los dos números A y B. El método para hallar el máximo común divisor (mcd) de dos números A y B por el método de Euclides es: 1. Dividir el número mayor (A) por el menor (B). Si el resto de la división es cero, el número B es el máximo común divisor. 2. Si la división no es exacta, se divide el número menor (B) por el resto de la división anterior. 3. Se siguen los pasos anteriores hasta obtener un resto cero. El último divisor es el mcd buscado.
+
+**Python**
+
+```python
+def mcd(a, b):
+    while a != b:
+        if a > b:
+            a = a - b
+        else:
+            b = b - a
+    return a
+num1 = int(input("Ingrese el primer número: "))
+num2 = int(input("Ingrese el segundo número: "))
+resultado = mcd(num1, num2)
+print("El máximo común divisor es:", resultado)
+```
+
+**PSeInt**
+
+```
+Algoritmo Maximo_Comun_Divisor
+    Definir a, b Como Entero;
+
+    Escribir "Ingrese el primer numero:";
+    Leer a;
+
+    Escribir "Ingrese el segundo numero:";
+    Leer b;
+
+    Mientras a <> b Hacer
+        Si a > b Entonces
+            a <- a - b;
+        SiNo
+            b <- b - a;
+        FinSi
+    FinMientras
+
+    Escribir "El maximo comun divisor es: ", a;
+FinAlgoritmo
+```
+
+6.3. Para calcular el máximo común divisor (mcd) de dos números se recurre a una función específica definida con un subprograma. Se desea calcular la salida del programa principal con dos números A y B, cuyos valores son 10 y 25, es decir, el mcd (A, B) y comprobar el método de paso de parámetros por valor.
+
+**Python**
+
+```python
+def mcd(a, b):
+    while a != b:
+        if a > b:
+            a = a - b
+        else:
+            b = b - a
+    return a
+x = 10
+y = 25
+n = mcd(x, y)
+print(x, y, n)
+```
+
+**PSeInt**
+
+```
+Algoritmo MCD_PorValor
+    Definir A, B, resultado Como Entero
+
+    // Asignar valores a A y B
+    A <- 10
+    B <- 25
+
+    // Llamar a la función que calcula el MCD
+    resultado <- calcular_mcd(A, B)
+
+    // Mostrar los resultados
+    Escribir "El MCD de ", A, " y ", B, " es: ", resultado
+FinAlgoritmo
+
+// Función que recibe parámetros por valor
+Funcion calcular_mcd(x, y) Como Entero
+    Mientras x <> y Hacer
+        Si x > y Entonces
+            x <- x - y
+        Sino
+            y <- y - x
+        FinSi
+    FinMientras
+    Retornar x
+FinFuncion
+```
+
+6.4. Realizar un algoritmo que permita ordenar tres números mediante un procedimiento de intercambio en dos variables (paso de parámetros por referencia).
+
+**Python**
+
+```python
+def intercambio(a, b):
+    auxi = a
+    a = b
+    b = auxi
+    return a, b
+x = 132
+y = 45
+z = 15
+if x > y:
+    x, y = intercambio(x, y)
+if y > z:
+    y, z = intercambio(y, z)
+if x > y:
+    x, y = intercambio(x, y)
+print(x, y, z)
+```
+
+**PSeInt**
+
+```
+Algoritmo Ordenar_Tres_Numeros
+    Definir x Como Entero;
+    Definir k Como Entero;
+    Definir z Como Entero;
+    Definir aux Como Entero;
+
+    x <- 132;
+    k <- 45;
+    z <- 15;
+
+    Si x > k Entonces
+        aux <- x;
+        x <- k;
+        k <- aux;
+    FinSi
+
+    Si k > z Entonces
+        aux <- k;
+        k <- z;
+        z <- aux;
+    FinSi
+
+    Si x > k Entonces
+        aux <- x;
+        x <- k;
+        k <- aux;
+    FinSi
+
+    Escribir x, " ", k, " ", z;
+FinAlgoritmo
+```
+
+6.5. Diseñar un algoritmo que llame a la función signo(X) y calcule: a) el signo de un número, b) el signo de la función coseno.
+
+**Python**
+
+```python
+import math
+def signo(x):
+    if x > 0:
+        return 1
+    elif x < 0:
+        return -1
+    else:
+        return 0
+p = int(input("Ingrese un numero: "))
+y = signo(p)
+z = signo(math.cos(p))
+print(y, z)
+```
+
+**PSeInt**
+
+```
+Algoritmo Signos
+    Definir p Como Entero;
+    Definir q Como Entero;
+    Definir z Como Entero;
+    Definir c Como Real;
+
+    Escribir "Ingrese un numero:";
+    Leer p;
+
+    // Signo del numero
+    Si p > 0 Entonces
+        q <- 1;
+    SiNo
+        Si p < 0 Entonces
+            q <- -1;
+        SiNo
+            q <- 0;
+        FinSi
+    FinSi
+
+    // Coseno del numero
+    c <- Cos(p);
+
+    // Signo del coseno
+    Si c > 0 Entonces
+        z <- 1;
+    SiNo
+        Si c < 0 Entonces
+            z <- -1;
+        SiNo
+            z <- 0;
+        FinSi
+    FinSi
+
+    Escribir q, " ", z;
+FinAlgoritmo
+```
+
+
+# EJERCICOS PROPUESTOS
+
+6.1. Diseñar una función que calcule la media de tres números leídos del teclado y poner un ejemplo de su
+aplicación.
+
+**Python**
+
+```python
+def media(a, b, c):
+    return (a + b + c) / 3
+x = int(input("Ingrese el primer número: "))
+k = int(input("Ingrese el segundo número: "))
+z = int(input("Ingrese el tercer número: "))
+resultado = media(x, k, z)
+print("La media es:", resultado)
+```
+
+**PSeInt**
+
+```
+Algoritmo Media_Tres_Numeros
+    Definir x Como Entero;
+    Definir k Como Entero;
+    Definir z Como Entero;
+    Definir media Como Real;
+
+    Escribir "Ingrese el primer numero:";
+    Leer x;
+
+    Escribir "Ingrese el segundo numero:";
+    Leer k;
+
+    Escribir "Ingrese el tercer numero:";
+    Leer z;
+
+    media <- (x + k + z) / 3;
+
+    Escribir "La media es: ", media;
+FinAlgoritmo
+```
+
+6.2. Diseñar la función FACTORIAL que calcule el factorial
+de un número entero en el rango 100 a 1.000.000.
+
+**Python**
+
+```python
+def factorial(n):
+    f = 1
+    i = 1
+    while i <= n:
+        f = f * i
+        i = i + 1
+    return f
+n = int(input("Ingrese un número entero: "))
+if n >= 100 and n <= 1000000:
+    resultado = factorial(n)
+    print("El factorial es:", resultado)
+else:
+    print("El número no está en el rango permitido")
+```
+
+**PSeInt**
+
+```
+Algoritmo Factorial_Rango
+    Definir n Como Entero;
+    Definir i Como Entero;
+    Definir f Como Entero;
+
+    Escribir "Ingrese un numero entero:";
+    Leer n;
+
+    Si n >= 100 Y n <= 1000000 Entonces
+        f <- 1;
+        i <- 1;
+
+        Mientras i <= n Hacer
+            f <- f * i;
+            i <- i + 1;
+        FinMientras
+
+        Escribir "El factorial es: ", f;
+    SiNo
+        Escribir "El numero no esta en el rango permitido";
+    FinSi
+FinAlgoritmo
+```
+
+6.3. Diseñar un algoritmo para calcular el máximo común
+divisor de cuatro números basado en un subalgoritmo función mcd (máximo común divisor de dos números).
+
+**Python**
+
+```python
+def mcd(a, b):
+    while a != b:
+        if a > b:
+            a = a - b
+        else:
+            b = b - a
+    return a
+n1 = int(input("Ingrese el primer número: "))
+n2 = int(input("Ingrese el segundo número: "))
+n3 = int(input("Ingrese el tercer número: "))
+n4 = int(input("Ingrese el cuarto número: "))
+resultado = mcd(n1, n2)
+resultado = mcd(resultado, n3)
+resultado = mcd(resultado, n4)
+print("El máximo común divisor es:", resultado)
+```
+
+**PSeInt**
+
+```
+Algoritmo MCD_Cuatro_Numeros
+    Definir n1 Como Entero;
+    Definir n2 Como Entero;
+    Definir n3 Como Entero;
+    Definir n4 Como Entero;
+    Definir a Como Entero;
+    Definir b Como Entero;
+
+    Escribir "Ingrese el primer numero:";
+    Leer n1;
+    Escribir "Ingrese el segundo numero:";
+    Leer n2;
+    Escribir "Ingrese el tercer numero:";
+    Leer n3;
+    Escribir "Ingrese el cuarto numero:";
+    Leer n4;
+
+    // MCD de n1 y n2
+    a <- n1;
+    b <- n2;
+    Mientras a <> b Hacer
+        Si a > b Entonces
+            a <- a - b;
+        SiNo
+            b <- b - a;
+        FinSi
+    FinMientras
+    n1 <- a;
+
+    // MCD del resultado con n3
+    a <- n1;
+    b <- n3;
+    Mientras a <> b Hacer
+        Si a > b Entonces
+            a <- a - b;
+        SiNo
+            b <- b - a;
+        FinSi
+    FinMientras
+    n1 <- a;
+
+    // MCD del resultado con n4
+    a <- n1;
+    b <- n4;
+    Mientras a <> b Hacer
+        Si a > b Entonces
+            a <- a - b;
+        SiNo
+            b <- b - a;
+        FinSi
+    FinMientras
+
+    Escribir "El maximo comun divisor es: ", a;
+FinAlgoritmo
+```
+
+6.4. Diseñar una función que encuentre el mayor de dos
+números enteros.
+
+**Python**
+
+```python
+def mayor(a, b):
+    if a > b:
+        return a
+    else:
+        return b
+x = int(input("Ingrese el primer número: "))
+z = int(input("Ingrese el segundo número: "))
+resultado = mayor(x, z)
+print("El número mayor es:", resultado)
+```
+
+**PSeInt**
+
+```
+Algoritmo Mayor_De_Dos
+    Definir x Como Entero;
+    Definir z Como Entero;
+    Definir mayor Como Entero;
+
+    Escribir "Ingrese el primer numero:";
+    Leer x;
+
+    Escribir "Ingrese el segundo numero:";
+    Leer z;
+
+    Si x > z Entonces
+        mayor <- x;
+    SiNo
+        mayor <- z;
+    FinSi
+
+    Escribir "El numero mayor es: ", mayor;
+FinAlgoritmo
+```
+
+6.5. Diseñar una función que calcule xn para x, variable
+real y n variable entera.
+
+**Python**
+
+```python
+def potencia(x, n):
+    resultado = 1
+    i = 1
+    while i <= n:
+        resultado = resultado * x
+        i = i + 1
+    return resultado
+x = int(input("Ingrese el valor de x: "))
+n = int(input("Ingrese el valor de n: "))
+print("La potencia es:", potencia(x, n))
+```
+
+**PSeInt**
+
+```
+Algoritmo Potencia
+    Definir x Como Entero;
+    Definir n Como Entero;
+    Definir i Como Entero;
+    Definir resultado Como Entero;
+
+    Escribir "Ingrese el valor de x:";
+    Leer x;
+
+    Escribir "Ingrese el valor de n:";
+    Leer n;
+
+    resultado <- 1;
+    i <- 1;
+
+    Mientras i <= n Hacer
+        resultado <- resultado * x;
+        i <- i + 1;
+    FinMientras
+
+    Escribir "El resultado es: ", resultado;
+FinAlgoritmo
+```
+
+6.6. Diseñar un procedimiento que acepte un número de
+mes, un número de día y un número de año y los visualice en el formato
+dd/mm/aa
+ Por ejemplo, los valores 19,09,1987 se visualizarían
+como
+19/9/87
+ y para los valores 3, 9 y 1905
+3/9/05
+
+**Phyton**
+
+```python
+# Algoritmo FormatoFecha en Python sin funciones especiales
+
+# Definir variables
+dia = 0
+mes = 0
+anio = 0
+anio2 = 0
+texto_anio = ""
+
+# Pedir datos al usuario
+print("Ingrese el día:")
+dia = int(input())
+print("Ingrese el mes:")
+mes = int(input())
+print("Ingrese el año:")
+anio = int(input())
+
+# Obtener los dos últimos dígitos del año
+anio2 = anio % 100
+
+# Convertir a texto y agregar cero delante si es menor a 10
+if anio2 < 10:
+    texto_anio = "0" + str(anio2)
+else:
+    texto_anio = str(anio2)
+
+# Mostrar la fecha en formato dd/mm/aa
+print(str(dia) + "/" + str(mes) + "/" + texto_anio)
+```
+
+**Pseint**
+
+```
+Algoritmo ejercicio6_6_FormatoFecha
+    Definir dia, mes, anio, anio2 Como Entero
+    Definir texto_anio Como Cadena
+
+    Escribir "Ingrese el día:"
+    Leer dia
+    Escribir "Ingrese el mes:"
+    Leer mes
+    Escribir "Ingrese el año:"
+    Leer anio
+
+    // Obtener los dos últimos dígitos del año
+    anio2 <- anio MOD 100
+
+    // Convertir a texto y agregar cero delante si es menor a 10
+    Si anio2 < 10 Entonces
+        texto_anio <- "0" + ConvertirATexto(anio2)
+    Sino
+        texto_anio <- ConvertirATexto(anio2)
+    FinSi
+
+    // Mostrar la fecha en formato dd/mm/aa
+    Escribir ConvertirATexto(dia) + "/" + ConvertirATexto(mes) + "/" + texto_anio
+FinAlgoritmo
+```
+
+6.7. Realizar un procedimiento que realice la conversión
+de coordenadas polares (r, θ) a coordenadas cartesianas (x, y)
+x = r.cos (θ)
+y = r.sen(θ)
+
+**Phyton**
+
+```python
+# Conversión de coordenadas polares a cartesianas
+
+# Definir variables
+r = 0.0
+theta = 0.0
+x = 0.0
+y = 0.0
+radianes = 0.0
+
+# Pedir datos al usuario
+print("Ingrese el valor de r:")
+r = float(input())
+print("Ingrese el angulo theta en grados:")
+theta = float(input())
+
+# Convertir grados a radianes
+radianes = theta * 3.14159265 / 180
+
+# Calcular coordenadas cartesianas
+x = r * ( (3.14159265/180) * theta ) # Esto era para mostrar la idea
+# Pero necesitamos coseno y seno, sin funciones de Python, podemos usar aproximaciones
+
+
+import math  # Solo si podemos usar funciones matemáticas básicas
+x = r * math.cos(radianes)
+y = r * math.sin(radianes)
+
+# Mostrar resultados
+print("Coordenadas cartesianas:")
+print("x =", x)
+print("y =", y)
+```
+
+**Pseint**
+
+```
+Algoritmo PolaresACartesianas
+
+    // Definir variables
+    Definir r, theta, x, f, radianes Como Real
+
+    Escribir "Ingrese el valor de r:"
+    Leer r
+    Escribir "Ingrese el angulo theta en grados:"
+    Leer theta
+
+    // Convertir grados a radianes
+    radianes <- theta * 3.14159265 / 180
+
+    // Calcular coordenadas cartesianas
+    x <- r * cos(radianes)
+    f <- r * sen(radianes)
+
+    // Mostrar resultados
+    Escribir "Coordenadas cartesianas:"
+    Escribir "x = ", x
+    Escribir "y = ", f
+
+FinAlgoritmo
+```
+
+6.8. Escribir una función Salario que calcule los sa larios
+de un trabajador para un número dado de horas trabajadas y un salario hora. Las horas que su peren las 40
+horas semanales se pagarán como extras con un salario hora 1,5 veces el salario ordinario.
+
+Phyton
+
+```python
+# Función para calcular salario con horas extras
+def calcular_salario(horas, salario_hora):
+    if horas > 40:
+        horas_extra = horas - 40
+        salario_total = 40 * salario_hora + horas_extra * salario_hora * 1.5
+    else:
+        salario_total = horas * salario_hora
+    return salario_total
+
+# Pedir datos al usuario
+horas = float(input("Ingrese el número de horas trabajadas: "))
+salario_hora = float(input("Ingrese el salario por hora: "))
+
+# Calcular salario usando la función
+salario_total = calcular_salario(horas, salario_hora)
+
+# Mostrar el resultado
+print("El salario total es:", salario_total)
+```
+
+**Pseint**
+
+```
+Algoritmo CalcularSalario
+
+    // Definir variables
+    Definir horas, salarioHora, salarioTotal, horasExtra Como Real
+
+    // Pedir datos al usuario
+    Escribir "Ingrese el número de horas trabajadas:"
+    Leer horas
+    Escribir "Ingrese el salario por hora:"
+    Leer salarioHora
+
+    // Calcular salario
+    Si horas > 40 Entonces
+        horasExtra <- horas - 40
+        salarioTotal <- 40 * salarioHora + horasExtra * salarioHora * 1.5
+    Sino
+        salarioTotal <- horas * salarioHora
+    FinSi
+
+    // Mostrar resultado
+    Escribir "El salario total es: ", salarioTotal
+
+FinAlgoritmo
+```
+
+6.9. Escribir una función booleana Digito que determine
+si un carácter es uno de los dígitos 0 al 9.
+
+**Phyton**
+
+```python
+# Función que verifica si un carácter es un dígito
+def es_digito(c):
+    return c in "0123456789"
+
+# Pedir carácter al usuario
+c = input("Ingrese un carácter: ")
+
+# Verificar si es dígito usando la función
+if es_digito(c):
+    print("El carácter es un dígito.")
+else:
+    print("El carácter NO es un dígito.")
+```
+
+**Pseint**
+
+```
+Algoritmo DigitoEjemplo
+
+    Definir c Como Caracter
+    Definir esDigito Como Entero
+
+    Escribir "Ingrese un carácter:"
+    Leer c
+
+    // Comprobar si es un dígito
+    Si c = "0" O c = "1" O c = "2" O c = "3" O c = "4" O c = "5" O c = "6" O c = "7" O c = "8" O c = "9" Entonces
+        esDigito <- 1
+    Sino
+        esDigito <- 0
+    FinSi
+
+    // Mostrar resultado
+    Si esDigito = 1 Entonces
+        Escribir "El carácter es un dígito."
+    Sino
+        Escribir "El carácter NO es un dígito."
+    FinSi
+
+FinAlgoritmo
+```
+
+6.10. Diseñar una función que permita devolver el valor absoluto de un número.
+
+**Phyton**
+
+```python
+# Función que devuelve el valor absoluto
+def valor_absoluto(n):
+    if n < 0:
+        return -n
+    else:
+        return n
+
+# Pedir número al usuario
+num = float(input("Ingrese un número: "))
+
+# Calcular valor absoluto usando la función
+resultado = valor_absoluto(num)
+
+# Mostrar el resultado
+print("El valor absoluto es:", resultado)
+```
+
+**Pseint**
+
+```
+Algoritmo ValorAbsolutoSeguro
+
+    Definir num, resultado Como Real
+
+    Escribir "Ingrese un número:"
+    Leer num
+
+    // Calcular valor absoluto
+    Si num < 0 Entonces
+        resultado <- -num
+    Sino
+        resultado <- num
+    FinSi
+
+    Escribir "El valor absoluto es: ", resultado
+
+FinAlgoritmo
+```
+
+6.11. Realizar un procedimiento que obtenga la división entera y el resto de la misma utilizando únicamente los
+operadores suma y resta.
+
+**Phyton**
+
+```python
+# Pedir datos al usuario
+dividendo = int(input("Ingrese el dividendo: "))
+divisor = int(input("Ingrese el divisor: "))
+
+# Inicializar cociente y acumulador
+cociente = 0
+acumulador = dividendo
+
+# Restar el divisor repetidamente hasta que el acumulador sea menor que divisor
+while acumulador >= divisor:
+    acumulador -= divisor  # equivalente a acumulador = acumulador - divisor
+    cociente += 1          # aumentar cociente en 1
+
+# Lo que queda en acumulador es el resto
+resto = acumulador
+
+# Mostrar resultados
+print("Cociente:", cociente)
+print("Resto:", resto)
+```
+
+**Pseint**
+
+```
+Algoritmo DivisionEnteraYSobreSeguro
+
+    Definir dividendo, divisor, cociente, resto, acumulador Como Entero
+
+    Escribir "Ingrese el dividendo:"
+    Leer dividendo
+    Escribir "Ingrese el divisor:"
+    Leer divisor
+
+    cociente <- 0
+    acumulador <- dividendo
+
+    // Restar divisor repetidamente hasta que el acumulador sea menor que divisor
+    Mientras acumulador >= divisor Hacer
+        acumulador <- acumulador - divisor
+        cociente <- cociente + 1
+    FinMientras
+
+    // Lo que queda es el resto
+    resto <- acumulador
+
+    // Mostrar resultados
+    Escribir "Cociente:", cociente
+    Escribir "Resto:", resto
+
+FinAlgoritmo
+```
+
+6.12. Escribir una función que permita deducir si una fecha
+leída del teclado es válida.
+
+**Phyton**
+
+```python
+# Función que verifica si una fecha es válida
+def es_fecha_valida(dia, mes, anio):
+    # Comprobar mes válido
+    if mes < 1 or mes > 12:
+        return False
+
+    # Determinar número de días según el mes
+    if mes in [1, 3, 5, 7, 8, 10, 12]:
+        dias_mes = 31
+    elif mes in [4, 6, 9, 11]:
+        dias_mes = 30
+    else:  # Febrero
+        # Año bisiesto: divisible por 4 y (no divisible por 100 o divisible por 400)
+        if (anio % 4 == 0) and ((anio % 100 != 0) or (anio % 400 == 0)):
+            dias_mes = 29
+        else:
+            dias_mes = 28
+
+    # Comprobar día válido
+    if dia < 1 or dia > dias_mes:
+        return False
+
+    return True
+
+# Pedir fecha al usuario
+dia = int(input("Ingrese el día: "))
+mes = int(input("Ingrese el mes: "))
+anio = int(input("Ingrese el año: "))
+
+# Validar la fecha usando la función
+if es_fecha_valida(dia, mes, anio):
+    print("La fecha es válida.")
+else:
+    print("La fecha NO es válida.")
+```
+
+**Pseint**
+
+```
+Algoritmo FechaValidaSeguro
+
+    Definir dia, mes, anio, diasMes, fechaValida Como Entero
+
+    Escribir "Ingrese el día:"
+    Leer dia
+    Escribir "Ingrese el mes:"
+    Leer mes
+    Escribir "Ingrese el año:"
+    Leer anio
+
+    fechaValida <- 1  // 1 = verdadero, 0 = falso
+
+    // Verificar mes válido
+    Si mes < 1 O mes > 12 Entonces
+        fechaValida <- 0
+    FinSi
+
+    // Determinar número de días según el mes
+    Si fechaValida = 1 Entonces
+        Si mes = 1 O mes = 3 O mes = 5 O mes = 7 O mes = 8 O mes = 10 O mes = 12 Entonces
+            diasMes <- 31
+        Sino
+            Si mes = 4 O mes = 6 O mes = 9 O mes = 11 Entonces
+                diasMes <- 30
+            Sino
+                // Febrero
+                Si (anio MOD 4 = 0) Y ((anio MOD 100 <> 0) O (anio MOD 400 = 0)) Entonces
+                    diasMes <- 29
+                Sino
+                    diasMes <- 28
+                FinSi
+            FinSi
+        FinSi
+    FinSi
+
+    // Verificar día válido
+    Si fechaValida = 1 Entonces
+        Si dia < 1 O dia > diasMes Entonces
+            fechaValida <- 0
+        FinSi
+    FinSi
+
+    // Mostrar resultado
+    Si fechaValida = 1 Entonces
+        Escribir "La fecha es válida."
+    Sino
+        Escribir "La fecha NO es válida."
+    FinSi
+
+FinAlgoritmo
+```
+
+6.13. Diseñar un algoritmo que transforme un número introducido por teclado en notación decimal a notación
+romana. El número será entero positivo y no excederá
+de 3.000.
+
+**Phyton**
+
+```python
+n = int(input("Ingrese un numero (1 a 3000): "))
+
+if n < 1 or n > 3000:
+    print("Numero fuera de rango")
+else:
+    while n >= 1000:
+        print("M", end="")
+        n -= 1000
+
+    while n >= 500:
+        print("D", end="")
+        n -= 500
+
+    while n >= 100:
+        print("C", end="")
+        n -= 100
+
+    while n >= 50:
+        print("L", end="")
+        n -= 50
+
+    while n >= 10:
+        print("X", end="")
+        n -= 10
+
+    while n >= 5:
+        print("V", end="")
+        n -= 5
+
+    while n >= 1:
+        print("I", end="")
+        n -= 1
+```
+
+**Pseint**
+
+```
+Algoritmo DecimalARomano
+	Definir n Como Entero
+
+	Escribir "Ingrese un numero (1 a 3000):"
+	Leer n
+
+	Si n < 1 O n > 3000 Entonces
+		Escribir "Numero fuera de rango"
+	SiNo
+
+		Mientras n >= 1000 Hacer
+			Escribir Sin Saltar "M"
+			n <- n - 1000
+		FinMientras
+
+		Mientras n >= 500 Hacer
+			Escribir Sin Saltar "D"
+			n <- n - 500
+		FinMientras
+
+		Mientras n >= 100 Hacer
+			Escribir Sin Saltar "C"
+			n <- n - 100
+		FinMientras
+
+		Mientras n >= 50 Hacer
+			Escribir Sin Saltar "L"
+			n <- n - 50
+		FinMientras
+
+		Mientras n >= 10 Hacer
+			Escribir Sin Saltar "X"
+			n <- n - 10
+		FinMientras
+
+		Mientras n >= 5 Hacer
+			Escribir Sin Saltar "V"
+			n <- n - 5
+		FinMientras
+
+		Mientras n >= 1 Hacer
+			Escribir Sin Saltar "I"
+			n <- n - 1
+		FinMientras
+
+	FinSi
+
+FinAlgoritmo
+```
+
+6.14. Escribir el algoritmo de una función recursiva que: a)
+calcule el factorial de un número entero positivo, b) la
+potencia de un número entero positivo.
+
+**Phyton**
+
+```python
+# factorial recursivo
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n - 1)
+
+
+# potencia recursiva
+def potencia(base, exponente):
+    if exponente == 0:
+        return 1
+    else:
+        return base * potencia(base, exponente - 1)
+
+
+# programa principal
+n = int(input("Ingrese un numero para calcular el factorial: "))
+print("El factorial es:", factorial(n))
+
+b = int(input("Ingrese la base: "))
+e = int(input("Ingrese el exponente: "))
+print("La potencia es:", potencia(b, e))
+```
+
+**Pseint**
+
+```
+SubProceso factorial(n, resultado Por Referencia)
+    Si n = 0 Entonces
+        resultado <- 1
+    Sino
+        factorial(n - 1, resultado)
+        resultado <- n * resultado
+    FinSi
+FinSubProceso
+
+
+SubProceso potencia(base, exponente, resultado Por Referencia)
+    Si exponente = 0 Entonces
+        resultado <- 1
+    Sino
+        potencia(base, exponente - 1, resultado)
+        resultado <- base * resultado
+    FinSi
+FinSubProceso
+
+
+Algoritmo Recursividad
+
+    Definir n, b, e Como Entero
+    Definir resFactorial, resPotencia Como Entero
+
+    Escribir "Ingrese un numero para calcular el factorial:"
+    Leer n
+    factorial(n, resFactorial)
+    Escribir "El factorial es: ", resFactorial
+
+    Escribir "Ingrese la base:"
+    Leer b
+    Escribir "Ingrese el exponente:"
+    Leer e
+    potencia(b, e, resPotencia)
+    Escribir "La potencia es: ", resPotencia
+
+FinAlgoritmo
+```
